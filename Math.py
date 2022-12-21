@@ -42,6 +42,10 @@ def nchoosek():
 def prod():
     assert math.prod([2, 3, 4]) == 24
 
+def log():
+    value = 2 ** 54
+    assert math.log2(value) == 54
+
 def main():
     minMax()
     power()
@@ -50,6 +54,7 @@ def main():
     NaN()
     nchoosek()
     prod()
+    log()
 
 if __name__ == '__main__':
     main()
