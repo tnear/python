@@ -3,7 +3,12 @@ import os
 import sys
 
 def version():
+    # get Python version
     assert '3.' in sys.version
+
+def executable():
+    # get python executable location
+    assert 'python.' in sys.executable
 
 def stdout():
     sys.stdout.write('hello world!\n')
@@ -29,13 +34,18 @@ def getsizeof():
     b = tuple(a)
     assert sys.getsizeof(b) == 80
 
+def byteorder():
+    assert sys.byteorder == 'little'
+
 def main():
     version()
+    executable()
     stdout()
     path()
     getrefcount()
     maxsize()
     getsizeof()
+    byteorder()
 
 if __name__ == '__main__':
     main()

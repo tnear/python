@@ -71,6 +71,16 @@ def dirFcn():
     assert '__name__' in mathAttributes
     assert 'pi' in mathAttributes
 
+def typeFcn():
+    t = type(1)   # <class 'int'>
+    t = type('a') # <class 'str'>
+    t = type(1.0) # <class 'float'>
+
+def isinstanceFcn():
+    assert isinstance(1., float)
+    assert not isinstance(1, float)
+    assert isinstance('', str)
+
 def main():
     arbitrary('a', 'b', 'c')
     namedArgs(a='1', b='2', c='3')
@@ -84,6 +94,8 @@ def main():
     filterFcn()
     varsFcn()
     dirFcn()
+    typeFcn()
+    isinstanceFcn()
 
 if __name__ == '__main__':
     main()
