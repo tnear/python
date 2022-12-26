@@ -1,5 +1,7 @@
 # Miscellaneous information on Python functions
 
+import math
+
 def arbitrary(*args):
     # *args creates a tuple of arguments
     for arg in args:
@@ -47,6 +49,28 @@ def filterFcn():
     result = filter(lambda x : x % 2, [1, 2, 3, 4, 5])
     assert list(result) == [1, 3, 5]
 
+# User vars() to get local variables
+def varsFcn():
+    a = 1
+    b = 2
+    v = vars()
+    assert list(vars().keys()) == ['a', 'b', 'v']
+
+    # Remove 'a'
+    del a
+    assert list(vars().keys()) == ['b', 'v']
+
+def dirFcn():
+    # dir(obj) gets all attributes and methods for a given object
+    listMethods = [x for x in dir([]) if '_' not in x]
+    assert 'append' in listMethods
+    assert 'clear' in listMethods
+    assert 'sort' in listMethods
+
+    mathAttributes = dir(math)
+    assert '__name__' in mathAttributes
+    assert 'pi' in mathAttributes
+
 def main():
     arbitrary('a', 'b', 'c')
     namedArgs(a='1', b='2', c='3')
@@ -58,6 +82,8 @@ def main():
     inputFcn()
     countFcn()
     filterFcn()
+    varsFcn()
+    dirFcn()
 
 if __name__ == '__main__':
     main()

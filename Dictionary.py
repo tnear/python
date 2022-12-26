@@ -73,6 +73,11 @@ def deepCopy():
     assert d is not d2
     assert d is d3
 
+# Return length/size of dictionary
+def size():
+    d = {1: 2, 'c': 4, 5: 6}
+    assert len(d) == 3
+
 def main():
     empty()
     create()
@@ -85,6 +90,7 @@ def main():
     mutate()
     remove()
     deepCopy()
+    size()
 
 if __name__ == '__main__':
     main()
