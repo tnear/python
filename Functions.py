@@ -73,8 +73,11 @@ def dirFcn():
 
 def typeFcn():
     t = type(1)   # <class 'int'>
+    assert isinstance(1, int)
     t = type('a') # <class 'str'>
+    assert isinstance('a', str)
     t = type(1.0) # <class 'float'>
+    assert isinstance(1.0, float)
 
 def isinstanceFcn():
     assert isinstance(1., float)
