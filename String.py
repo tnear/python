@@ -82,6 +82,21 @@ def Repr():
     # (very similar to str())"
     assert repr([1, 2, 3]) == '[1, 2, 3]'
 
+def replace():
+    # replace substring
+    s = 'string'
+    out = s.replace('str', 'fl')
+    assert out == 'fling'
+
+    # remove substring
+    out = s.replace('tr', '')
+    assert out == 'sing'
+
+    # remove multiple instances
+    s = 'str123ing123'
+    out = s.replace('123', '')
+    assert out == 'string'
+
 def main():
     contains()
     slice()
@@ -95,6 +110,7 @@ def main():
     encode()
     decode()
     Repr()
+    replace()
 
 if __name__ == '__main__':
     main()
