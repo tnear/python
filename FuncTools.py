@@ -22,7 +22,6 @@ def reduce():
     sumOfVal = functools.reduce(lambda a, b : a + b, [25])
     assert sumOfVal == 25
 
-
 # partial objects are callable objects created by functools.partial()
 def partial():
     pow2 = functools.partial(power, b=2)

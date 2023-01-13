@@ -1,6 +1,6 @@
 import re
 
-# List = re.findall(<pattern>, <txt>)
+# mylist = re.findall(<pattern>, <txt>)
 def findAll():
     txt = 'a11 22b34'
     out = re.findall(r'\d+', txt)
@@ -17,10 +17,21 @@ def split():
     out = re.split('_+', txt)
     assert out == ['a', 'var', 'ex']
 
+def search():
+    # Captures floating point number in capture group
+    txt = 'speed: 123.45 elements/s'
+
+    num = re.search(r'speed:\s([\d|\.]+) elements/s', txt)
+
+    assert len(num.groups()) == 1
+    captureGroup1 = num.group(1)
+    assert captureGroup1 == '123.45'
+
 def main():
     findAll()
     sub()
     split()
+    search()
 
 if __name__ == '__main__':
     main()
