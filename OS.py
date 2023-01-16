@@ -28,6 +28,10 @@ def cpu_count():
     cpuCount = os.cpu_count()
     assert cpuCount >= 2
 
+def system():
+    # Execute OS system calls
+    os.system('whoami')
+
 def main():
     pwd()
     path()
@@ -36,6 +40,7 @@ def main():
     getsize()
     getpid()
     cpu_count()
+    system()
 
 if __name__ == '__main__':
     main()

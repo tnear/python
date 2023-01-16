@@ -97,6 +97,15 @@ def replace():
     out = s.replace('123', '')
     assert out == 'string'
 
+def partition():
+    # (prefix, found, suffix)
+    # Can be used to implement extractBefore/extractAfter
+    s = 'my test string'
+    prefix, found, suffix = s.partition('test ')
+    assert prefix == 'my '
+    assert found == 'test '
+    assert suffix == 'string'
+
 def main():
     contains()
     slice()
@@ -111,6 +120,7 @@ def main():
     decode()
     Repr()
     replace()
+    partition()
 
 if __name__ == '__main__':
     main()

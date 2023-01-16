@@ -1,4 +1,5 @@
 import math
+import sys
 
 def separator():
     # default separator is space
@@ -33,16 +34,18 @@ def escape():
     print('10%d%%' % 1)
     # outputs: '101%'
     # "%d = integer
-    # %% = '%' char in format mode"
+    # % (x2) = '%' char in format mode"
 
-def escape():
-    pass
+def stderr():
+    print('My stdout', file=sys.stdout) # default is sys.stdout
+    print('My stderr', file=sys.stderr)
 
 def main():
     separator()
     end()
     fmt()
     escape()
+    stderr()
 
 if __name__ == '__main__':
     main()
