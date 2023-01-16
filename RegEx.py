@@ -18,6 +18,7 @@ def split():
     assert out == ['a', 'var', 'ex']
 
 def search():
+    # re.search searches entire string and returns first match
     # Captures floating point number in capture group
     txt = 'speed: 123.45 elements/s'
 
@@ -27,11 +28,25 @@ def search():
     captureGroup1 = num.group(1)
     assert captureGroup1 == '123.45'
 
+def searchVsMatch():
+    # re.search searches entire string and returns first match
+    # re.match ONLY searches from the beginning of a string
+    s = 'test abc'
+    out1 = re.search('abc', s)
+    out2 = re.match ('abc', s)
+
+    # Even though the 'abc' pattern is in string,
+    # match does NOT find it while search does.
+    assert out1 is not None
+    assert out2 is None
+
+
 def main():
     findAll()
     sub()
     split()
     search()
+    searchVsMatch()
 
 if __name__ == '__main__':
     main()

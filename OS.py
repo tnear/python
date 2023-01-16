@@ -23,6 +23,11 @@ def getpid():
     pid = os.getpid()
     assert pid > 0
 
+def cpu_count():
+    # Returns number of cores on machine
+    cpuCount = os.cpu_count()
+    assert cpuCount >= 2
+
 def main():
     pwd()
     path()
@@ -30,6 +35,7 @@ def main():
     name()
     getsize()
     getpid()
+    cpu_count()
 
 if __name__ == '__main__':
     main()
