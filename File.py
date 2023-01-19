@@ -1,6 +1,21 @@
 import os
 
-def fileBasics():
+def fileWith():
+    # Use 'with' keyword to close file automatically
+    file = 'a.txt'
+
+    # write file
+    with open(file, 'w') as f:
+        f.write('hello world!')
+
+    # read entire file
+    with open(file, 'r') as f:
+        data = f.read()
+
+    assert data == 'hello world!'
+    os.remove(file)
+
+def fileHandle():
     file = 'a.txt'
     assert not os.path.exists(file)
 
@@ -53,7 +68,8 @@ def readlines():
     os.remove(file)
 
 def main():
-    fileBasics()
+    fileWith()
+    fileHandle()
     readBytes()
     readlines()
 
