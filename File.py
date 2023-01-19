@@ -67,11 +67,23 @@ def readlines():
     assert txt == 'hello\nworld!'
     os.remove(file)
 
+def create():
+    # Create file using 'with' keyword
+    # which does not requiring close
+    file = 'a.txt'
+    with open(file, 'w') as f:
+        f.write('hello')
+
+    assert os.path.exists(file)
+    os.remove(file)
+    assert not os.path.exists(file)
+
 def main():
     fileWith()
     fileHandle()
     readBytes()
     readlines()
+    create()
 
 if __name__ == '__main__':
     main()

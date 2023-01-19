@@ -4,7 +4,7 @@ def pwd():
     pwd = os.getcwd()
     assert 'python' in pwd
 
-def path():
+def dirname():
     p = os.path.dirname(os.getcwd())
     assert p.endswith('Programming')
 
@@ -32,15 +32,38 @@ def system():
     # Execute OS system calls
     os.system('whoami')
 
+def exists():
+    file = 'a.txt'
+    assert not os.path.exists(file)
+    with open(file, 'w') as f:
+        f.write('hello')
+
+    assert os.path.exists(file)
+    os.remove(file)
+    assert not os.path.exists(file)
+
+def remove():
+    file = 'a.txt'
+    assert not os.path.exists(file)
+    with open(file, 'w') as f:
+        f.write('hello')
+
+    assert os.path.exists(file)
+    os.remove(file)
+    assert not os.path.exists(file)
+
 def main():
     pwd()
-    path()
+    dirname()
     listdir()
     name()
     getsize()
     getpid()
     cpu_count()
     system()
+    exists()
+    remove()
+
 
 if __name__ == '__main__':
     main()
