@@ -52,6 +52,18 @@ def remove():
     os.remove(file)
     assert not os.path.exists(file)
 
+def makedirs():
+    mydir = 'dir1/dir2/dir3'
+    assert not os.path.isdir(mydir)
+
+    # Create nested sub-directories
+    os.makedirs(mydir)
+    assert os.path.isdir(mydir)
+
+    # Cleanup using removedirs()
+    os.removedirs(mydir)
+    assert not os.path.isdir(mydir)
+
 def main():
     pwd()
     dirname()
@@ -63,7 +75,7 @@ def main():
     system()
     exists()
     remove()
-
+    makedirs()
 
 if __name__ == '__main__':
     main()
