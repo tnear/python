@@ -106,6 +106,13 @@ def partition():
     assert found == 'test '
     assert suffix == 'string'
 
+def lastNCharacters():
+    N = 5
+    s = 'abcdefghij'
+
+    # [start at negative N : <empty means go to end> : <stride=1(default)>
+    assert s[-N:] == 'fghij'
+
 def main():
     contains()
     slice()
@@ -121,6 +128,7 @@ def main():
     Repr()
     replace()
     partition()
+    lastNCharacters()
 
 if __name__ == '__main__':
     main()

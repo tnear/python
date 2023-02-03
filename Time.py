@@ -17,21 +17,22 @@ def intToString():
     string = time.ctime(1672074470.2505949)
     assert '2022' in string
 
-def sleep():
-    # sleep/pause
+def duration():
+    # Get start time
     old = time.time()
 
-    # sleep .01 seconds
+    # Sleep .01 seconds
     seconds = .01
     time.sleep(seconds)
 
+    # Measure elapsed time
     assert time.time() - old >= seconds
 
 def main():
     epoch()
     currentTime()
     intToString()
-    sleep()
+    duration()
 
 if __name__ == '__main__':
     main()
