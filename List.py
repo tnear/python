@@ -159,6 +159,15 @@ def bytes():
     bytes = sys.getsizeof(a)
     assert bytes == 96
 
+def index():
+    # Find first element and return its index
+    a = [4, 3, 2, 3]
+    idx = a.index(3)
+    assert idx == 1
+
+    # Throws ValueError if item is not in container
+    # a.index('fake_index')
+
 def main():
     empty()
     creation()
@@ -179,6 +188,7 @@ def main():
     deepCopy()
     replicate()
     bytes()
+    index()
 
 if __name__ == '__main__':
     main()

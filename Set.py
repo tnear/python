@@ -96,6 +96,20 @@ def sequence():
     setSeq = {*listSeq}
     assert sum(setSeq) == (100 * 101) / 2 # 5050
 
+def pop():
+    # pop() removes a "random" element from the set
+    s = {4, 3, 2, 1}
+    elem = s.pop()
+    assert elem == 1
+    elem = s.pop()
+    assert elem == 2
+    elem = s.pop()
+    assert elem == 3
+    elem = s.pop()
+    assert elem == 4
+
+    assert len(s) == 0
+
 def main():
     empty()
     create()
@@ -110,6 +124,7 @@ def main():
     deepCopy()
     frozenSet()
     sequence()
+    pop()
 
 if __name__ == '__main__':
     main()
