@@ -20,6 +20,7 @@ def find():
     assert 1 in {1, 1, 1}
 
 def add():
+    # add/insert element in set
     s = {2, 3, 1}
     s.add(4)
     assert s == {1, 2, 3, 4}
@@ -56,6 +57,8 @@ def remove():
 
     # throws KeyError. Use 'in' first.
     # s.remove('fake_elem')
+    if 'fake_elem' in s:
+        s.remove('fake_elem')
 
 def discard():
     # similar to remove, but does not throw errors
@@ -87,6 +90,12 @@ def frozenSet():
     f = frozenset(person)
     assert f == {'name', 'age', 'zip'}
 
+def sequence():
+    # Generate sequence of 1 to 100
+    listSeq = list(range(1, 101))
+    setSeq = {*listSeq}
+    assert sum(setSeq) == (100 * 101) / 2 # 5050
+
 def main():
     empty()
     create()
@@ -100,6 +109,7 @@ def main():
     clear()
     deepCopy()
     frozenSet()
+    sequence()
 
 if __name__ == '__main__':
     main()
