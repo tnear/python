@@ -19,10 +19,21 @@ def choice():
     c = random.choice(s)
     assert c in s
 
+def uniform():
+    # Generate random number between [a, b] (inclusive)
+    # Between 0, 10
+    r = random.uniform(0, 10)
+    assert r >= 0 and r <= 10
+
+    # Between 20, 80
+    r = random.uniform(20, 80)
+    assert r >= 20 and r <= 80
+
 def main():
     rand()
     randrange()
     choice()
+    uniform()
 
 if __name__ == '__main__':
     main()
