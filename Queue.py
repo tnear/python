@@ -1,4 +1,5 @@
-# Queue: implements multi-producer, multi-consumer queues.
+# Queue: A synchronized queue class
+# Implements multi-producer, multi-consumer queues.
 # It is useful in threaded programming when information
 # must be exchanged safely between multiple threads.
 # https://docs.python.org/3/library/queue.html
@@ -23,7 +24,7 @@ def Queue():
     assert q.qsize() == 0
     assert q.empty()
 
-def MinPriorityQueue():
+def minPriorityQueue():
     pq = queue.PriorityQueue()
 
     # Insert in random order
@@ -40,9 +41,21 @@ def MinPriorityQueue():
     assert pq.get() == 4
     assert pq.get() == 5
 
+def size():
+    # Queue size / length
+    q = queue.Queue()
+    assert q.qsize() == 0
+
+    q.put(1)
+    assert q.qsize() == 1
+
+    q.put(1)
+    assert q.qsize() == 2
+
 def main():
     Queue()
-    MinPriorityQueue()
+    minPriorityQueue()
+    size()
 
 if __name__ == '__main__':
     main()
