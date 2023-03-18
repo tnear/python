@@ -1,3 +1,5 @@
+# Requests is an elegant and simple HTTP library for Python
+# https://requests.readthedocs.io/en/latest/
 import json
 import requests
 

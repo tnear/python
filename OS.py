@@ -1,3 +1,5 @@
+# os — Miscellaneous operating system interfaces
+# https://docs.python.org/3/library/os.html
 import os
 
 def pwd():

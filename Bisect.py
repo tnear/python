@@ -1,4 +1,6 @@
 # Find or insert into sorted container
+# bisect — Array bisection algorithm
+# https://docs.python.org/3/library/bisect.html
 
 import bisect
 

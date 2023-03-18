@@ -1,3 +1,5 @@
+# secrets — Generate secure random numbers for managing secrets
+# https://docs.python.org/3/library/secrets.html
 import secrets
 
 def randint():

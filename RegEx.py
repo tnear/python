@@ -1,3 +1,5 @@
+# re — Regular expression operations
+# https://docs.python.org/3/library/re.html
 import re
 
 # mylist = re.findall(<pattern>, <txt>)

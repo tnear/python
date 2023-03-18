@@ -1,9 +1,11 @@
 # This module provides access to the BSD socket interface.
 # Note: breakpoints do not function when this file is named Socket.py
 
+# socket — Low-level networking interface
+# https://docs.python.org/3/library/socket.html
+
 import re
 import socket
-import sys
 
 def ipAddress():
     # get ip address for domain (format: w.x.y.z)

@@ -168,6 +168,11 @@ def index():
     # Throws ValueError if item is not in container
     # a.index('fake_index')
 
+def sort():
+    a = [4, 2, 1, 3]
+    a.sort()
+    assert a == [1, 2, 3, 4]
+
 def main():
     empty()
     creation()
@@ -189,6 +194,7 @@ def main():
     replicate()
     bytes()
     index()
+    sort()
 
 if __name__ == '__main__':
     main()

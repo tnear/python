@@ -1,3 +1,5 @@
+# hashlib — Secure hashes and message digests
+# https://docs.python.org/3/library/hashlib.html
 import hashlib
 
 def sha256():

@@ -1,3 +1,5 @@
+# random — Generate pseudo-random numbers
+# https://docs.python.org/3/library/random.html
 import random
 
 def rand():
