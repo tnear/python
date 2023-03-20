@@ -113,6 +113,20 @@ def lastNCharacters():
     # [start at negative N : <empty means go to end> : <stride=1(default)>
     assert s[-N:] == 'fghij'
 
+def formattedStringLiteral():
+    # aka f-string
+
+    apples = 4
+    bananas = 3
+
+    # Prefix string with 'f' to create an f-string.
+    # The string is interpolated using {var}:
+    s = f'I have {apples} apples and {bananas} bananas'
+    assert '3' in s
+    assert '4' in s
+    assert '{' not in s
+    assert '}' not in s
+
 def main():
     contains()
     slice()
@@ -129,6 +143,7 @@ def main():
     replace()
     partition()
     lastNCharacters()
+    formattedStringLiteral()
 
 if __name__ == '__main__':
     main()
