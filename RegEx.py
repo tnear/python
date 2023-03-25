@@ -42,6 +42,20 @@ def searchVsMatch():
     assert out1 is not None
     assert out2 is None
 
+def bracketIndexing():
+    # group() is not necessary, can use indexing instead
+    pattern = 't (abc)'
+    out = re.search(pattern, 'test abc')
+    assert out[0] == 't abc'
+    assert out[1] == 'abc'
+
+def namedCapture():
+    # Named captures use syntax: (?P<name>)
+    pattern = r'test (?P<msg>abc)'
+    out = re.search(pattern, 'test abc')
+
+    # Access like a dictionary
+    assert out['msg'] == 'abc'
 
 def main():
     findAll()
@@ -49,6 +63,8 @@ def main():
     split()
     search()
     searchVsMatch()
+    bracketIndexing()
+    namedCapture()
 
 if __name__ == '__main__':
     main()
