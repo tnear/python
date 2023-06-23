@@ -66,6 +66,24 @@ def makedirs():
     os.removedirs(mydir)
     assert not os.path.isdir(mydir)
 
+def rename():
+    file = 'a.txt'
+    fileNew = 'b.txt'
+    assert not os.path.exists(file)
+    with open(file, 'w') as f:
+        f.write('hello')
+
+    assert os.path.exists(file)
+    assert not os.path.exists(fileNew)
+
+    # Rename file
+    os.rename(file, fileNew)
+
+    # Verify rename was successful
+    assert not os.path.exists(file)
+    assert os.path.exists(fileNew)
+    os.remove(fileNew)
+
 def main():
     pwd()
     dirname()
@@ -78,6 +96,7 @@ def main():
     exists()
     remove()
     makedirs()
+    rename()
 
 if __name__ == '__main__':
     main()

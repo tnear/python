@@ -192,6 +192,21 @@ def ones():
     a = np.ones((2, 2), dtype=np.int32)
     assert np.array_equal(a, [[1, 1], [1, 1]])
 
+    # ones like another matrix
+    a = np.zeros([2, 2], dtype=int)
+    m = np.ones_like(a)
+    assert np.array_equal(m, [[1, 1], [1, 1]])    
+
+def add():
+    # add/sum two matrices
+    m = np.mat('1 2; 3 4')
+    n = np.mat('4 5; 6 7')
+    s = m + n
+    # alt syntax:
+    #s = np.add(m, n)
+
+    assert np.array_equal(s, [[5, 7], [9, 11]])
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -211,6 +226,7 @@ def main():
     mean()
     base()
     ones()
+    add()
 
 if __name__ == '__main__':
     main()
