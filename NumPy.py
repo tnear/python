@@ -19,9 +19,42 @@ def matrixCreation():
     m = np.matrix('1 2; 3 4')
     assert np.all(m.flatten() == [1, 2, 3, 4])
 
+def matrixIndexing():
+    # [3 4
+    #  5 6]
+    m = np.matrix([[3, 4], [5, 6]])
+    assert m[0, 0] == 3
+    assert m[0, 1] == 4
+    assert m[1, 0] == 5
+    assert m[1, 1] == 6
+
+    # use indexing to get 2nd column
+    secondColumn = m[:, 1]
+    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+
+    # equivalent syntax to above
+    secondColumn = m[0:2, 1]
+    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+
+def numel():
+    m = np.matrix([[3, 4], [5, 6]])
+
+    # size (NumPy) = numel (MATLAB)
+    assert m.size == 4
+
+def shape():
+    # 3x2
+    # [1, 2
+    #  3, 4
+    #  5, 6]
+    m = np.matrix([[1, 2], [3, 4], [5, 6]])
+
+    # shape (NumPy) = size (MATLAB)
+    assert m.shape == (3, 2)
+
 def all():
     arr = np.array([2, 4, 5, 6, 8])
-    # method:
+    # method (returns scalar True):
     assert arr.all()
     # function:
     assert np.all(arr)
@@ -207,9 +240,38 @@ def add():
 
     assert np.array_equal(s, [[5, 7], [9, 11]])
 
+def end():
+    # for MATLAB's 'end' index, use -1:
+    m = np.array([1, 2, 3])
+    assert m[-1] == 3
+
+def reshape():
+    # 2x3:
+    # [1, 2, 3
+    #  4, 5, 6]
+    m = np.matrix([[1, 2, 3], [4, 5, 6]])
+    
+    # reshape to 3x2
+    m2 = m.reshape(3, 2)
+    assert np.array_equal(m.flatten(), m2.flatten())
+
+def power():
+    m = np.array([1, 2, 3])
+
+    # prefer '**' operator
+    m3 = m ** 3
+    assert np.array_equal(m3, [1, 8, 27])
+
+    # can also use power() function
+    m3 = np.power(m, 3)
+    assert np.array_equal(m3, [1, 8, 27])
+
 def main():
     arrayCreation()
     matrixCreation()
+    matrixIndexing()
+    numel()
+    shape()
     all()
     flatten()
     iterate()
@@ -227,6 +289,9 @@ def main():
     base()
     ones()
     add()
+    end()
+    reshape()
+    power()
 
 if __name__ == '__main__':
     main()
