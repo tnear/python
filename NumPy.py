@@ -158,6 +158,7 @@ def astype():
 
 def arange():
     # numpy.arange([start, ]stop, [step])
+    # similar to MATLAB's stride (start : stride : stop)
     arr = np.arange(2, 10, 3)
     assert np.array_equal(arr, [2, 5, 8])
 
@@ -277,6 +278,20 @@ def countNonzero():
     nnz = np.count_nonzero(even)
     assert nnz == 3
 
+def tile():
+    # tile can be used to repmat
+    # tile(a, (m, n)) is equivalent to:
+    # repmat(a, m, n) in MATLAB
+    # [0, 1, 2]
+    values = np.array([0, 1, 2])
+
+    # tile values into 2 x 3 to create:
+    # [0, 1, 2, 0, 1, 2, 0, 1, 2
+    #  0, 1, 2, 0, 1, 2, 0, 1, 2]
+    newValues = np.tile(values, (2, 3))
+    assert np.array_equal(newValues, \
+        [ [0, 1, 2, 0, 1, 2, 0, 1, 2], [0, 1, 2, 0, 1, 2, 0, 1, 2] ]);
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -304,6 +319,7 @@ def main():
     reshape()
     power()
     countNonzero()
+    tile()
 
 if __name__ == '__main__':
     main()
