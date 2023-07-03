@@ -266,6 +266,17 @@ def power():
     m3 = np.power(m, 3)
     assert np.array_equal(m3, [1, 8, 27])
 
+def countNonzero():
+    m = np.matrix([[1, 2, 3], [4, 5, 6]])
+
+    # get even mask
+    even = m % 2 == 0
+    assert even.dtype == np.dtype('bool')
+
+    # count number of non-zero elements (equivalent to MATLAB's nnz)
+    nnz = np.count_nonzero(even)
+    assert nnz == 3
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -292,6 +303,7 @@ def main():
     end()
     reshape()
     power()
+    countNonzero()
 
 if __name__ == '__main__':
     main()
