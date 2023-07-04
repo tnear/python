@@ -292,6 +292,14 @@ def tile():
     assert np.array_equal(newValues, \
         [ [0, 1, 2, 0, 1, 2, 0, 1, 2], [0, 1, 2, 0, 1, 2, 0, 1, 2] ]);
 
+def mode():
+    # get most common value in array using unique counts
+    values = np.array([2, 1, 3, 1, 3, 3, 4])
+    _, counts = np.unique(values, return_counts=True)
+    idx = np.argmax(counts)
+    modeValue = values[idx]
+    assert modeValue == 3
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -320,6 +328,7 @@ def main():
     power()
     countNonzero()
     tile()
+    mode()
 
 if __name__ == '__main__':
     main()
