@@ -1,3 +1,5 @@
+# https://docs.python.org/3/library/functions.html
+
 def fcn():
     assert isinstance(1.0, float)
 

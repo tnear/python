@@ -1,5 +1,6 @@
 # UserString.py
 # Wrapper around string object which allows customization of methods
+# https://docs.python.org/3/library/collections.html
 
 import collections
 

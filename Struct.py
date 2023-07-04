@@ -1,5 +1,6 @@
 # struct — Interpret bytes as packed binary data
 # https://docs.python.org/3/library/struct.html
+
 import struct
 
 def pack():

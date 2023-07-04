@@ -1,3 +1,5 @@
+# https://docs.python.org/3/tutorial/datastructures.html
+
 def empty():
     d = {}
     assert isinstance(d, dict)

@@ -1,3 +1,6 @@
+# Zip: Iterate over several iterables in parallel, producing tuples with an item from each one.
+# https://docs.python.org/3/library/functions.html
+
 def sameLength():
     languages = ['Java', 'Python', 'JavaScript']
     versions = [14, 3, 6]

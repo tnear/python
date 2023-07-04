@@ -1,6 +1,7 @@
 # A container which can be accessed both by:
 # 1. index (like tuple) and
 # 2. key (like dictionary)
+# https://docs.python.org/3/library/collections.html
 
 import collections
 

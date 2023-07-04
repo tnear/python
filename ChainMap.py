@@ -1,6 +1,7 @@
 # ChainMap.py
 # Allows managing multiple dictionaries with one interface
 # ChainMap does not combine dictionaries (allows multiple keys)
+# https://docs.python.org/3/library/collections.html
 
 import collections
 

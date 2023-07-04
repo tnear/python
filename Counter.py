@@ -1,6 +1,7 @@
 # Counter: maintains count of elements inside
 # Similar to multiset or multimap
 # Duplicates are permitted
+# https://docs.python.org/3/library/collections.html
 
 from collections import Counter
 

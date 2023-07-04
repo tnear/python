@@ -1,4 +1,5 @@
 # typing — Support for type hints
+# https://docs.python.org/3/library/typing.html
 
 import typing
 

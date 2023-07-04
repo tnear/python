@@ -1,5 +1,6 @@
 # timeit — Measure execution time of small code snippets
 # https://docs.python.org/3/library/timeit.html
+
 import timeit
 
 def time():

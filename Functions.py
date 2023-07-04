@@ -79,11 +79,6 @@ def typeFcn():
     t = type(1.0) # <class 'float'>
     assert isinstance(1.0, float)
 
-def isinstanceFcn():
-    assert isinstance(1., float)
-    assert not isinstance(1, float)
-    assert isinstance('', str)
-
 def main():
     arbitrary('a', 'b', 'c')
     namedArgs(a='1', b='2', c='3')
@@ -98,7 +93,6 @@ def main():
     varsFcn()
     dirFcn()
     typeFcn()
-    isinstanceFcn()
 
 if __name__ == '__main__':
     main()

@@ -1,5 +1,6 @@
 # functools — Higher-order functions and operations on callable objects
 # https://docs.python.org/3/library/functools.html
+
 import functools
 
 class PowerClass:

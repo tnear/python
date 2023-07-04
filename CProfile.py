@@ -1,4 +1,5 @@
 # CProfile: C extension profiler
+# https://docs.python.org/3/library/profile.html
 
 # Basic usage:
 '''
