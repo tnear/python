@@ -88,7 +88,7 @@ def iterate():
     assert values == [1, 2, 3]
 
     values = []
-    # 2D
+    # 2D -- iterate over rows
     m = np.array([[1, 2], [3, 4]])
     for row in m:
         for elem in row:
@@ -177,15 +177,17 @@ def flat():
     assert m.flat[2] == 9
     assert m.flat[3] == 10
 
-# Convert numpy array to python array
-def numpyArrayToPythonArray():
+# Convert numpy array to python list
+def numpyArrayToPythonList():
     a = np.array([ [1, 2], [3, 4] ])
     l = a.tolist()
     assert l == [[1, 2], [3, 4]]
     assert isinstance(l, list)
 
-def pythonArrayToNumpyArray():
-    a = np.asarray([1, 2])
+# Convert python list to numpy array
+def pythonListToNumpyArray():
+    array = [1, 2]
+    a = np.array(array)
     assert isinstance(a, np.ndarray)
     assert np.array_equal(a, [1, 2])
 
@@ -300,6 +302,14 @@ def mode():
     modeValue = values[idx]
     assert modeValue == 3
 
+def empty():
+    # np.empty is like np.zeros but does not initialize values
+    # analagous to malloc vs calloc
+
+    arr = np.empty([1, 2])
+    assert arr[0, 0] != 0
+    assert arr[0, 1] != 0
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -317,8 +327,8 @@ def main():
     astype()
     arange()
     flat()
-    numpyArrayToPythonArray()
-    pythonArrayToNumpyArray()
+    numpyArrayToPythonList()
+    pythonListToNumpyArray()
     mean()
     base()
     ones()
@@ -329,6 +339,7 @@ def main():
     countNonzero()
     tile()
     mode()
+    empty()
 
 if __name__ == '__main__':
     main()

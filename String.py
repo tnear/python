@@ -77,9 +77,8 @@ def decode():
     assert b'pyth\xc3\xb6n!'.decode() == 'pythön!'
 
 def Repr():
-    # "Representation.
-    # Turn object into string for debugging
-    # (very similar to str())"
+    # Representation: turn object into string for debugging
+    # (very similar to str())
     assert repr([1, 2, 3]) == '[1, 2, 3]'
 
 def replace():
@@ -111,10 +110,11 @@ def lastNCharacters():
     s = 'abcdefghij'
 
     # [start at negative N : <empty means go to end> : <stride=1(default)>
+    # verify last 5 characters:
     assert s[-N:] == 'fghij'
 
 def formattedStringLiteral():
-    # aka f-string
+    # aka f-string (string interpolation)
 
     apples = 4
     bananas = 3
@@ -122,10 +122,7 @@ def formattedStringLiteral():
     # Prefix string with 'f' to create an f-string.
     # The string is interpolated using {var}:
     s = f'I have {apples} apples and {bananas} bananas'
-    assert '3' in s
-    assert '4' in s
-    assert '{' not in s
-    assert '}' not in s
+    assert s == 'I have 4 apples and 3 bananas'
 
 def main():
     contains()
