@@ -296,19 +296,40 @@ def tile():
 
 def mode():
     # get most common value in array using unique counts
+
+    # one mode:
     values = np.array([2, 1, 3, 1, 3, 3, 4])
-    _, counts = np.unique(values, return_counts=True)
-    idx = np.argmax(counts)
-    modeValue = values[idx]
-    assert modeValue == 3
+    vals, counts = np.unique(values, return_counts = True)
+    counts = np.argwhere(counts == np.max(counts))
+    modeValue = vals[counts].flatten().tolist()
+    assert len(modeValue) == 1
+    assert modeValue[0] == 3
+
+    # two modes:
+    values = np.array([2, 2, 1, 1, 3])
+    vals, counts = np.unique(values, return_counts = True)
+    counts = np.argwhere(counts == np.max(counts))
+    modeValue = vals[counts].flatten().tolist()
+    assert len(modeValue) == 2
+    assert modeValue == [1, 2]
 
 def empty():
     # np.empty is like np.zeros but does not initialize values
     # analagous to malloc vs calloc
 
-    arr = np.empty([1, 2])
-    assert arr[0, 0] != 0
-    assert arr[0, 1] != 0
+    arr = np.empty([1, 5000])
+    assert arr.sum() != 0
+
+def shuffle():
+    # create a 0..N sequence
+    highElem = 50
+    sequence = np.arange(0, highElem)
+    assert np.array_equal(sequence, np.arange(0, highElem))
+
+    # shuffle the sequence
+    np.random.shuffle(sequence)
+    # verify the order has changed
+    assert not np.array_equal(sequence, np.arange(0, highElem))
 
 def main():
     arrayCreation()
@@ -340,6 +361,7 @@ def main():
     tile()
     mode()
     empty()
+    shuffle()
 
 if __name__ == '__main__':
     main()
