@@ -5,7 +5,7 @@ import typing
 
 # This function accepts an integer argument and returns a boolean
 # Other primitive types include: int, float, bool, str, bytes
-# Compound types include: list[int], set[str], 
+# Compound types include: list[int], set[str],
 def arg(value: int) -> bool:
     return value >= 0
 
@@ -16,7 +16,7 @@ def main():
 def containers():
     # list
     a: list[int] = [1]
-    
+
     # dictionary
     b: dict[str, float] = {'field': 2.0}
 
@@ -30,7 +30,7 @@ def containers():
     assert b == {'field': 2.0}
     assert t == (1, 2, 3)
     assert l == [2, '3']
-    
+
 # this function returns nothing (-> None)
 def none() -> None:
     assert True

@@ -18,10 +18,12 @@ def power(a, b):
 
 # Applies function repeatedly to two elements to reduce to one value
 def reduce():
+    # array
     val = [2, 4, 7, 9, 1, 3]
     sumOfVal = functools.reduce(lambda a, b : a + b, val)
     assert sumOfVal == 26
 
+    # scalar
     sumOfVal = functools.reduce(lambda a, b : a + b, [25])
     assert sumOfVal == 25
 

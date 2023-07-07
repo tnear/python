@@ -231,7 +231,7 @@ def ones():
     # ones like another matrix
     a = np.zeros([2, 2], dtype=int)
     m = np.ones_like(a)
-    assert np.array_equal(m, [[1, 1], [1, 1]])    
+    assert np.array_equal(m, [[1, 1], [1, 1]])
 
 def add():
     # add/sum two matrices
@@ -253,7 +253,7 @@ def reshape():
     # [1, 2, 3
     #  4, 5, 6]
     m = np.matrix([[1, 2, 3], [4, 5, 6]])
-    
+
     # reshape to 3x2
     m2 = m.reshape(3, 2)
     assert np.array_equal(m.flatten(), m2.flatten())

@@ -34,6 +34,7 @@ def release():
 
 def system():
     # Return OS name
+    # value = {ispc: 'Windows', islinux: 'Linux', ismac: 'Darwin'}
     s = platform.system()
     assert s == 'Windows'
 

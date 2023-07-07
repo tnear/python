@@ -1,6 +1,8 @@
 # os — Miscellaneous operating system interfaces
 # https://docs.python.org/3/library/os.html
 
+# Note: prefer pathlib over os.path
+
 import os
 
 def pwd():
