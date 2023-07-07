@@ -61,6 +61,14 @@ def Yield2():
     assert n.__next__() == 4
     assert n.__next__() == 9
 
+def Assert():
+    # basic assertion
+    assert True
+
+    # assertion message, upon failure produces:
+    # >  AssertionError: Diagnostic message here
+    assert True, 'Diagnostic message here'
+
 def main():
     As()
     none()
@@ -70,6 +78,7 @@ def main():
     Raise()
     Yield()
     Yield2()
+    Assert()
 
 if __name__ == '__main__':
     main()

@@ -331,6 +331,35 @@ def shuffle():
     # verify the order has changed
     assert not np.array_equal(sequence, np.arange(0, highElem))
 
+def delete():
+    # delete (remove) elements from numpy array
+
+    # create [5, 6, 7, 8, 9]
+    arr = np.arange(5) + 5
+
+    # delete idx=1 from array (value = 6)
+    arr = np.delete(arr, 1)
+    assert np.array_equal(arr, [5, 7, 8, 9])
+
+    # delete idx=0 and idx=2 from [5, 7, 8, 9] (values = 5, 8)
+    arr = np.delete(arr, [0, 2])
+    assert np.array_equal(arr, [7, 9])
+
+def deleteMatrix():
+    # create 3x3 matrix:
+    # [0 1 2
+    #  3 4 5
+    #  6 7 8]
+    matrix = np.arange(9).reshape(3, 3)
+
+    # delete 1st row (axis=0)
+    matrix = np.delete(matrix, 1, axis=0)
+    assert np.array_equal(matrix, [ [0, 1, 2], [6, 7, 8] ])
+
+    # delete 0th column (axis=1)
+    matrix = np.delete(matrix, 0, axis=1)
+    assert np.array_equal(matrix, [ [1, 2], [7, 8] ])
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -362,6 +391,8 @@ def main():
     mode()
     empty()
     shuffle()
+    delete()
+    deleteMatrix()
 
 if __name__ == '__main__':
     main()
