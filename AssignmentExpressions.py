@@ -1,18 +1,23 @@
 import math
 import re
 
+def printExample():
+    # assign and return value in same expression
+    # prints True
+    print(walrus := True)
+
 def assignmentExpressions():
     # aka 'Walrus Operator', :=
 
     # Computes math.cos(2) multiple times
     result = [math.cos(2), math.cos(2)**2, math.cos(2)**2]
 
-    # Comptues math.cos(2) once using :=
+    # Computes math.cos(2) once using :=
     result = [x := math.cos(2), x**2, x**3]
     print(result)
 
 # https://martinheinz.dev/blog/79
-def assignmentExpressions2():
+def regex():
     test = 'Something to match'
     pattern1 = r'^.*(thing).*'
     pattern2 = r'^.*(not present).*'
@@ -32,8 +37,9 @@ def assignmentExpressions2():
         print('Matched 2nd pattern: ' + m.group(1))
 
 def main():
+    printExample()
     assignmentExpressions()
-    assignmentExpressions2()
+    regex()
 
 if __name__ == '__main__':
     main()
