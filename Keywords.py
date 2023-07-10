@@ -69,6 +69,10 @@ def Assert():
     # >  AssertionError: Diagnostic message here
     assert True, 'Diagnostic message here'
 
+def With():
+    # see With.py
+    pass
+
 def main():
     As()
     none()
@@ -79,6 +83,7 @@ def main():
     Yield()
     Yield2()
     Assert()
+    With()
 
 if __name__ == '__main__':
     main()
