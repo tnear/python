@@ -139,7 +139,14 @@ def logicalIndexing():
     assert np.array_equal(c, [3, 5])
 
 def transpose():
-    t = np.mat('1 2; 3 4').T
+    mat = np.mat('1 2; 3 4')
+
+    # using T
+    t = mat.T
+    assert np.all(t == np.mat('1 3; 2 4'))
+
+    # using .transpose()
+    t = mat.transpose()
     assert np.all(t == np.mat('1 3; 2 4'))
 
 def astype():
@@ -316,6 +323,7 @@ def mode():
 def empty():
     # np.empty is like np.zeros but does not initialize values
     # analagous to malloc vs calloc
+    # np.empty is NOT like MATLAB's empty
 
     arr = np.empty([1, 5000])
     assert arr.sum() != 0
@@ -360,6 +368,72 @@ def deleteMatrix():
     matrix = np.delete(matrix, 0, axis=1)
     assert np.array_equal(matrix, [ [1, 2], [7, 8] ])
 
+def ndim():
+    # scalar specifying the number of dimensions of a value
+
+    # 1D
+    v = np.arange(5)
+    assert v.ndim == 1
+
+    # 1D (empty)
+    nul = np.empty(shape=(0,))
+    assert nul.ndim == 1
+
+    # 2D
+    mat = np.arange(4).reshape(2, 2)
+    assert mat.ndim == 2
+
+    # 3D
+    threeD = np.arange(12).reshape(2,2,3)
+    assert threeD.ndim == 3
+    assert threeD.shape == (2, 2, 3)
+
+def maxAndMin():
+    # Vector: [0, 1, 2]
+    v = np.arange(3)
+    assert v.min() == 0
+    assert v.max() == 2
+
+    # Matrix: [0, 1
+    #          2, 3]
+    m = np.arange(4).reshape(2, 2)
+    assert m.min() == 0
+    assert m.max() == 3
+
+    # Axis = 0: get min/max of each row
+    assert m.min(axis = 0).tolist() == [0, 1]
+
+    # Axis = 1: get min/max of each column
+    assert m.min(axis = 1).tolist() == [0, 2]
+    assert m.max(axis = 1).tolist() == [1, 3]
+
+def full():
+    # return array with given shape and type (default data type is np.array(fill_value).dtype)
+
+    # create [10, 10, 10
+    #         10, 10, 10]
+    m = np.full(shape=[2, 3], fill_value=10, dtype=int)
+    assert m.shape == (2, 3)
+    assert m.dtype == np.dtype('int32')
+    assert np.all(m == 10)
+
+# Returns size of individual element
+def itemsize():
+    # bool (1 byte)
+    v = np.array(True)
+    assert v.itemsize == 1
+    assert v.dtype == np.dtype('bool')
+
+    # int (4 bytes)
+    v = np.arange(1)
+    assert v.itemsize == 4
+    assert v.dtype == np.dtype('int32')
+
+    # double (8 bytes)
+    v = np.arange(1.0)
+    assert v.itemsize == 8
+    assert v.dtype == np.dtype('float64')
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -393,6 +467,10 @@ def main():
     shuffle()
     delete()
     deleteMatrix()
+    ndim()
+    maxAndMin()
+    full()
+    itemsize()
 
 if __name__ == '__main__':
     main()
