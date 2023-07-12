@@ -36,12 +36,14 @@ def matrixIndexing():
     secondColumn = m[0:2, 1]
     assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
 
+# Number of elements in the array.
 def numel():
     m = np.matrix([[3, 4], [5, 6]])
 
     # size (NumPy) = numel (MATLAB)
     assert m.size == 4
 
+# Return the shape of an array.
 def shape():
     # 3x2
     # [1, 2
@@ -52,6 +54,7 @@ def shape():
     # shape (NumPy) = size (MATLAB)
     assert m.shape == (3, 2)
 
+# Test whether all array elements along a given axis evaluate to True.
 def all():
     arr = np.array([2, 4, 5, 6, 8])
     # method (returns scalar True):
@@ -69,6 +72,7 @@ def all():
     arr = np.array([1, 0, 1])
     assert not arr.all()
 
+# Return a copy of the array collapsed into one dimension.
 def flatten():
     # similar to MATLAB's a(:)
     m = np.matrix('1 2; 3 4')
@@ -138,6 +142,7 @@ def logicalIndexing():
     c = a[(a >= 2) & (a % 2 == 1)]
     assert np.array_equal(c, [3, 5])
 
+# Returns an array with axes transposed.
 def transpose():
     mat = np.mat('1 2; 3 4')
 
@@ -149,6 +154,7 @@ def transpose():
     t = mat.transpose()
     assert np.all(t == np.mat('1 3; 2 4'))
 
+# Copy of the array, cast to a specified type.
 def astype():
     # Casting
     # float -> int
@@ -163,6 +169,7 @@ def astype():
     assert np.array_equal(a, [1., 2.])
     assert a.dtype == np.dtype('float')
 
+# Return evenly spaced values within a given interval.
 def arange():
     # numpy.arange([start, ]stop, [step])
     # similar to MATLAB's stride (start : stride : stop)
@@ -176,6 +183,7 @@ def arange():
     close = np.isclose(arr, [2.2, 4.35, 6.6, 8.85])
     assert not close.all()
 
+# A 1-D iterator over the array.
 def flat():
     # get row-major index
     m = np.matrix('7 8; 9 10')
@@ -216,6 +224,7 @@ def mean():
     assert col.flat[0] == 1.5
     assert col.flat[1] == 3.5
 
+# Base object if memory is from some other object.
 def base():
     a = np.array([1.1, 2.2])
     c = a.copy()
@@ -255,6 +264,7 @@ def end():
     m = np.array([1, 2, 3])
     assert m[-1] == 3
 
+# Gives a new shape to an array without changing its data.
 def reshape():
     # 2x3:
     # [1, 2, 3
@@ -287,6 +297,7 @@ def countNonzero():
     nnz = np.count_nonzero(even)
     assert nnz == 3
 
+# Construct an array by repeating A the number of times given by reps.
 def tile():
     # tile can be used to repmat
     # tile(a, (m, n)) is equivalent to:
@@ -320,6 +331,7 @@ def mode():
     assert len(modeValue) == 2
     assert modeValue == [1, 2]
 
+# Return a new array of given shape and type, without initializing entries.
 def empty():
     # np.empty is like np.zeros but does not initialize values
     # analagous to malloc vs calloc
@@ -328,6 +340,7 @@ def empty():
     arr = np.empty([1, 5000])
     assert arr.sum() != 0
 
+# Modify a sequence in-place by shuffling its contents.
 def shuffle():
     # create a 0..N sequence
     highElem = 50
@@ -339,6 +352,7 @@ def shuffle():
     # verify the order has changed
     assert not np.array_equal(sequence, np.arange(0, highElem))
 
+# Return a new array with sub-arrays along an axis deleted
 def delete():
     # delete (remove) elements from numpy array
 
@@ -368,9 +382,8 @@ def deleteMatrix():
     matrix = np.delete(matrix, 0, axis=1)
     assert np.array_equal(matrix, [ [1, 2], [7, 8] ])
 
+# Number of array dimensions.
 def ndim():
-    # scalar specifying the number of dimensions of a value
-
     # 1D
     v = np.arange(5)
     assert v.ndim == 1
@@ -407,9 +420,8 @@ def maxAndMin():
     assert m.min(axis = 1).tolist() == [0, 2]
     assert m.max(axis = 1).tolist() == [1, 3]
 
+# Return a new array of given shape and type, filled with fill_value.
 def full():
-    # return array with given shape and type (default data type is np.array(fill_value).dtype)
-
     # create [10, 10, 10
     #         10, 10, 10]
     m = np.full(shape=[2, 3], fill_value=10, dtype=int)
@@ -417,7 +429,7 @@ def full():
     assert m.dtype == np.dtype('int32')
     assert np.all(m == 10)
 
-# Returns size of individual element
+# Size of one array element in bytes.
 def itemsize():
     # bool (1 byte)
     v = np.array(True)
@@ -433,6 +445,62 @@ def itemsize():
     v = np.arange(1.0)
     assert v.itemsize == 8
     assert v.dtype == np.dtype('float64')
+
+# Repeat each element of an array after themselves
+def repeat():
+    # numpy.repeat(array, repeats, axis=None)
+    # see also: tile()
+
+    # repeat each element of [3, 4] three times
+    out = np.repeat([3, 4], 3)
+    assert np.array_equal(out, [3, 3, 3, 4, 4, 4])
+
+    # zero repeat
+    out = np.repeat([3, 4], 0)
+    assert out.tolist() == []
+
+# Return elements depending on condition.
+def where():
+    array = np.array([-3, 2, 0, -1, 5])
+
+    # get indexes of array >= 0 (idx=1,2,4)
+    idx = np.where(array >= 0)
+    assert len(idx) == 1
+    assert idx[0].tolist() == [1, 2, 4]
+
+# Return the indices of the elements that are non-zero.
+def nonzero():
+    arr = np.array([3, 0, 4, 0, 0, 1])
+
+    # get non-zero indexes
+    nz = arr.nonzero()
+
+    # 0, 2, 5 are the non-zero indexes
+    assert nz[0].tolist() == [0, 2, 5]
+
+# Return a sorted copy of an array.
+def sort():
+    # ascending sort
+    arr = np.array([2, 1, 0, 3])
+    arr.sort()
+    assert arr.tolist() == [0, 1, 2, 3]
+
+    # descending sort (no native support, use -1)
+    reverse = np.sort(arr)[::-1]
+    assert reverse.tolist() == [3, 2, 1, 0]
+
+# Returns the indices that would sort an array.
+def argsort():
+    arr = np.array([20, 10, 40, 50, 30])
+    idx = arr.argsort()
+
+    # Num: [10, 20, 30, 40, 50]
+    # Idx: [ 1,  0,  4,  2,  3]
+    assert idx.tolist() == [1, 0, 4, 2, 3]
+
+    # index into original array using these indexes to get sorted order
+    arrIndirect = arr[idx.tolist()]
+    assert arrIndirect.tolist() == [10, 20, 30, 40, 50]
 
 def main():
     arrayCreation()
@@ -471,6 +539,11 @@ def main():
     maxAndMin()
     full()
     itemsize()
+    repeat()
+    where()
+    nonzero()
+    sort()
+    argsort()
 
 if __name__ == '__main__':
     main()
