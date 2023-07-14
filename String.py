@@ -124,6 +124,12 @@ def formattedStringLiteral():
     s = f'I have {apples} apples and {bananas} bananas'
     assert s == 'I have 4 apples and 3 bananas'
 
+def fstringFormat():
+    value = 1 / 3
+    # use colon followed by formatting (.3f = floating point with 3 digits)
+    s = f'Value with 3 digits is: {value:.3f}'
+    assert s == 'Value with 3 digits is: 0.333'
+
 def main():
     contains()
     slice()
@@ -141,6 +147,7 @@ def main():
     partition()
     lastNCharacters()
     formattedStringLiteral()
+    fstringFormat()
 
 if __name__ == '__main__':
     main()

@@ -52,7 +52,7 @@ def partialmethod():
     p.set100()
     assert p.prop == 100
 
-# Without @functools.cache, the implementation below takes exponential time
+# Without @functools.cache decorator, the implementation below takes exponential time
 # Note: lru_cache offers fine-grained control
 @functools.cache
 def fibonacci(n):
@@ -62,7 +62,7 @@ def fibonacci(n):
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 def cache():
-    # @functools.cache memoizes results of recursive calls
+    # @functools.cache decorator memoizes results of recursive calls
     # by caching values, fibonacci runs in linear time instead of exponential
     assert fibonacci(150) == 16130531424904581415797907386349
 
@@ -78,7 +78,7 @@ def _(arg):
 def _(arg):
     return arg / 2
 
-# singledispatch can be used for overloading types
+# singledispatch decorator can be used for overloading types
 def singledispatch():
     assert printer('abc') == 'abc'
     assert printer(10) == 20
