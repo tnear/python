@@ -8,6 +8,12 @@ class MyProp:
     def getProp(self):
         return self.prop
 
+    # classes use the @staticmethod decorator
+    #   ex: assert MyProp.staticMethod() == 101
+    @staticmethod
+    def staticMethod():
+        return 101
+
 class Person:
     def __init__(self, name):
         self.name = name
@@ -46,10 +52,15 @@ def iterator():
 
     assert values == [1, 2, 3]
 
+def staticMethod():
+    value = MyProp.staticMethod()
+    assert value == 101
+
 def main():
     properties()
     constructor()
     iterator()
+    staticMethod()
 
 if __name__ == '__main__':
     main()

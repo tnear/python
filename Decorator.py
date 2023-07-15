@@ -1,7 +1,6 @@
 # https://www.geeksforgeeks.org/function-decorators-in-python-set-1-introduction/
 # A decorator is a function that takes a function as its only parameter and returns a function.
 
-import functools
 import time
 
 # Decorator function:
@@ -9,16 +8,16 @@ def decorate_message(func):
     # Nested function
     def addWelcome(site_name):
         return 'Welcome to ' + func(site_name)
- 
+
     # Decorator returns a function
     return addWelcome
 
-# Decorator function usage: 
+# Decorator function usage:
 @decorate_message
 def site(siteName):
     return siteName
 
-def printDecorator():
+def printDecoratorExample():
     # Prints: 'Welcome to Python!
     # Note: without @decorate_message, it just prints 'Python!'
     print(site('Python!'))
@@ -77,7 +76,7 @@ def runTimer():
     timeSum(5)
 
 def main():
-    printDecorator()
+    printDecoratorExample()
     printDecorator2()
     printLine2('My Value')
     runTimer()
