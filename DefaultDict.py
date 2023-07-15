@@ -1,4 +1,3 @@
-# DefaultDict.py
 # Like dictionary but uses a default value for keys which do not exist
 # https://docs.python.org/3/library/collections.html
 

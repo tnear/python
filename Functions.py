@@ -2,14 +2,15 @@
 
 import math
 
+# *args creates a tuple of arguments
 def arbitrary(*args):
-    # *args creates a tuple of arguments
     for arg in args:
         print(arg, end=' ')
 
 def namedArgs(a, b, c):
     print(a + b + c)
 
+# **kwargs creates a dictionary of arguments
 def keywordArgs(**kwargs):
     print('a: ' + kwargs['a'] + ', b: ' + kwargs['b'])
 

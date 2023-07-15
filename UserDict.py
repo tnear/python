@@ -1,5 +1,4 @@
-# UserDict.py
-# A wrapper around dictionary which allows more customization
+# UserDict: a wrapper around dictionary which allows more customization
 # https://docs.python.org/3/library/collections.html
 
 import collections

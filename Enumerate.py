@@ -1,4 +1,5 @@
-# enumerate() returns both element and its index
+# enumerate() returns both index and element when iterating
+
 def enumerateOneArg():
     li = ['a', 'b', 'c']
 

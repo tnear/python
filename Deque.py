@@ -1,4 +1,3 @@
-# Deque.py
 # Double ended queue
 # Allows efficient insert and pop at front and back
 # https://docs.python.org/3/library/collections.html

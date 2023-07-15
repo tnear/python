@@ -1,3 +1,5 @@
+# Python's print function
+
 import math
 import sys
 

@@ -3,30 +3,24 @@
 
 import unittest
 
-class TestExceptions(unittest.TestCase):
+class Exceptions(unittest.TestCase):
     @staticmethod
     def raiseException(arg1):
         raise Exception(f'Caught exception: {arg1}!')
 
-    # Note: methods must begin with 'test'
-    # This test does not and therefore is not called by the runner
-    # Todo: move to 'skip' section
-    def fakeTest(self):
-        self.assertTrue(False)
-
     def testException(self):
-        self.assertRaises(Exception, TestExceptions.raiseException, 'argument')
+        self.assertRaises(Exception, Exceptions.raiseException, 'argument')
 
     def testExceptionMessage(self):
         # use a context manager to raise the exception
         with self.assertRaises(Exception) as contextMgr:
-            TestExceptions.raiseException('argument')
+            Exceptions.raiseException('argument')
 
         # use the context manager to get the message
         msg = contextMgr.exception.args[0]
         assert msg == 'Caught exception: argument!'
 
-class TestFixtures(unittest.TestCase):
+class Fixtures(unittest.TestCase):
     # 'setUp' method will be called before each test point
     def setUp(self):
         print('setUp method fixture called')
@@ -50,6 +44,31 @@ class TestFixtures(unittest.TestCase):
 
     def testTwo(self):
         print('test two')
+
+# uncommenting next line will skip the entire class
+#@unittest.skip('Skipping entire class')
+class Skip(unittest.TestCase):
+    @unittest.skip('Unconditional skip')
+    def testNothing(self):
+        self.fail('Unreachable')
+
+    @unittest.skipIf(2 > 1, 'Conditional skip')
+    def testNothing2(self):
+        self.fail('Unreachable')
+
+    # Note: methods must begin with 'test'
+    # This test does not and therefore is not called by the runner
+    # Prefer unittest.skip over this
+    def fakeTest(self):
+        self.fail('Unreachable')
+
+paramList = [1, 2, 3]
+class Parameterization(unittest.TestCase):
+    def testParameters(self):
+        for value in paramList:
+            # use subTest to parameterize a test point
+            with self.subTest():
+                self.assertGreater(value, 0)
 
 if __name__ == '__main__':
     unittest.main()

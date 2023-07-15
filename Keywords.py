@@ -35,31 +35,7 @@ def Nonlocal():
 def Raise():
     x = 5
     if x > 5:
-        raise Exception('My exception')
-
-def simpleGen():
-    yield 1
-    yield 2
-    yield 3
-
-def Yield():
-    values = []
-    for value in simpleGen():
-        values.append(value)
-
-    assert values == [1, 2, 3]
-
-def nextSquare():
-    i = 1
-    while True:
-        yield i * i
-        i += 1
-
-def Yield2():
-    n = nextSquare()
-    assert n.__next__() == 1
-    assert n.__next__() == 4
-    assert n.__next__() == 9
+        raise Exception('My exception message')
 
 def Assert():
     # basic assertion
@@ -80,8 +56,6 @@ def main():
     Is()
     Nonlocal()
     Raise()
-    Yield()
-    Yield2()
     Assert()
     With()
 

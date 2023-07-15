@@ -1,8 +1,9 @@
 # Requests is an elegant and simple HTTP library for Python
 # https://requests.readthedocs.io/en/latest/
 
-import json
 import requests
+import http
+import json
 
 def get():
     url = 'https://www.w3schools.com/python/demopage.htm'
@@ -11,6 +12,7 @@ def get():
 
     # status
     assert response.status_code == 200
+    assert response.status_code == http.HTTPStatus.OK
 
     # content
     assert 'This is a Test Page' in response.text

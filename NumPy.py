@@ -1,4 +1,3 @@
-# NumPy.py
 # NumPy arrays are stored contiguously, unlike Python lists.
 # NumPy also is optimized for CPU architectures, making it faster
 # https://www.w3schools.com/python/numpy/numpy_intro.asp

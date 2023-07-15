@@ -1,4 +1,3 @@
-# OrderedDict.py
 # Dictionary subclass which preserves key order
 # https://docs.python.org/3/library/collections.html
 

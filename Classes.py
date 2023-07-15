@@ -1,4 +1,6 @@
-# properties:
+# Notes on Python classes.
+
+# Properties:
 class MyProp:
     prop = 5
 

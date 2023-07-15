@@ -1,3 +1,5 @@
+# Python's syntax for short, anonymous function
+
 def basic():
     # syntax:
     # fcn = lambda <args> : <expr>

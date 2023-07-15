@@ -1,3 +1,5 @@
+# Todo: merge this content somewhere else
+
 def matrixOfFalse():
     # create matrix of 3x3 (with 3 char string)
     row = [False for x in 'abc']

@@ -1,5 +1,4 @@
-# List
-# Ordered, mutable, allows duplicates
+# List: ordered, mutable, allows duplicates
 # Can contain different data types
 
 import sys

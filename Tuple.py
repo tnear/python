@@ -1,5 +1,4 @@
-# Tuple
-# Ordered, immutable, allows duplicates
+# Tuple: ordered, immutable, allows duplicates
 # Can contain different data types
 
 import sys
