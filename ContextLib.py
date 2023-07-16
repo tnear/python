@@ -29,8 +29,36 @@ def testContextManager():
     with contextManager('MyFile.txt') as _:
         print('Inside with WITH block')
 
+def testNested():
+    # Note: contextlib.nested is deprecated
+    file1 = 'file1.txt'
+    file2 = 'file2.txt'
+    file3 = 'file3.txt'
+
+    '''
+    Instead of:
+    with X as file1:
+        with Y as file2:
+            with Z as file3:
+
+    ...can use this syntax:
+    '''
+    with (
+        open(file1, 'w') as f1,
+        open(file2, 'w') as f2,
+        open(file3, 'w') as f3
+    ):
+        f1.write('a')
+        f2.write('b')
+        f3.write('c')
+
+    pathlib.Path(file1).unlink()
+    pathlib.Path(file2).unlink()
+    pathlib.Path(file3).unlink()
+
 def main():
     testContextManager()
+    testNested()
 
 if __name__ == '__main__':
     main()

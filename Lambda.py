@@ -1,4 +1,4 @@
-# Python's syntax for short, anonymous function
+# Lambda functions are Python's syntax for short, anonymous function
 
 def basic():
     # syntax:

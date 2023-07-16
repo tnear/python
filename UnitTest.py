@@ -70,6 +70,11 @@ class Parameterization(unittest.TestCase):
             with self.subTest():
                 self.assertGreater(value, 0)
 
+def creation():
+    # create TestCase instance for interactive use
+    testCase = unittest.TestCase()
+    testCase.assertTrue(False)
+
 if __name__ == '__main__':
     unittest.main()
 
