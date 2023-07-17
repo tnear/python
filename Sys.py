@@ -40,6 +40,16 @@ def getsizeof():
 def byteorder():
     assert sys.byteorder == 'little'
 
+# Contains directory where Python files are installed
+# Note: this value changes for virtual environements (venv)
+def prefix():
+    assert 'Python' in sys.prefix
+    inVEnv = sys.prefix != sys.base_prefix
+
+# base_prefix does not change even in virtual environments
+def basePrefix():
+    assert 'Python' in sys.base_prefix
+
 def main():
     version()
     executable()
@@ -49,6 +59,8 @@ def main():
     maxsize()
     getsizeof()
     byteorder()
+    prefix()
+    basePrefix()
 
 if __name__ == '__main__':
     main()
