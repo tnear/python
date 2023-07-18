@@ -1,4 +1,4 @@
-# re — Regular expression operations
+# re — Regular expression (RegEx) operations
 # https://docs.python.org/3/library/re.html
 
 import re

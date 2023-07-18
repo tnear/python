@@ -65,7 +65,7 @@ def chain():
     c = [4.4, 5.5]
 
     result = list(itertools.chain(a, b, c))
-    assert result == a + b + c 
+    assert result == a + b + c
 
 # similar to logical indexing in MATLAB
 def compress():

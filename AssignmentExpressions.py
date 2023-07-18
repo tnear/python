@@ -1,13 +1,15 @@
 import math
 import re
 
+# aka 'Walrus Operator', :=
+# Python 3.8
+
 def printExample():
     # assign and return value in same expression
     # prints True
     print(walrus := True)
 
 def assignmentExpressions():
-    # aka 'Walrus Operator', :=
 
     # Computes math.cos(2) multiple times
     result = [math.cos(2), math.cos(2)**2, math.cos(2)**2]
