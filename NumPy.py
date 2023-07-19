@@ -31,8 +31,12 @@ def matrixIndexing():
     secondColumn = m[:, 1]
     assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
 
-    # equivalent syntax to above
+    # alternate colon syntax
     secondColumn = m[0:2, 1]
+    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+
+    # alternate comma syntax
+    secondColumn = m[[0, 1], 1]
     assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
 
 # Number of elements in the array.
@@ -501,6 +505,13 @@ def argsort():
     arrIndirect = arr[idx.tolist()]
     assert arrIndirect.tolist() == [10, 20, 30, 40, 50]
 
+def randint():
+    # randint(low, high=None, size=None, dtype=None)
+
+    # generate a random number in: [0, 1, 2, 3]
+    randInt = np.random.randint(0, 4)
+    assert randInt >= 0 and randInt <= 3
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -543,6 +554,7 @@ def main():
     nonzero()
     sort()
     argsort()
+    randint()
 
 if __name__ == '__main__':
     main()
