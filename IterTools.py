@@ -67,6 +67,11 @@ def chain():
     result = list(itertools.chain(a, b, c))
     assert result == a + b + c
 
+    # flatten 2D list
+    matrix = [ [2, 3], [4, 5], [1, 2] ]
+    result = list(itertools.chain(*matrix))
+    assert result == [2, 3, 4, 5, 1, 2]
+
 # similar to logical indexing in MATLAB
 def compress():
     numbers = [2, 3, 4, 5]

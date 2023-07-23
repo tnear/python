@@ -3,6 +3,7 @@
 
 import sys
 from copy import deepcopy
+import itertools
 
 def empty():
     e = []
@@ -172,6 +173,19 @@ def sort():
     a.sort()
     assert a == [1, 2, 3, 4]
 
+def unique():
+    # get unique elements in a list using set() constructor
+    a = [2, 1, 2, 4, 4]
+    unique = list(set(a))
+    assert unique == [1, 2, 4]
+
+def flatten():
+    # flatten 2D list (matrix) using chain()
+    matrix = [ [2, 3], [4, 5], [1, 2] ]
+
+    result = list(itertools.chain(*matrix))
+    assert result == [2, 3, 4, 5, 1, 2]
+
 def main():
     empty()
     creation()
@@ -194,6 +208,8 @@ def main():
     bytes()
     index()
     sort()
+    unique()
+    flatten()
 
 if __name__ == '__main__':
     main()
