@@ -1,6 +1,7 @@
 # NumPy arrays are stored contiguously, unlike Python lists.
 # NumPy also is optimized for CPU architectures, making it faster
 # https://www.w3schools.com/python/numpy/numpy_intro.asp
+# https://numpy.org/doc/stable/reference/index.html
 
 import numpy as np
 import math
@@ -9,6 +10,8 @@ def arrayCreation():
     arr = np.array([2, 3, 1])
     assert np.array_equal(arr, [2, 3, 1])
 
+# https://numpy.org/doc/stable/reference/generated/numpy.matrix.html
+# Note: prefer np.array over np.matrix
 def matrixCreation():
     m = np.matrix([[1, 1], [1, 0]])
     assert m.shape == (2, 2)
@@ -18,10 +21,11 @@ def matrixCreation():
     m = np.matrix('1 2; 3 4')
     assert np.all(m.flatten() == [1, 2, 3, 4])
 
+# Note: prefer np.array over np.matrix
 def matrixIndexing():
     # [3 4
     #  5 6]
-    m = np.matrix([[3, 4], [5, 6]])
+    m = np.array([[3, 4], [5, 6]])
     assert m[0, 0] == 3
     assert m[0, 1] == 4
     assert m[1, 0] == 5
@@ -29,19 +33,19 @@ def matrixIndexing():
 
     # use indexing to get 2nd column
     secondColumn = m[:, 1]
-    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+    assert np.array_equal(secondColumn, np.array([4, 6]))
 
     # alternate colon syntax
     secondColumn = m[0:2, 1]
-    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+    assert np.array_equal(secondColumn, np.array([4, 6]))
 
     # alternate comma syntax
     secondColumn = m[[0, 1], 1]
-    assert np.array_equal(secondColumn, np.matrix([[4], [6]]))
+    assert np.array_equal(secondColumn, np.array([4, 6]))
 
 # Number of elements in the array.
 def numel():
-    m = np.matrix([[3, 4], [5, 6]])
+    m = np.array([[3, 4], [5, 6]])
 
     # size (NumPy) = numel (MATLAB)
     assert m.size == 4
@@ -52,7 +56,7 @@ def shape():
     # [1, 2
     #  3, 4
     #  5, 6]
-    m = np.matrix([[1, 2], [3, 4], [5, 6]])
+    m = np.array([[1, 2], [3, 4], [5, 6]])
 
     # shape (NumPy) = size (MATLAB)
     assert m.shape == (3, 2)
@@ -78,7 +82,7 @@ def all():
 # Return a copy of the array collapsed into one dimension.
 def flatten():
     # similar to MATLAB's a(:)
-    m = np.matrix('1 2; 3 4')
+    m = np.array([ [1, 2], [3, 4] ])
     assert np.all(m.flatten() == [1, 2, 3, 4])
 
     # alt syntax (prefer flatten())
@@ -124,7 +128,7 @@ def arithmetic():
     assert arr[1] == np.e + 2
 
     # Fibonacci
-    arr = np.matrix([[1, 1], [1, 0]]) ** 8
+    arr = np.linalg.matrix_power(np.array([[1, 1], [1, 0]]), 8)
     assert np.all(arr.flatten() == [34, 21, 21, 13])
 
 def dataType():
@@ -189,7 +193,7 @@ def arange():
 # A 1-D iterator over the array.
 def flat():
     # get row-major index
-    m = np.matrix('7 8; 9 10')
+    m = np.array([ [7, 8], [9, 10] ])
     assert m.flat[0] == 7
     assert m.flat[1] == 8
     assert m.flat[2] == 9
@@ -272,7 +276,7 @@ def reshape():
     # 2x3:
     # [1, 2, 3
     #  4, 5, 6]
-    m = np.matrix([[1, 2, 3], [4, 5, 6]])
+    m = np.array([[1, 2, 3], [4, 5, 6]])
 
     # reshape to 3x2
     m2 = m.reshape(3, 2)
@@ -290,7 +294,7 @@ def power():
     assert np.array_equal(m3, [1, 8, 27])
 
 def countNonzero():
-    m = np.matrix([[1, 2, 3], [4, 5, 6]])
+    m = np.array([[1, 2, 3], [4, 5, 6]])
 
     # get even mask
     even = m % 2 == 0
@@ -512,6 +516,22 @@ def randint():
     randInt = np.random.randint(0, 4)
     assert randInt >= 0 and randInt <= 3
 
+# Insert a new axis that will appear at the axis position in the expanded array shape.
+def expandDims():
+    # start with [1, 2]
+    x = np.array([1, 2])
+    assert x.shape == (2,)
+
+    # expand into [[1, 2]]
+    y = np.expand_dims(x, axis=0)
+    assert np.array_equal(y, [ [1, 2] ])
+    assert y.shape == (1, 2)
+
+    # expand into [[1], [2]]
+    z = np.expand_dims(x, axis=1)
+    assert np.array_equal(z, [ [1], [2] ])
+    assert z.shape == (2, 1)
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -555,6 +575,7 @@ def main():
     sort()
     argsort()
     randint()
+    expandDims()
 
 if __name__ == '__main__':
     main()
