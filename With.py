@@ -37,7 +37,7 @@ def nested():
         with Y as file2:
             with Z as file3:
 
-    ...can use this syntax:
+    , can use this syntax:
     '''
     with (
         open(file1, 'w') as f1,

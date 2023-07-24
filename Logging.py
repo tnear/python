@@ -11,8 +11,8 @@ def logLevels():
     # 4. error    (40)
     # 5. critical (50)
 
-    logging.debug('debug message here...')
-    logging.info('info message here...')
+    logging.debug('debug message here')
+    logging.info('info message here')
 
 def getLogger():
     logger = logging.getLogger()

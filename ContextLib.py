@@ -9,22 +9,22 @@ import pathlib
 # methods. contextmanager is used the 'with' keyword
 @contextlib.contextmanager
 def contextManager(fname):
-    print('Entering implicit __enter__ block...')
+    print('Entering implicit __enter__ block')
     myFile = open(fname, 'w')
 
     # yield resource to be used within WITH block
     yield myFile
 
-    print('Entering implicit __exit__  block...')
+    print('Entering implicit __exit__  block')
     myFile.close()
     pathlib.Path(myFile.name).unlink()
 
 def testContextManager():
     '''
     Prints:
-    Entering implicit __enter__ block...
+    Entering implicit __enter__ block
     Inside with WITH block
-    Entering implicit __exit__  block...
+    Entering implicit __exit__  block
     '''
     with contextManager('MyFile.txt') as _:
         print('Inside with WITH block')
@@ -41,7 +41,7 @@ def testNested():
         with Y as file2:
             with Z as file3:
 
-    ...can use this syntax:
+    , can use this syntax:
     '''
     with (
         open(file1, 'w') as f1,
