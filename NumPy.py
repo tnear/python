@@ -532,6 +532,21 @@ def expandDims():
     assert np.array_equal(z, [ [1], [2] ])
     assert z.shape == (2, 1)
 
+# https://numpy.org/doc/stable/reference/generated/numpy.bincount.html
+# Count number of occurrences of each value in array of non-negative ints.
+def bincount():
+    # 'arr' has:
+    # 0 zeros, 1 one, 1 two, and 1 three
+    # therefore, bincount() output is [0, 1, 1, 1]
+    arr = np.array([1, 2, 3])
+    count = np.bincount(arr)
+    assert count.tolist() == [0, 1, 1, 1]
+
+    # 2 zeros, 1 one, 2 twos, 0 threes and fours, 1 five
+    arr = np.array([0, 2, 0, 1, 2, 5])
+    count = np.bincount(arr)
+    assert count.tolist() == [2, 1, 2, 0, 0, 1]
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -576,6 +591,9 @@ def main():
     argsort()
     randint()
     expandDims()
+    bincount()
+    # unique() # todo
+    # argmax() # todo
 
 if __name__ == '__main__':
     main()
