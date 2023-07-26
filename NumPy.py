@@ -532,8 +532,8 @@ def expandDims():
     assert np.array_equal(z, [ [1], [2] ])
     assert z.shape == (2, 1)
 
-# https://numpy.org/doc/stable/reference/generated/numpy.bincount.html
 # Count number of occurrences of each value in array of non-negative ints.
+# https://numpy.org/doc/stable/reference/generated/numpy.bincount.html
 def bincount():
     # 'arr' has:
     # 0 zeros, 1 one, 1 two, and 1 three
@@ -546,6 +546,43 @@ def bincount():
     arr = np.array([0, 2, 0, 1, 2, 5])
     count = np.bincount(arr)
     assert count.tolist() == [2, 1, 2, 0, 0, 1]
+
+# Find the unique elements of an array.
+# https://numpy.org/doc/stable/reference/generated/numpy.unique.html
+def unique():
+    arr = np.unique([2, 1, 3, 3, 1, 2])
+    assert arr.tolist() == [1, 2, 3]
+
+    # index
+    values, indexes = np.unique([2, 1, 2, 1, 3], return_index=True)
+    assert values.tolist() == [1, 2, 3]
+    # the 1 is at index=1, 2 at index=3, 3 at index=4
+    assert indexes.tolist() == [1, 0, 4]
+
+    # counts
+    values, counts = np.unique([2, 3, 1, 2, 3, 2], return_counts=True)
+    assert values.tolist() == [1, 2, 3]
+    # there is 1 one, 3 twos, and 2 threes
+    assert counts.tolist() == [1, 3, 2]
+
+# Returns the indices of the maximum values along an axis.
+# https://numpy.org/doc/stable/reference/generated/numpy.argmax.html
+def argmax():
+    # create: [10, 11, 12
+    #          13, 14, 15]
+    # index:  [ 0,  1,  2
+    #           3,  4,  5]
+    a = np.arange(6).reshape(2, 3) + 10
+
+    # index=5 is highest value
+    assert np.argmax(a) == 5
+    
+    # by row (axis=0), row=1 has highest value for each of the 3 columns
+    assert np.argmax(a, axis=0).tolist() == [1, 1, 1]
+
+    # by col (axis=1), col=2 has highest value for each of the 2 rows
+    assert np.argmax(a, axis=1).tolist() == [2, 2]
+
 
 def main():
     arrayCreation()
@@ -592,8 +629,8 @@ def main():
     randint()
     expandDims()
     bincount()
-    # unique() # todo
-    # argmax() # todo
+    unique()
+    argmax()
 
 if __name__ == '__main__':
     main()

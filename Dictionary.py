@@ -81,6 +81,22 @@ def size():
     d = {1: 2, 'c': 4, 5: 6}
     assert len(d) == 3
 
+# Python 3.9
+def merge():
+    # use the update() method to merge two dictionaries
+    a = {'a': 1, 'b': 2}
+    b = {'hello': 'world'}
+    a.update(b)
+    assert a == {'a': 1, 'b': 2, 'hello': 'world'}
+
+    # union operator (|)
+    a = {'y': 25, 'z': 26}
+    c = a | b
+    assert c == {'y': 25, 'z': 26, 'hello': 'world'}
+    # in-place union (|=)
+    a |= b
+    assert a == {'y': 25, 'z': 26, 'hello': 'world'}
+    
 def main():
     empty()
     create()
@@ -94,6 +110,7 @@ def main():
     remove()
     deepCopy()
     size()
+    merge()
 
 if __name__ == '__main__':
     main()
