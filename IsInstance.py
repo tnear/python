@@ -1,6 +1,6 @@
 # https://docs.python.org/3/library/functions.html
 
-def fcn():
+def basic():
     assert isinstance(1.0, float)
 
 def multipleTypes():
@@ -11,7 +11,7 @@ def multipleTypes():
     assert not isinstance(123.0, int | str)
 
 def main():
-    fcn()
+    basic()
     multipleTypes()
 
 if __name__ == '__main__':

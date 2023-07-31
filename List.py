@@ -106,7 +106,7 @@ def clear():
     assert len(a) == 0
 
 def comprehension():
-    # list = [expr for itme in <iter> if [condition]]
+    # list = [expr for item in <iter> if [condition]]
 
     # square numbers in range
     y = [x ** 2 for x in range(9)]

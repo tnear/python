@@ -3,7 +3,7 @@
 
 import enum
 
-# create an enumerationn
+# create an enumeration
 class Color(enum.Enum):
     RED   = 1
     GREEN = 2

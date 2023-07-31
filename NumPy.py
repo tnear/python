@@ -346,7 +346,7 @@ def mode():
 # Return a new array of given shape and type, without initializing entries.
 def empty():
     # np.empty is like np.zeros but does not initialize values
-    # analagous to malloc vs calloc
+    # analogous to malloc vs calloc
     # np.empty is NOT like MATLAB's empty
 
     arr = np.empty([1, 5000])
@@ -611,11 +611,11 @@ def uniform():
 # Evaluate a polynomial at specific values.
 # https://numpy.org/doc/stable/reference/generated/numpy.polyval.html
 def polyval():
-    coeffs = [3, 0, 1] # high -> low, 3 * x^2 + 0 * x^1 + 1 * x^0
+    coefficients = [3, 0, 1] # high -> low, 3 * x^2 + 0 * x^1 + 1 * x^0
     xValues = [-1, 0, 1.5, 3.5, 11]
 
     # evaluate 3 * x^2 + 0 * x^1 + 1 * x^0
-    result = np.polyval(coeffs, xValues)
+    result = np.polyval(coefficients, xValues)
     assert result.tolist() == [4, 1, 7.75, 37.75, 364]
 
 def matmul():

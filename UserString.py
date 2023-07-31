@@ -8,7 +8,7 @@ class MyString(collections.UserString):
     def append(self, s):
         self.data += '(append)' + s + ' '
 
-def f():
+def basic():
     s = MyString('My string')
     assert '(append)' not in s
 
@@ -17,7 +17,7 @@ def f():
     assert '(append)' in s
 
 def main():
-    f()
+    basic()
 
 if __name__ == '__main__':
     main()

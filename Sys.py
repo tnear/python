@@ -41,7 +41,7 @@ def byteorder():
     assert sys.byteorder == 'little'
 
 # Contains directory where Python files are installed
-# Note: this value changes for virtual environements (venv)
+# Note: this value changes for virtual environments (venv)
 def prefix():
     assert 'Python' in sys.prefix
     inVEnv = sys.prefix != sys.base_prefix

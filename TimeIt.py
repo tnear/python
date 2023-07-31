@@ -36,7 +36,7 @@ def pow1024(x):
 def pow2048(x):
     return x ** 2048
 
-# use globals() to provide acess to everything in global namespace
+# use globals() to provide access to everything in global namespace
 def globalAccess():
     duration = timeit.timeit('[func(101) for func in (pow1024, pow2048)]', globals=globals(), number=1000)
     assert duration < 0.5

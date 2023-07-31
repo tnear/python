@@ -3,7 +3,7 @@
 
 import re
 
-# mylist = re.findall(<pattern>, <txt>)
+# myList = re.findall(<pattern>, <txt>)
 def findAll():
     txt = 'a11 22b34'
     out = re.findall(r'\d+', txt)

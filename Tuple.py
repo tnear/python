@@ -12,8 +12,11 @@ def empty():
 
 def create():
     t = ('a', 2, 2, '3')
-    oneitem = tuple('a')
-    oneitem = ('a',) # one-item needs trailing comma
+    assert t == ('a', 2, 2, '3')
+
+    oneItem = tuple('a')
+    oneItem = ('a',) # one-item needs trailing comma
+    assert oneItem == ('a',)
 
 def mutate():
     # tuples are read only, so temp convert to list

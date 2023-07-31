@@ -75,7 +75,7 @@ def chain():
 # similar to logical indexing in MATLAB
 def compress():
     numbers = [2, 3, 4, 5]
-    # creat mask for even numbers
+    # create mask for even numbers
     mask = [True, False, True, False]
 
     result = list(itertools.compress(numbers, mask))
@@ -84,7 +84,7 @@ def compress():
 # makes an iterator that computes the function using arguments
 def starmap():
     data = [(2, 6), (8, 4), (7, 3)]
-    # multiply each of the individual tuples togeether
+    # multiply each of the individual tuples together
     # 2 * 6 = 12
     # 8 * 4 = 32, etc.
     result = list(itertools.starmap(operator.mul, data))
