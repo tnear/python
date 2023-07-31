@@ -583,6 +583,35 @@ def argmax():
     # by col (axis=1), col=2 has highest value for each of the 2 rows
     assert np.argmax(a, axis=1).tolist() == [2, 2]
 
+def rand():
+    # generate a random float between 0 and 1
+    x = np.random.rand()
+    assert x >= 0 and x <= 1
+
+    # generate 2x3 random floats between 0 and 1
+    x = np.random.rand(2, 3)
+    assert x.shape == (2, 3)
+    assert x.max() <= 1
+    assert x.min() >= 0
+
+# Draw floats from a uniform distribution. Every sample is equally likely
+# random.uniform(low=0.0, high=1.0, size=None)
+def uniform():
+    # generate 3x2 between -20 and +20
+    x = np.random.uniform(-20, 20, (3, 2))
+    assert x.shape == (3, 2)
+    assert x.min() >= -20
+    assert x.max() <= 20
+
+# Evaluate a polynomial at specific values.
+# https://numpy.org/doc/stable/reference/generated/numpy.polyval.html
+def polyval():
+    coeffs = [3, 0, 1] # high -> low, 3 * x^2 + 0 * x^1 + 1 * x^0
+    xValues = [-1, 0, 1.5, 3.5, 11]
+
+    # evaluate 3 * x^2 + 0 * x^1 + 1 * x^0
+    result = np.polyval(coeffs, xValues)
+    assert result.tolist() == [4, 1, 7.75, 37.75, 364]
 
 def main():
     arrayCreation()
@@ -631,6 +660,9 @@ def main():
     bincount()
     unique()
     argmax()
+    rand()
+    uniform()
+    polyval()
 
 if __name__ == '__main__':
     main()
