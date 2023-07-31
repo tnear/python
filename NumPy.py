@@ -80,6 +80,7 @@ def all():
     assert not arr.all()
 
 # Return a copy of the array collapsed into one dimension.
+# flatten, unlike ravel, will always return a copy
 def flatten():
     # similar to MATLAB's a(:)
     m = np.array([ [1, 2], [3, 4] ])
@@ -87,6 +88,10 @@ def flatten():
 
     # alt syntax (prefer flatten())
     assert np.all(m.reshape(-1) == [1, 2, 3, 4])
+
+    # expand into separate variables
+    a, b, c, d = m.flatten()
+    assert a == 1 and b == 2 and c == 3 and d == 4
 
 def iterate():
     # 1D
@@ -613,6 +618,47 @@ def polyval():
     result = np.polyval(coeffs, xValues)
     assert result.tolist() == [4, 1, 7.75, 37.75, 364]
 
+def matmul():
+    a = np.array([[1, 0],
+                  [0, 1]])
+    b = np.array([[4, 1],
+                  [2, 2]])
+    
+    # matmul function
+    result = np.matmul(a, b)
+    assert np.array_equal(result, [ [4, 1], [2, 2] ])
+
+    # '@' operator (newer syntax)
+    result = a @ b
+    assert np.array_equal(result, [ [4, 1], [2, 2] ])
+
+# Stack arrays in sequence horizontally (column wise).
+# Equivalent to concatenation along second axis
+def hstack():
+    # create
+    #     [1]         [4]
+    # a = [2] and b = [5]
+    #     [3]         [6]
+    a = np.array([ [1], [2], [3] ])
+    b = np.array([ [4], [5], [6] ])
+
+    # use hstack to create:
+    # [1, 4]
+    # [2, 5]
+    # [3, 6]
+    result = np.hstack((a, b))
+    assert np.array_equal(result, [ [1, 4], [2, 5], [3, 6] ])
+
+# see also: flatten()
+def ravel():
+    # similar to MATLAB's a(:)
+    m = np.array([ [1, 2], [3, 4] ])
+    assert np.all(m.ravel() == [1, 2, 3, 4])
+
+    # expand into separate variables
+    a, b, c, d = m.ravel()
+    assert a == 1 and b == 2 and c == 3 and d == 4
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -663,6 +709,9 @@ def main():
     rand()
     uniform()
     polyval()
+    matmul()
+    hstack()
+    ravel()
 
 if __name__ == '__main__':
     main()
