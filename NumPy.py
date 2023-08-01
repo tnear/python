@@ -581,7 +581,7 @@ def argmax():
 
     # index=5 is highest value
     assert np.argmax(a) == 5
-    
+
     # by row (axis=0), row=1 has highest value for each of the 3 columns
     assert np.argmax(a, axis=0).tolist() == [1, 1, 1]
 
@@ -623,7 +623,7 @@ def matmul():
                   [0, 1]])
     b = np.array([[4, 1],
                   [2, 2]])
-    
+
     # matmul function
     result = np.matmul(a, b)
     assert np.array_equal(result, [ [4, 1], [2, 2] ])

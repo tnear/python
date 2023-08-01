@@ -96,7 +96,7 @@ def merge():
     # in-place union (|=)
     a |= b
     assert a == {'y': 25, 'z': 26, 'hello': 'world'}
-    
+
 def main():
     empty()
     create()
