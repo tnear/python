@@ -659,6 +659,25 @@ def ravel():
     a, b, c, d = m.ravel()
     assert a == 1 and b == 2 and c == 3 and d == 4
 
+# Randomly permute a sequence
+# https://numpy.org/doc/stable/reference/random/generated/numpy.random.permutation.html
+def permutation():
+    np.random.seed(0) # make test deterministic
+
+    list1 = [1, 2, 3, 4]
+    list2 = ['A', 'B', 'C', 'D']
+
+    # Generate a random permutation index
+    permIndexes = np.random.permutation(len(list1))
+
+    # Use the permutation index to shuffle both lists
+    shuffledList1 = np.array(list1)[permIndexes]
+    shuffledList2 = np.array(list2)[permIndexes]
+
+    # Show that the relative pairing between the shuffled lists is the same
+    assert shuffledList1.tolist() == [ 3 ,  4 ,  2 ,  1 ]
+    assert shuffledList2.tolist() == ['C', 'D', 'B', 'A']
+
 def main():
     arrayCreation()
     matrixCreation()
@@ -712,6 +731,7 @@ def main():
     matmul()
     hstack()
     ravel()
+    permutation()
 
 if __name__ == '__main__':
     main()

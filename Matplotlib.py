@@ -31,7 +31,7 @@ def marker():
     plt.clf()
 
 def linestyle():
-    # supports 'solid' (default), 'dotted', 'dashed', 'dashdot', 'None'
+    # supports 'solid' (default), 'dotted', 'dashed', 'None', and more
     plt.plot([3, 8, 1, 10], linestyle='dotted')
     #plt.show()
     plt.clf()
@@ -42,7 +42,7 @@ def multipleLines():
     plt.plot([3, 8, 1, 10])
     plt.plot([6, 2, 7, 11])
 
-#    plt.show()
+    #plt.show()
     plt.clf()
 
 def label():
@@ -108,6 +108,16 @@ def histogram():
     # create a histogram of heights in centimeters
     x = np.random.normal(mean, std, numValues)
     plt.hist(x)
+    #plt.show()
+    plt.clf()
+
+def legend():
+    plt.plot([1, 4, 3])
+    plt.plot([2, 5, 3])
+
+    # Use list of strings corresponding to each line
+    plt.legend(['Line 1', 'Line 2'])
+
     plt.show()
     plt.clf()
 
@@ -122,6 +132,7 @@ def main():
     scatter()
     bar()
     histogram()
+    legend()
 
 if __name__ == '__main__':
     main()
