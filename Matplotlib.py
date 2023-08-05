@@ -118,7 +118,12 @@ def legend():
     # Use list of strings corresponding to each line
     plt.legend(['Line 1', 'Line 2'])
 
-    plt.show()
+    #plt.show()
+    plt.clf()
+
+def savefig():
+    plt.plot([1, 4, 3])
+    #plt.savefig('figure.png')
     plt.clf()
 
 def main():
@@ -133,6 +138,7 @@ def main():
     bar()
     histogram()
     legend()
+    savefig()
 
 if __name__ == '__main__':
     main()
