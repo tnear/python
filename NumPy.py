@@ -624,11 +624,11 @@ def matmul():
     b = np.array([[4, 1],
                   [2, 2]])
 
-    # matmul function
+    # matmul() function
     result = np.matmul(a, b)
     assert np.array_equal(result, [ [4, 1], [2, 2] ])
 
-    # '@' operator (newer syntax)
+    # '@' matrix multiplication operator (newer syntax)
     result = a @ b
     assert np.array_equal(result, [ [4, 1], [2, 2] ])
 
@@ -677,6 +677,18 @@ def permutation():
     # Show that the relative pairing between the shuffled lists is the same
     assert shuffledList1.tolist() == [ 3 ,  4 ,  2 ,  1 ]
     assert shuffledList2.tolist() == ['C', 'D', 'B', 'A']
+
+def append():
+    # use append() to add to end of array.
+    # equivalent to horzcat in MATLAB a = [a, 0]
+
+    # create [1, 2, 3]
+    a = np.array([1, 2, 3])
+
+    # create [1, 2, 3, 0] using append()
+    a = np.append(a, 0)
+
+    assert a.tolist() == [1, 2, 3, 0]
 
 def main():
     arrayCreation()
@@ -732,6 +744,7 @@ def main():
     hstack()
     ravel()
     permutation()
+    append()
 
 if __name__ == '__main__':
     main()
