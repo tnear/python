@@ -4,7 +4,24 @@
 import sys
 
 def creation():
-    # python -m venv /path/to/new/virtual/env
+    # create:
+    # python -m venv myEnv
+
+    # activate (Windows):
+    # > .\myEnv\Scripts\activate
+
+    # activate (Linux):
+    # $ source myEnv/Scripts/activate
+
+    # install dependencies:
+    # (myEnv) $ pip install -r requirements.txt
+
+    # verify installation:
+    # (myEnv) $ pip list
+
+    # deactivate when done:
+    # (myEnv) $ deactivate
+
     print(sys.prefix)
     print(sys.base_prefix)
 
