@@ -130,6 +130,18 @@ def fstringFormat():
     s = f'Value with 3 digits is: {value:.3f}'
     assert s == 'Value with 3 digits is: 0.333'
 
+def strip():
+    txt = '  abc  '
+    txt = txt.strip()
+    assert txt == 'abc'
+
+    # characters parameter
+    txt = '!@#$ a...bc! !'
+
+    # strips ALL of these characters from beginning/end
+    txt = txt.strip(' $#@!')
+    assert txt == 'a...bc'
+
 def main():
     contains()
     slice()
@@ -148,6 +160,7 @@ def main():
     lastNCharacters()
     formattedStringLiteral()
     fstringFormat()
+    strip()
 
 if __name__ == '__main__':
     main()
