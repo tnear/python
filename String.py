@@ -142,6 +142,38 @@ def strip():
     txt = txt.strip(' $#@!')
     assert txt == 'a...bc'
 
+def find():
+    s = 'hello'
+
+    # get first 'l' index
+    idx = s.find('l')
+    assert idx == 2
+
+    # get first 'el' index
+    idx = s.find('el')
+    assert idx == 1
+
+    # non-existent substring
+    idx = s.find('qqq')
+    assert idx == -1
+
+    # start searching at specified index
+    s = '::abc::def'
+    start = 1
+    # start searching at idx=1
+    idx = s.find(':', start)
+    assert idx == 1
+
+def capitalization():
+    s = 'Hello'
+    assert s.upper() == 'HELLO'
+    assert s.lower() == 'hello'
+
+    # capitalize first letter
+    s = 'hello world'
+    s = s.capitalize()
+    assert s == 'Hello world'
+
 def main():
     contains()
     slice()
@@ -161,6 +193,8 @@ def main():
     formattedStringLiteral()
     fstringFormat()
     strip()
+    find()
+    capitalization()
 
 if __name__ == '__main__':
     main()
