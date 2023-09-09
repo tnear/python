@@ -174,6 +174,13 @@ def capitalization():
     s = s.capitalize()
     assert s == 'Hello world'
 
+def startswith():
+    a = 'abc'
+    b = 'ab'
+
+    assert a.startswith(b)
+    assert not b.startswith(a)
+
 def main():
     contains()
     slice()
@@ -195,6 +202,7 @@ def main():
     strip()
     find()
     capitalization()
+    startswith()
 
 if __name__ == '__main__':
     main()

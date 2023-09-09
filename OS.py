@@ -4,6 +4,7 @@
 # Note: prefer pathlib over os.path
 
 import os
+import platform
 
 def pwd():
     pwd = os.getcwd()
@@ -87,6 +88,15 @@ def rename():
     assert os.path.exists(fileNew)
     os.remove(fileNew)
 
+def environ():
+    # environ is a dictionary which represents the process environment
+    # environ is often used to check environment variables
+    if platform.system() == 'Windows':
+        # get the appdata value
+        appData = os.environ.get('APPDATA')
+        # verify substring
+        assert 'AppData' in appData
+
 def main():
     pwd()
     dirname()
@@ -100,6 +110,7 @@ def main():
     remove()
     makedirs()
     rename()
+    environ()
 
 if __name__ == '__main__':
     main()
