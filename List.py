@@ -186,6 +186,12 @@ def flatten():
     result = list(itertools.chain(*matrix))
     assert result == [2, 3, 4, 5, 1, 2]
 
+def count():
+    a = [3, 1, 2, 1, 1]
+    assert a.count(1) == 3
+    assert a.count(3) == 1
+    assert a.count(9) == 0
+
 def main():
     empty()
     creation()
@@ -210,6 +216,7 @@ def main():
     sort()
     unique()
     flatten()
+    count()
 
 if __name__ == '__main__':
     main()

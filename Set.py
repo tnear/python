@@ -110,6 +110,20 @@ def pop():
 
     assert len(s) == 0
 
+# set difference (setdiff)
+def difference():
+    s = {1, 2, 3}
+    t = {2, 3, 4}
+
+    diff = s.difference(t)
+    assert diff == {1} # 1 is in 's' but not 't'
+
+    diff = t.difference(s)
+    assert diff == {4} # 4 is in 't' but not 's
+
+    diff = s.difference(s)
+    assert diff == set() # set difference with self produces empty set
+
 def main():
     empty()
     create()
@@ -125,6 +139,7 @@ def main():
     frozenSet()
     sequence()
     pop()
+    difference()
 
 if __name__ == '__main__':
     main()
