@@ -4,14 +4,14 @@
 import sys
 
 def creation():
-    # create:
+    # create a virtual environment directory in pwd called 'myEnv':
     # python -m venv myEnv
 
     # activate (Windows):
     # > .\myEnv\Scripts\activate
 
     # activate (Linux):
-    # $ source myEnv/Scripts/activate
+    # $ source myEnv/bin/activate
 
     # install dependencies:
     # (myEnv) $ pip install -r requirements.txt

@@ -192,6 +192,24 @@ def count():
     assert a.count(3) == 1
     assert a.count(9) == 0
 
+def findDuplicates():
+    # note: removing duplicates is easier, just copy list -> set -> list
+    # the example shows how to find which elements are in the list multiple times
+
+    # create a list with duplicate elements
+    items = [3, 1, 2, 4, 2, 1, 0]
+
+    # keep track of which elements have been seen
+    seen = set()
+    duplicates = set()
+    for item in items:
+        if item in seen:
+            duplicates.add(item) # seen before, add to duplicate list
+        seen.add(item)
+    
+    duplicateList = list(duplicates)
+    assert duplicateList == [1, 2]
+
 def main():
     empty()
     creation()
@@ -217,6 +235,7 @@ def main():
     unique()
     flatten()
     count()
+    findDuplicates()
 
 if __name__ == '__main__':
     main()

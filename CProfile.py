@@ -27,5 +27,5 @@ Replace:
 unittest.main()
 
 With:
-unittest.main(module='mytest')  # if in 'mytest.py'
+unittest.main(module='myTest')  # if in 'myTest.py'
 '''
