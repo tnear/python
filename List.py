@@ -206,7 +206,7 @@ def findDuplicates():
         if item in seen:
             duplicates.add(item) # seen before, add to duplicate list
         seen.add(item)
-    
+
     duplicateList = list(duplicates)
     assert duplicateList == [1, 2]
 

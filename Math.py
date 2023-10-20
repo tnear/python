@@ -49,6 +49,20 @@ def log():
     value = 2 ** 54
     assert math.log2(value) == 54
 
+def nchoosek():
+    # binomial coefficient
+    n = 4
+    k = 3
+    result = math.comb(n, k)
+    assert result == 4
+
+    result = math.comb(52, 3)
+    assert result == 22100
+
+def factorial():
+    assert math.factorial(5) == 120
+    assert math.factorial(25) == 15511210043330985984000000
+
 def main():
     minMax()
     power()
@@ -58,6 +72,9 @@ def main():
     nchoosek()
     prod()
     log()
+    nchoosek()
+    factorial()
+    #combinations()
 
 if __name__ == '__main__':
     main()

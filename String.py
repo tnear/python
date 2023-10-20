@@ -105,11 +105,17 @@ def partition():
     assert found == 'test '
     assert suffix == 'string'
 
+    # if string is not found, the first element in tuple will contain entire string
+    prefix, found, suffix = s.partition('fake')
+    assert prefix == s
+    assert found == ''
+    assert suffix == ''
+
 def lastNCharacters():
     N = 5
     s = 'abcdefghij'
 
-    # [start at negative N : <empty means go to end> : <stride=1(default)>
+    # [start at negative N : <empty means go to end> : <stride=1(default)>]
     # verify last 5 characters:
     assert s[-N:] == 'fghij'
 
@@ -159,10 +165,10 @@ def find():
 
     # start searching at specified index
     s = '::abc::def'
-    start = 1
-    # start searching at idx=1
+    start = 2
+    # start searching at idx=2
     idx = s.find(':', start)
-    assert idx == 1
+    assert idx == 5
 
 def capitalization():
     s = 'Hello'
@@ -180,6 +186,23 @@ def startswith():
 
     assert a.startswith(b)
     assert not b.startswith(a)
+
+# str.split(sep=None, maxsplit=-1)
+def split():
+    s = 'my test string'
+    # split() by default splits in whitespace
+    result = s.split()
+    assert result == ['my', 'test', 'string']
+
+    # split on letter 't'. 't' will not appear in results
+    result = s.split('t')
+    assert result == ['my ', 'es', ' s', 'ring']
+
+    # maxsplit = how many splits to do (default is -1, which is all)
+    # this example makes two splits them puts everything in the last element
+    # note how 't' appears at the end
+    result = s.split('t', maxsplit=2)
+    assert result == ['my ', 'es', ' string']
 
 def main():
     contains()
@@ -203,6 +226,7 @@ def main():
     find()
     capitalization()
     startswith()
+    split()
 
 if __name__ == '__main__':
     main()
