@@ -3,9 +3,11 @@
 # Properties:
 class MyProp:
     prop = 5
+    _radius = 10
 
     def setProp(self, value):
         self.prop = value
+        self._radius = 10
 
     def getProp(self):
         return self.prop
@@ -15,6 +17,13 @@ class MyProp:
     @staticmethod
     def staticMethod():
         return 101
+
+    # the property decorator allows you to access a property
+    # using classInstance.prop (no parentheses) but it invokes a function
+    @property
+    def radius(self):
+        print('Getting radius...')
+        return self._radius
 
 class Person:
     def __init__(self, name):
@@ -58,11 +67,16 @@ def staticMethod():
     value = MyProp.staticMethod()
     assert value == 101
 
+def methodDecorator():
+    mp = MyProp()
+    assert mp.radius == 10
+
 def main():
     properties()
     constructor()
     iterator()
     staticMethod()
+    methodDecorator()
 
 if __name__ == '__main__':
     main()

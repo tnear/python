@@ -97,6 +97,29 @@ def merge():
     a |= b
     assert a == {'y': 25, 'z': 26, 'hello': 'world'}
 
+def get():
+    d = {'a': 10, 'b': 20}
+    assert d.get('a') == 10
+
+    # when get() cannot find the key, it returns None
+    result = d.get('fake')
+    assert result is None
+
+    # the 2nd argument (optional) specified a default value if value does not exist
+    defaultValue = 101
+    assert d.get('fake', defaultValue) == defaultValue
+
+def hashListUsingTuple():
+    # lists cannot be hashed because they are mutable
+    # however, you can instead convert the list to a tuple
+    d = {}
+    a = [0, 2, 3]
+    # d[a] = True # <-- errors because list is unhashable
+
+    d[tuple(a)] = True # works because tuple is immutable
+
+    assert d[tuple(a)] == True
+
 def main():
     empty()
     create()
@@ -111,6 +134,8 @@ def main():
     deepCopy()
     size()
     merge()
+    get()
+    hashListUsingTuple()
 
 if __name__ == '__main__':
     main()
