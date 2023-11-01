@@ -63,6 +63,15 @@ def factorial():
     assert math.factorial(5) == 120
     assert math.factorial(25) == 15511210043330985984000000
 
+# permutations = n! / (n - r)!
+def permutations():
+    assert math.perm(4, 0) == 1
+    assert math.perm(4, 1) == 4
+    assert math.perm(4, 2) == 12
+    assert math.perm(4, 3) == 24
+    assert math.perm(4, 4) == 24 # 0! = 1
+    assert math.perm(52, 3) == 132600
+
 def main():
     minMax()
     power()
@@ -74,7 +83,7 @@ def main():
     log()
     nchoosek()
     factorial()
-    #combinations()
+    permutations()
 
 if __name__ == '__main__':
     main()

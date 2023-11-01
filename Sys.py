@@ -20,6 +20,7 @@ def path():
     pathLower = [x.lower() for x in sys.path]
     assert os.getcwd().lower() in pathLower
 
+# python is a reference-counted language
 def getrefcount():
     a = [1, 2, 3]
     assert sys.getrefcount(a) > 1

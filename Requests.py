@@ -49,10 +49,25 @@ def post():
     var = json.loads(response.text)
     assert var['form']['courses'] == payload['courses']
 
+def session():
+    # a session objects allows you to persist parameters across requests
+    # for example, it allows reusing the TCP connection to improve performance
+
+    # list of sites
+    sites = ['https://httpbin.org/cookies', 'https://httpbin.org/cookies/set/sessioncookie/123']
+
+    # download each in a session
+    with requests.Session() as session:
+        for site in sites:
+            response = session.get(site)
+            print(response)
+            assert response.status_code == 200
+
 def main():
     get()
     getParams()
     post()
+    session()
 
 if __name__ == '__main__':
     main()
