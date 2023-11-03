@@ -21,6 +21,8 @@ def intToString():
     assert '2022' in string
 
 def duration():
+    # time.time() uses the system clock which is not monotonically increasing
+    # time smearing and synchronization can cause time() to produce inaccurate results
     # Get start time
     old = time.time()
 
@@ -28,14 +30,25 @@ def duration():
     seconds = .01
     time.sleep(seconds)
 
-    # Measure elapsed time
+    # Measure elapsed time (duration)
     assert time.time() - old >= seconds
+
+def monotonic():
+    # a monotonic clock only moves forward
+    # it is a better choice for benchmarking
+    old = time.monotonic()
+
+    time.sleep(.1)
+    print(old)
+    print(time.monotonic())
+    assert time.monotonic() - old >= .05
 
 def main():
     epoch()
     currentTime()
     intToString()
     duration()
+    monotonic()
 
 if __name__ == '__main__':
     main()

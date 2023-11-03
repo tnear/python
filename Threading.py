@@ -12,13 +12,18 @@
 # locks around every variable would work, it would hurt performance.
 # Instead, it was decided to have one global lock, the GIL.
 
+# Note: time.sleep drops the GIL
+
 import threading
 import concurrent.futures
 import logging
+import requests
 import time
 
 def _threadFunction(arg1, arg2):
     print(f'Running in a thread with args: {arg1} {arg2}')
+
+    # get thread's identity (a non-negative integer)
     print(f'Thread identity: {threading.get_ident()}')
 
 def threadCreation():
@@ -28,11 +33,6 @@ def threadCreation():
     # start thread
     thread.start()
     thread.join()
-
-def threadIdentity():
-    # gets thread identifier of current thread
-    # it is a non-zero integer
-    assert threading.get_ident()
 
 def daemonThread():
     # a daemon thread is a thread which shuts down as soon as the
@@ -131,15 +131,43 @@ def semaphore():
         # note: all arguments to map must be the same length, hence the semaphore list
         executor.map(_worker, range(maxWorkers), [semaphore] * maxWorkers)
 
+# create thread-local data
+threadLocal = threading.local()
+
+def getSession():
+    # create one requests session per thread
+    # (creating one session per function call is unnecessarily slow)
+    if not hasattr(threadLocal, 'session'):
+        threadLocal.session = requests.Session()
+    return threadLocal.session
+
+def downloadSite(url):
+    session = getSession()
+    with session.get(url) as response:
+        print(f'Read {len(response.content)} bytes from {url}')
+
+def downloadAllSites(sites):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        executor.map(downloadSite, sites)
+
+def local():
+    # this example uses threading.Local to create one requests session per thread
+    # by downloading sites is parallel (which is IO-bound), this should improve performance
+    sites = ['https://www.jython.org', 'http://olympus.realpython.org/dice'] * 20
+    startTime = time.time()
+    downloadAllSites(sites)
+    duration = time.time() - startTime
+    print(f'Downloaded {len(sites)} sites in {duration} seconds!')
+
 def main():
     threadCreation()
-    threadIdentity()
     daemonThread()
     threadPoolExecutor()
     raceCondition()
     lock()
     timer()
     semaphore()
+    local()
 
 if __name__ == '__main__':
     main()
