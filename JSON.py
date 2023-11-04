@@ -12,7 +12,7 @@ def dumps():
     assert d == '{"name": "python", "age": 100}'
 
 def loads():
-    jsonVar = """
+    jsonVar = '''
     {
         "country": {
             "name": "USA",
@@ -23,7 +23,7 @@ def loads():
             ]
         }
     }
-    """
+    '''
     var = json.loads(jsonVar)
     assert var['country']['name'] == 'USA'
     assert var['country']['statesVisited'][0]['states'] == ['Missouri', 'Massachusetts', 'Illinois']

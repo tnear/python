@@ -13,7 +13,7 @@ def basic():
 
 def defaultInteger():
     # defaultdict is useful for incrementing the count of things in map
-    words = ["apple", "banana", "orange", "apple", "apple", "banana"]
+    words = ['apple', 'banana', 'orange', 'apple', 'apple', 'banana']
 
     wordCount = collections.defaultdict(int) # type int will default to zero
     for word in words:

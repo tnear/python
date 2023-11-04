@@ -6,9 +6,9 @@ import json
 
 def jsonExample():
     data = {
-        "name": "John",
-        "age": 30,
-        "city": "New York"
+        'name': 'John',
+        'age': 50,
+        'city': 'New York'
     }
 
     # convert to json string

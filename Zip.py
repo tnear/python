@@ -10,7 +10,7 @@ def sameLength():
 def diffLength():
     # shortest length determines result length
     four = [1, 2, 3, 4]
-    three = ["one", "two", "three"]
+    three = ['one', 'two', 'three']
     result = zip(four, three)
     assert len(list(result)) == 3
 

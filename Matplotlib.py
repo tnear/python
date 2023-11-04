@@ -23,7 +23,7 @@ def basic():
 
 def marker():
     # mark points with 'o'. This also shows the line
-    # can also use '*', ".', 'x', etc.
+    # can also use '*', '.', 'x', etc.
     # https://www.w3schools.com/python/matplotlib_markers.asp
     plt.plot([1, 3, 5], [4, 0, 6], marker='o')
     #plt.show()

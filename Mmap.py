@@ -28,7 +28,7 @@ def regular_io(filename):
         text = file_obj.read()
 
 def mmap_io(filename):
-    with open(filename, mode="r", encoding="utf8") as file_obj:
+    with open(filename, mode='r', encoding='utf8') as file_obj:
         with mmap.mmap(file_obj.fileno(), length=0, access=mmap.ACCESS_READ) as mmap_obj:
             text = mmap_obj.read()
 

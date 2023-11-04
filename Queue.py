@@ -5,6 +5,9 @@
 # https://docs.python.org/3/library/queue.html
 
 import queue
+import threading
+import time
+import random
 
 def Queue():
     q = queue.Queue()
@@ -52,10 +55,66 @@ def size():
     q.put(1)
     assert q.qsize() == 2
 
+# Constants
+NUM_PRODUCERS = 2
+NUM_CONSUMERS = 2
+QUEUE_SIZE = 5
+NUM_ITEMS_PER_PRODUCER = 10
+
+# Shared Queue
+q = queue.Queue(QUEUE_SIZE)
+
+# Producer function
+def producer():
+    for _ in range(NUM_ITEMS_PER_PRODUCER):
+        item = random.randint(0, 100)
+        print(f'{threading.current_thread().name} producing {item}')
+        q.put(item)  # This will block if the queue is full
+        time.sleep(random.uniform(0.01, 0.1))
+
+# Consumer function
+def consumer():
+    while True:
+        item = q.get()  # This will block if the queue is empty
+        if item is None:  # Sentinel value to exit
+            break
+        print(f'{threading.current_thread().name} consuming {item}')
+        time.sleep(random.uniform(0.01, 0.1))
+
+
+def producerConsumer():
+    # Create and start producer threads
+    producer_threads = []
+    for _ in range(NUM_PRODUCERS):
+        t = threading.Thread(target=producer, name=f'Producer-{_}')
+        t.start()
+        producer_threads.append(t)
+
+    # Create and start consumer threads
+    consumer_threads = []
+    for _ in range(NUM_CONSUMERS):
+        t = threading.Thread(target=consumer, name=f'Consumer-{_}')
+        t.start()
+        consumer_threads.append(t)
+
+    # Wait for all producers to finish producing
+    for t in producer_threads:
+        t.join()
+
+    # Since our consumers are running in infinite loops, 
+    # we'll send a sentinel value to signal them to exit
+    for _ in range(NUM_CONSUMERS):
+        q.put(None)
+
+    # Wait for all consumers to finish consuming
+    for t in consumer_threads:
+        t.join()
+
 def main():
     Queue()
     minPriorityQueue()
     size()
+    producerConsumer()
 
 if __name__ == '__main__':
     main()

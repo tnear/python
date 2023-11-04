@@ -23,7 +23,10 @@ def path():
 # python is a reference-counted language
 def getrefcount():
     a = [1, 2, 3]
-    assert sys.getrefcount(a) > 1
+    # 1 for 'a', and 1 for ref count increment of using 'a' as a parameter
+    assert sys.getrefcount(a) == 2
+
+    # '1' is used in many places
     assert sys.getrefcount(1) > 100
 
 def maxsize():

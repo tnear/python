@@ -84,12 +84,25 @@ def singledispatch():
     assert printer(10) == 20
     assert printer(10.0) == 5.0
 
+# lru_cache caches results and uses them for subsequent calls
+@functools.lru_cache
+def square(x):
+    print(f'Running: {x}')
+    return x * x
+
+def lruCache():
+    square(2) # calls square and caches result
+    square(2) # uses cached result (no print output)
+
+    square.__wrapped__(2) # force it to bypass cache (will always see print output)
+
 def main():
     reduce()
     partial()
     partialmethod()
     cache()
     singledispatch()
+    lruCache()
 
 if __name__ == '__main__':
     main()

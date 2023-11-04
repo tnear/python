@@ -97,7 +97,7 @@ def sequence():
     assert sum(setSeq) == (100 * 101) / 2 # 5050
 
 def pop():
-    # pop() removes a "random" element from the set
+    # pop() removes a 'random' element from the set
     s = {4, 3, 2, 1}
     elem = s.pop()
     assert elem == 1

@@ -35,8 +35,8 @@ def escape():
     # how to output '?' char in formatted string:
     print('10%d%%' % 1)
     # outputs: '101%'
-    # "%d = integer
-    # % (x2) = '%' char in format mode"
+    # %d = integer
+    # % (x2) = '%' char in format mode
 
 def stderr():
     print('My stdout', file=sys.stdout) # default is sys.stdout
