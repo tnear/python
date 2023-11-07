@@ -44,8 +44,8 @@ def daemonThread():
 def threadPoolExecutor():
     # a thread pool executor is a useful way to create multiple threads
 
-    # they are typically used in a context manager. The end of the 'with statement
-    # calls 'join' on all the threads
+    # they are typically used in a context manager. The end of the 'with' statement
+    # automatically calls 'join' on all the threads
     with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         executor.map(_threadFunction, range(3))
 
@@ -87,7 +87,7 @@ class _DatabaseThreadSafe:
             self.value = local_copy
 
 # lock = threading.Lock()
-# locks have acquire and release methods, but generally should be used in a context manager
+# locks have acquire and release methods, but locks generally should be used in a context manager
 def lock():
     database = _DatabaseThreadSafe()
     assert database.value == 0
@@ -135,7 +135,7 @@ def semaphore():
 threadLocal = threading.local()
 
 def getSession():
-    # create one requests session per thread
+    # create one requests.Session per thread
     # (creating one session per function call is unnecessarily slow)
     if not hasattr(threadLocal, 'session'):
         threadLocal.session = requests.Session()
@@ -154,9 +154,9 @@ def local():
     # this example uses threading.Local to create one requests session per thread
     # by downloading sites is parallel (which is IO-bound), this should improve performance
     sites = ['https://www.jython.org', 'http://olympus.realpython.org/dice'] * 20
-    startTime = time.time()
+    startTime = time.monotonic()
     downloadAllSites(sites)
-    duration = time.time() - startTime
+    duration = time.monotonic() - startTime
     print(f'Downloaded {len(sites)} sites in {duration} seconds!')
 
 def main():
