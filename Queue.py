@@ -101,7 +101,7 @@ def producerConsumer():
     for t in producer_threads:
         t.join()
 
-    # Since our consumers are running in infinite loops, 
+    # Since our consumers are running in infinite loops,
     # we'll send a sentinel value to signal them to exit
     for _ in range(NUM_CONSUMERS):
         q.put(None)

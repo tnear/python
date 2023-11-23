@@ -5,7 +5,7 @@ import dis
 
 '''
 Executing Python code happens in 4 stages:
-1. Lexing: 
+1. Lexing:
 2. Parsing:      Lexing & parsing transform source code into an AST
 3. Compiling:    Turning AST into a code object
 4. Interpreting: Running the code object
@@ -34,9 +34,9 @@ def fcn():
     Line  Idx  Name            Arg    Hint       Comment
     1      0   LOAD_CONST       1     ('world')  # puts 'world' on stack
            2   STORE_FAST       0     (arg)      # pops stack ('world'), stores in 'arg'
-    
+
     2      4   LOAD_GLOBAL      0     (print)    # looks up 'print' in globals mapping, stores 'print' on stack
-           6   LOAD_CONST       2     ('hello ') # puts 'hello ' on stack. stack is now size 2 
+           6   LOAD_CONST       2     ('hello ') # puts 'hello ' on stack. stack is now size 2
            8   LOAD_FAST        0     (arg)      # puts arg='world' on stack. stack size=3 => [print]['hello ']['world']
           10   BINARY_ADD                        # binary_add pops 2 items, adds together, places result on stack
                                                  # stack now equals [print]['hello world']

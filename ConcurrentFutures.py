@@ -66,7 +66,7 @@ def _parallelCount(executorType, endNumber, totalWorkers):
             end = (i + 1) * step - 1
             if i == totalWorkers - 1:
                 end = endNumber # last iteration, stop at end
-                
+
             # execute each task
             futures.append(executor.submit(_countEvens, start, end))
 
@@ -92,7 +92,7 @@ def countEvens():
     print(f'\nSingle threaded: {singleThreadedDuration}')
     print(f'Multithreaded: {multithreadedDuration}')
     print(f'Multi-process: {multiProcessDuration}')
-    
+
     '''Sample output:
     Single threaded: 0.672
       Multithreaded: 0.985

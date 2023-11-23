@@ -28,7 +28,7 @@ def collect():
     for obj in gc.get_objects():
         if isinstance(obj, Demo):
             numObjects += 1
-    
+
     assert numObjects == 2
 
     # Manually run garbage collection

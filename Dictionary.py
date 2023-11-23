@@ -120,6 +120,16 @@ def hashListUsingTuple():
 
     assert d[tuple(a)] == True
 
+def sort():
+    d = {'apple': 5, 'orange': 3, 'banana': 2, 'grape': 4}
+
+    # sort a dictionary by values in descending order
+    sortedDict = sorted(d.items(), key=lambda item: item[1], reverse=True)
+    assert sortedDict[0] == ('apple', 5)
+    assert sortedDict[1] == ('grape', 4)
+    assert sortedDict[2] == ('orange', 3)
+    assert sortedDict[3] == ('banana', 2)
+
 def main():
     empty()
     create()
@@ -136,6 +146,7 @@ def main():
     merge()
     get()
     hashListUsingTuple()
+    sort()
 
 if __name__ == '__main__':
     main()
