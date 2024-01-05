@@ -173,6 +173,12 @@ def sort():
     a.sort()
     assert a == [1, 2, 3, 4]
 
+    # key allows custom sort order
+    a = ['aa', 'b', 'ccc']
+    # sort by string length (ascending)
+    a.sort(key = lambda item: len(item))
+    assert a == ['b', 'aa', 'ccc']
+
 def unique():
     # get unique elements in a list using set() constructor
     a = [2, 1, 2, 4, 4]
