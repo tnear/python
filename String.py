@@ -137,6 +137,7 @@ def fstringFormat():
     assert s == 'Value with 3 digits is: 0.333'
 
 def strip():
+    # with no args, strip() trims leading and trailing whitespace
     txt = '  abc  '
     txt = txt.strip()
     assert txt == 'abc'
