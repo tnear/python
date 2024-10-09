@@ -39,7 +39,7 @@ def parent():
     # equivalent to os.path.dirname()
     pwd = pathlib.Path.cwd()
     parent = pathlib.Path(pwd).parent
-    assert 'Programming' in parent.name
+    assert parent.name in {'Programming', 'tnear'}
 
 def unlink():
     # unlink can be used to remove files

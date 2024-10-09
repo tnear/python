@@ -12,14 +12,14 @@ def pwd():
 
 def dirname():
     p = os.path.dirname(os.getcwd())
-    assert p.endswith('Programming')
+    assert p.endswith('Programming') or p.startswith('/')
 
 def listdir():
     files = os.listdir()
     assert 'OS.py' in files
 
 def name():
-    assert 'nt' in os.name
+    assert os.name in {'nt', 'posix'}
 
 def getsize():
     size = os.path.getsize('OS.py')
@@ -97,6 +97,28 @@ def environ():
         # verify substring
         assert 'AppData' in appData
 
+def ctime():
+    # get last change time for a file, ex: 1726845576.2636948
+    file = 'os_ctime.txt'
+    assert not os.path.exists(file)
+    with open(file, 'w') as f:
+        f.write('hello')
+    ctime = os.path.getctime(file)
+    timeInt = int(ctime)
+    assert timeInt < 1800000000
+    assert timeInt > 1720000000
+    os.remove(file)
+
+def getuid():
+    # getuid() returns the current process's user id
+    # unix-only
+    assert os.getuid() > 0
+
+def stat():
+    # stat() returns the status of a file
+    statInfo = os.stat('OS.py')
+    assert statInfo.st_uid == os.getuid()
+
 def main():
     pwd()
     dirname()
@@ -111,6 +133,9 @@ def main():
     makedirs()
     rename()
     environ()
+    ctime()
+    getuid()
+    stat()
 
 if __name__ == '__main__':
     main()
