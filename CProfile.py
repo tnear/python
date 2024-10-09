@@ -28,4 +28,7 @@ unittest.main()
 
 With:
 unittest.main(module='myTest')  # if in 'myTest.py'
+
+Then run the unit tests:
+python -m cProfile -s tottime -m unittest discover
 '''

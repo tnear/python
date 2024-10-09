@@ -8,7 +8,8 @@ def empty():
 
 def create():
     d = {1: 2, 'c': 4}
-    assert list(d.keys()) == [1, 'c']
+    # note: keys() is rarely needed:
+    assert list(d) == [1, 'c'] # list(d) is same as list(d.keys())
     assert list(d.values()) == [2, 4]
 
 def find():
@@ -24,12 +25,12 @@ def access():
 
 def keys():
     d = {1: 2, 'c': 4}
-    assert list(d.keys()) == [1, 'c']
+    assert list(d) == [1, 'c']
     assert list(d.values()) == [2, 4]
 
     # get keys which contain letter 'a'
     m = {'a': 1, 'b': 2, 'ac': 3}
-    y = [x for x in list(m.keys()) if 'a' in x]
+    y = [x for x in list(m) if 'a' in x]
     assert y == ['a', 'ac']
 
 def insert():
@@ -62,11 +63,11 @@ def remove():
 
     # remove key 'c'
     d.pop('c')
-    assert list(d.keys()) == [1, 5]
+    assert list(d) == [1, 5]
 
     # remove last key (5)
     d.popitem()
-    assert list(d.keys()) == [1]
+    assert list(d) == [1]
 
 def deepCopy():
     d = {1: 2, 'c': 4, 5: 6}
@@ -129,6 +130,13 @@ def sort():
     assert sortedDict[1] == ('grape', 4)
     assert sortedDict[2] == ('orange', 3)
     assert sortedDict[3] == ('banana', 2)
+
+    # sort a dictionary keys
+    # note: do not call sorted(d.keys()) because dictionaries iterate over keys by default, ex:
+    # for key in d:
+    #     ...
+    sortedDict = sorted(d)
+    assert sortedDict == ["apple", "banana", "grape", "orange"]
 
 def main():
     empty()
