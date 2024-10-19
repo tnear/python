@@ -16,19 +16,19 @@ def weakRef():
     del c # calls __del__
 
     c = C()
-    assert(sys.getrefcount(c) == 2)
+    assert sys.getrefcount(c) == 2
 
     # create weak reference to c
     # weak references do not increment ref count
     d = weakref.ref(c)
-    assert(sys.getrefcount(c) == 2)
+    assert sys.getrefcount(c) == 2
 
     # 'call' the weakref using ()
-    assert(d() == c)
+    assert d() == c
 
     # delete what weakref refers to (c) and verify the reference is now none
     del c
-    assert(d() is None)
+    assert d() is None
 
 def main():
     weakRef()

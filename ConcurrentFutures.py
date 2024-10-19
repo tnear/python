@@ -74,7 +74,7 @@ def _parallelCount(executorType, endNumber, totalWorkers):
         totalCount = sum(f.result() for f in concurrent.futures.as_completed(futures))
 
     duration = time.monotonic() - before
-    assert(totalCount == endNumber / 2)
+    assert totalCount == endNumber / 2
     return duration
 
 def countEvens():

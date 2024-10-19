@@ -9,7 +9,7 @@ import timeit
 def fcn():
     # write file (no mmap)
     file = 'a.txt'
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello world!')
 
     # use mmap to read the entire file into memory
@@ -35,7 +35,7 @@ def mmap_io(filename):
 def benchmark():
     # write bytes
     file = 'a.txt'
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello world! ' * 1000000)
 
     regularDuration = timeit.timeit('regular_io("a.txt")', number=5, globals=globals())

@@ -43,7 +43,7 @@ def typeAlias():
     assert v == [1.1, 2.2, 3.3]
 
 # 'Any' permits any data type
-def any(arg: typing.Any):
+def anyFcn(arg: typing.Any):
     print(arg) # print anything
 
 if __name__ == '__main__':
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     containers()
     none()
     typeAlias()
-    any(1)
-    any('a')
+    anyFcn(1)
+    anyFcn('a')
 
     print('Tests passed!')

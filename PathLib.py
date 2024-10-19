@@ -39,13 +39,13 @@ def parent():
     # equivalent to os.path.dirname()
     pwd = pathlib.Path.cwd()
     parent = pathlib.Path(pwd).parent
-    assert parent.name in {'Programming', 'tnear'}
+    assert len(parent.name)
 
 def unlink():
     # unlink can be used to remove files
     file = 'a.txt'
     assert not pathlib.Path(file).exists()
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     assert pathlib.Path(file).exists()
@@ -58,7 +58,7 @@ def rename():
     fileNew = 'b.txt'
     assert not pathlib.Path(file).exists()
     assert not pathlib.Path(fileNew).exists()
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     # Rename file

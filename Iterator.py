@@ -1,4 +1,7 @@
 class IteratorClass:
+    def __init__(self):
+        self.a = 1
+
     # __iter__ returns start state
     def __iter__(self):
         self.a = 1

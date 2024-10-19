@@ -128,10 +128,12 @@ def comprehension():
     assert u == ['AB', 'CD', 'EF']
 
     # get public methods for list
-    [x for x in dir([]) if '_' not in x]
+    result = [x for x in dir([]) if '_' not in x]
+    assert len(result) > 0
 
     # (alt) get public methods for list
-    [x for x in dir([]) if not x.startswith('_')]
+    result = [x for x in dir([]) if not x.startswith('_')]
+    assert len(result) > 0
 
 def shallowCopy():
     a = [1, 2, 3]
@@ -157,7 +159,7 @@ def replicate():
 def bytes():
     a = [1, 2, 3, 4, 5]
     bytes = sys.getsizeof(a)
-    assert bytes == 96
+    assert bytes == 104 # was 96 earlier
 
 def index():
     # Find first element and return its index

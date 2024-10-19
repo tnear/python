@@ -13,13 +13,13 @@ def time():
     assert duration < 0.5
 
 def setup():
-    setup = 'import random'
+    setupStr = 'import random'
     stmt = '''
 def test():
     return random.randint(10, 100)
 '''
 
-    duration = timeit.timeit(stmt=stmt, setup=setup)
+    duration = timeit.timeit(stmt=stmt, setup=setupStr)
     assert duration < 0.5
 
 def testRange():

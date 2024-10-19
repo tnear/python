@@ -28,10 +28,26 @@ def unzip():
     result2 = zip(*result)
     assert len(list(result2)) == 0
 
+# useful technique when creating a custom error message
+def findFirstUnsortedElement():
+    # starting list which is not sorted
+    a = ['abc', 'zzz', 'def']
+
+    # sort and make a copy
+    aSorted = sorted(a)
+
+    # iterate through both using zip. The first difference will be where
+    # the original list was not sorted.
+    for original, sortedItem in zip(a, aSorted):
+        if original != sortedItem:
+            assert original == 'zzz' and sortedItem == 'def'
+            break
+
 def main():
     sameLength()
     diffLength()
     unzip()
+    findFirstUnsortedElement()
 
 if __name__ == '__main__':
     main()

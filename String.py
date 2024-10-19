@@ -205,6 +205,31 @@ def split():
     result = s.split('t', maxsplit=2)
     assert result == ['my ', 'es', ' string']
 
+def fstringExpression():
+    # fstring expressions were introduced in python 3.8
+    # they offer a shorthand for printing a variable identifier and value
+    x = 1
+    s = f'{x=}'
+    assert s == 'x=1'
+
+    s = f'x={x}' # also creates 'x=1' (longer, older syntax)
+    assert s == 'x=1'
+
+    # multiple variables
+    y = 2
+    s = f"{x + y = }"
+    assert s == 'x + y = 3'
+
+def startsWith():
+    s = 'my string'
+    assert s.startswith('my ')
+    assert not s.startswith('m...')
+
+def endsWith():
+    s = 'my string'
+    assert s.endswith('ring')
+    assert not s.endswith('rin.')
+
 def main():
     contains()
     slice()
@@ -228,6 +253,9 @@ def main():
     capitalization()
     startswith()
     split()
+    fstringExpression()
+    startsWith()
+    endsWith()
 
 if __name__ == '__main__':
     main()

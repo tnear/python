@@ -8,11 +8,11 @@ def fileWith():
     file = 'a.txt'
 
     # write file
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello world!')
 
     # read entire file
-    with open(file, 'r') as f:
+    with open(file, 'r', encoding='utf-8') as f:
         data = f.read()
 
     assert data == 'hello world!'
@@ -24,7 +24,7 @@ def fileHandle():
 
     # create file for writing (w)
     # 'a' (not shown) = append
-    f = open(file, 'w')
+    f = open(file, 'w', encoding='utf-8')
 
     # write
     f.write('hello world!')
@@ -32,7 +32,7 @@ def fileHandle():
     assert os.path.exists(file)
 
     # open file for reading (r)
-    f = open(file, 'r')
+    f = open(file, 'r', encoding='utf-8')
     data = f.read()
     assert data == 'hello world!'
     f.close()
@@ -43,11 +43,11 @@ def fileHandle():
 
 def readBytes():
     file = 'b.txt'
-    f = open(file, 'w')
+    f = open(file, 'w', encoding='utf-8')
     f.write('abcdefg')
     f.close()
 
-    with open(file) as f:
+    with open(file, encoding='utf-8') as f:
         assert f.read(1) == 'a'  # reads 'a'
         assert f.read(2) == 'bc'  # reads 'bc'
         assert f.read(1) == 'd' # reads 'd'
@@ -58,12 +58,12 @@ def readBytes():
 
 def readlines():
     file = 'c.txt'
-    f = open(file, 'w')
+    f = open(file, 'w', encoding='utf-8')
     f.write('hello\nworld!')
     f.close()
 
     txt = ''
-    with open(file) as f:
+    with open(file, encoding='utf-8') as f:
         for line in f.readlines():
             txt += line
 
@@ -74,7 +74,7 @@ def create():
     # Create file using 'with' keyword
     # which does not requiring close
     file = 'a.txt'
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     assert os.path.exists(file)

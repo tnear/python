@@ -40,9 +40,9 @@ def nested():
     , can use this syntax:
     '''
     with (
-        open(file1, 'w') as f1,
-        open(file2, 'w') as f2,
-        open(file3, 'w') as f3
+        open(file1, 'w', encoding='utf-8') as f1,
+        open(file2, 'w', encoding='utf-8') as f2,
+        open(file3, 'w', encoding='utf-8') as f3
     ):
         f1.write('a')
         f2.write('b')

@@ -49,7 +49,7 @@ def log():
     value = 2 ** 54
     assert math.log2(value) == 54
 
-def nchoosek():
+def custom_nchoosek():
     # binomial coefficient
     n = 4
     k = 3
@@ -81,7 +81,7 @@ def main():
     nchoosek()
     prod()
     log()
-    nchoosek()
+    custom_nchoosek()
     factorial()
     permutations()
 

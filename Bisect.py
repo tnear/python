@@ -27,7 +27,7 @@ def bisectLeft():
     #     0  1  2  3  4  5  6
     numToLookFor = 4
     idx = bisect.bisect_left(li, numToLookFor)
-    assert(idx == 2)
+    assert idx == 2
 
 # insort() inserts into sorted list
 # insort() is O(N) because it calls insert() which is O(N)

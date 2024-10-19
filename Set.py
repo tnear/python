@@ -10,7 +10,7 @@ def create():
     s = {1, 'b'}
     assert s == {1, 'b'}
 
-    # duplicates removed
+    # duplicates are automatically removed
     s = {1, 'b', 'b', 1}
     assert s == {1, 'b'}
 

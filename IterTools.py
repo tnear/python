@@ -10,8 +10,8 @@ def accumulate():
 
     # no callback (performs addition)
     nums = [2, 3, 5]
-    sum = list(itertools.accumulate(nums))
-    assert sum == [2, 5, 10]
+    result = list(itertools.accumulate(nums))
+    assert result == [2, 5, 10]
 
     # product
     nums = [2, 3, 5]
@@ -37,12 +37,12 @@ def count():
 # and cycling back to beginning
 def cycle():
     saved = []
-    count = 0
+    iterCount = 0
     for element in itertools.cycle('abc'):
-        if count >= 7:
+        if iterCount >= 7:
             break
         else:
-            count += 1
+            iterCount += 1
             saved.append(element)
 
     assert saved == ['a', 'b', 'c', 'a', 'b', 'c', 'a']

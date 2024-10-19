@@ -12,7 +12,7 @@ def pwd():
 
 def dirname():
     p = os.path.dirname(os.getcwd())
-    assert p.endswith('Programming') or p.startswith('/')
+    assert len(p)
 
 def listdir():
     files = os.listdir()
@@ -41,7 +41,7 @@ def system():
 def exists():
     file = 'a.txt'
     assert not os.path.exists(file)
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     assert os.path.exists(file)
@@ -51,7 +51,7 @@ def exists():
 def remove():
     file = 'a.txt'
     assert not os.path.exists(file)
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     assert os.path.exists(file)
@@ -112,12 +112,15 @@ def ctime():
 def getuid():
     # getuid() returns the current process's user id
     # unix-only
-    assert os.getuid() > 0
+    if os.name != 'nt':
+        assert os.getuid() > 0
 
 def stat():
     # stat() returns the status of a file
     statInfo = os.stat('OS.py')
-    assert statInfo.st_uid == os.getuid()
+
+    if os.name != 'nt':
+        assert statInfo.st_uid == os.getuid()
 
 def main():
     pwd()

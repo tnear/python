@@ -23,7 +23,7 @@ def access():
     assert d[1] == 2
     assert d['c'] == 4
 
-def keys():
+def keysMethod():
     d = {1: 2, 'c': 4}
     assert list(d) == [1, 'c']
     assert list(d.values()) == [2, 4]
@@ -143,7 +143,7 @@ def main():
     create()
     find()
     access()
-    keys()
+    keysMethod()
     insert()
     comprehension()
     iterate()

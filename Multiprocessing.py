@@ -45,7 +45,7 @@ def process():
 
     expResult = [number * number for number in numbers]
     assert isinstance(results, multiprocessing.sharedctypes.SynchronizedArray)
-    assert(results[:] == expResult)
+    assert results[:] == expResult
 
 def pool():
     numbers = [1, 2, 3, 4]
@@ -57,7 +57,7 @@ def pool():
         squares = pool.map(_returnSquare, numbers)
 
     exp = [number * number for number in numbers]
-    assert(exp == squares)
+    assert exp == squares
 
 def _producer(queue):
     # produce some data and put it on the queue
