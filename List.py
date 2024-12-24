@@ -83,12 +83,14 @@ def funcArg(a, b, c):
 
 def unpackFuncArg():
     a = [1, 2, 3]
+    # pass (1, 2, 3) as comma separated list using '*' operator
     funcArg(*a)
 
 def remove():
-    a = ['a', 'b', 'c']
+    # remove() removes the first element with that value (not all)
+    a = ['a', 'b', 'c', 'b']
     a.remove('b')
-    assert a == ['a', 'c']
+    assert a == ['a', 'c', 'b']
 
 def pop():
     # remove index
@@ -158,8 +160,8 @@ def replicate():
 
 def bytes():
     a = [1, 2, 3, 4, 5]
-    bytes = sys.getsizeof(a)
-    assert bytes == 104 # was 96 earlier
+    b = sys.getsizeof(a)
+    assert b == 104 # was 96 earlier
 
 def index():
     # Find first element and return its index
@@ -184,8 +186,8 @@ def sort():
 def unique():
     # get unique elements in a list using set() constructor
     a = [2, 1, 2, 4, 4]
-    unique = list(set(a))
-    assert unique == [1, 2, 4]
+    unique_values = list(set(a))
+    assert unique_values == [1, 2, 4]
 
 def flatten():
     # flatten 2D list (matrix) using chain()
