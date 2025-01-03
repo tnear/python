@@ -1,13 +1,13 @@
 # tempfile — Generate temporary files and directories
 # https://docs.python.org/3/library/tempfile.html
 
-import shutil
 import tempfile
+import shutil
 
 def get_temp_dir():
     # same as tempfile.tempdir but with function all
-    dir = tempfile.gettempdir()
-    print(f'{dir=}')
+    td = tempfile.gettempdir()
+    print(f'{td=}')
 
 def temp_dir():
     # same as tempfile.gettempdir() but using member variable
@@ -17,9 +17,9 @@ def temp_dir():
 def make_temp_dir():
     # create a temporary directory with a prefix,
     # ex: /tmp/my_test_7t41dye7
-    temp_dir = tempfile.mkdtemp(prefix='my_test_')
-    print(f'{temp_dir=}')
-    shutil.rmtree(temp_dir)
+    td = tempfile.mkdtemp(prefix='my_test_')
+    print(f'{td=}')
+    shutil.rmtree(td)
 
 def temp_dir_context_manager():
     # create temporary directory which is automatically
