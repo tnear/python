@@ -33,7 +33,7 @@ def named_temporary_file():
     with tempfile.NamedTemporaryFile(mode='w', suffix='.dat', prefix='my_file_') as f:
         # get file name, ex: '/tmp/my_file_<rand>.dat'
         print(f.name)
-        
+
         # write to file
         f.write('hello')
         f.flush()

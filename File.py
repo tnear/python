@@ -81,12 +81,21 @@ def create():
     os.remove(file)
     assert not os.path.exists(file)
 
+def fileno():
+    # use fileno() method to get file descriptor
+    file = 'fileno.txt'
+    with open(file, 'w', encoding='utf-8') as f:
+        assert f.fileno() > 0
+
+    os.remove(file)
+
 def main():
     fileWith()
     fileHandle()
     readBytes()
     readlines()
     create()
+    fileno()
 
 if __name__ == '__main__':
     main()

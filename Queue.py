@@ -81,7 +81,6 @@ def consumer():
         print(f'{threading.current_thread().name} consuming {item}')
         time.sleep(random.uniform(0.01, 0.1))
 
-
 def producerConsumer():
     # Create and start producer threads
     producer_threads = []

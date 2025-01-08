@@ -14,7 +14,6 @@ Common flags:
 -s, --capture=no = display stdout
 '''
 
-
 def add_one(x):
     return x + 1
 
@@ -25,7 +24,8 @@ def divide_with_raise(a, b):
     return a / b
 
 # to run a specific test point:
-# pytest PyTest.py::test_answer
+# pytest test_PyTest.py::test_answer (non-class test)
+# pytest test_PyTest.py::TestClass::test_one (class test)
 def test_answer():
     assert add_one(3) == 4
 
@@ -44,7 +44,6 @@ class TestClass:
     def test_one(self):
         x = 'hello'
         assert 'h' in x
-
 
 class TestParameter:
     # parameterized tests. Use comma separated strings in decorator
