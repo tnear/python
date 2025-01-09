@@ -11,7 +11,7 @@ def http_code(status):
         case 400:
             out = 'Bad request'
             # note: there is no fallthrough in match/case.
-            # execution leaves after first match
+            # execution exits current match statement after first match
         case 401 | 403:
             # can use '|' to combine multiple values into one line
             out = 'Not allowed'

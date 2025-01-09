@@ -72,7 +72,7 @@ def rename():
     pathlib.Path(fileNew).unlink()
 
 def resolve():
-    # use resolve() to get absolute path to a file
+    # use resolve() to get absolute path (canonical path) to a file
     file = pathlib.Path('a.txt')
     abs_path = file.resolve()
     assert '/python/a.txt' in str(abs_path)

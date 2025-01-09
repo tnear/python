@@ -36,7 +36,7 @@ def test_divide_by_zero():
     # verify string
     assert str(exc_info.value) == 'Cannot divide by zero'
 
-# To group tests into a class, you must prefix you class name with 'Test'.
+# To group tests into a class, you must prefix your class name with 'Test'.
 # (classes which do not begin with 'Test' will be skipped).
 # No subclass is required.
 class TestClass:

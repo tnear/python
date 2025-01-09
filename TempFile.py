@@ -5,7 +5,7 @@ import tempfile
 import shutil
 
 def get_temp_dir():
-    # same as tempfile.tempdir but with function all
+    # same as tempfile.tempdir but with function call
     td = tempfile.gettempdir()
     print(f'{td=}')
 
