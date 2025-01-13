@@ -9,9 +9,10 @@ import pytest
 # pytest <file>
 
 '''
-Common flags:
+Common command line flags:
 -v, --verbose    = show each test name
 -s, --capture=no = display stdout
+-q, --quiet      = decrease verbosity
 '''
 
 def add_one(x):

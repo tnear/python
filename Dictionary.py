@@ -138,6 +138,15 @@ def sort():
     sortedDict = sorted(d)
     assert sortedDict == ["apple", "banana", "grape", "orange"]
 
+def flatten_to_list():
+    # use list(dict.items()) to flatten a dictionary into a list
+    # of name/value pairs
+    d = {'a': 1, 'b': 2, 'c': 'three'}
+    flattened = list(d.items())
+
+    exp = [('a', 1), ('b', 2), ('c', 'three')]
+    assert(flattened == exp)
+
 def main():
     empty()
     create()
@@ -155,6 +164,7 @@ def main():
     get()
     hashListUsingTuple()
     sort()
+    flatten_to_list()
 
 if __name__ == '__main__':
     main()
