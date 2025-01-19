@@ -7,8 +7,8 @@ import os
 import platform
 
 def pwd():
-    pwd = os.getcwd()
-    assert 'python' in pwd
+    cwd = os.getcwd()
+    assert 'python' in cwd
 
 def dirname():
     p = os.path.dirname(os.getcwd())
@@ -48,7 +48,7 @@ def exists():
     os.remove(file)
     assert not os.path.exists(file)
 
-def remove():
+def remove_test():
     file = 'a.txt'
     assert not os.path.exists(file)
     with open(file, 'w', encoding='utf-8') as f:
@@ -74,7 +74,7 @@ def rename():
     file = 'a.txt'
     fileNew = 'b.txt'
     assert not os.path.exists(file)
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
 
     assert os.path.exists(file)
@@ -93,18 +93,21 @@ def environ():
     # environ is often used to check environment variables
     if platform.system() == 'Windows':
         # get the appdata value
-        appData = os.environ.get('APPDATA')
+        appData = os.environ['APPDATA']
         # verify substring
         assert 'AppData' in appData
+    else:
+        shell = os.environ['SHELL']
+        assert '/bin' in shell
 
 def ctime():
     # get last change time for a file, ex: 1726845576.2636948
     file = 'os_ctime.txt'
     assert not os.path.exists(file)
-    with open(file, 'w') as f:
+    with open(file, 'w', encoding='utf-8') as f:
         f.write('hello')
-    ctime = os.path.getctime(file)
-    timeInt = int(ctime)
+    clock_time = os.path.getctime(file)
+    timeInt = int(clock_time)
     assert timeInt < 1800000000
     assert timeInt > 1720000000
     os.remove(file)
@@ -122,6 +125,12 @@ def stat():
     if os.name != 'nt':
         assert statInfo.st_uid == os.getuid()
 
+def euid():
+    # gets effective user id
+    effective_uid = os.geteuid()
+    print(f'{effective_uid=}')
+    assert effective_uid > 0
+
 def main():
     pwd()
     dirname()
@@ -132,13 +141,14 @@ def main():
     cpu_count()
     system()
     exists()
-    remove()
+    remove_test()
     makedirs()
     rename()
     environ()
     ctime()
     getuid()
     stat()
+    euid()
 
 if __name__ == '__main__':
     main()

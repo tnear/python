@@ -12,13 +12,18 @@ def timeDelta():
     # Multiple times such as timedelta(seconds=1, hours=2, days=3) is also valid
     delta = datetime.timedelta(milliseconds=0.1)
 
-    # sleep for 0.1 milliseconds (0.0001 seconds)
-    time.sleep(delta.seconds)
+    # sleep for 0.1 milliseconds (0.0001 seconds).
+    assert delta.seconds == 0 # note: seconds an integer, so cannot use it
+    assert delta.total_seconds() == 0.0001
+    time.sleep(delta.total_seconds())
 
     # there is no milliseconds field, so verify that 0.1 ms equals 100 microseconds
     assert delta.microseconds == 100
     assert delta.seconds == 0
     assert delta.days == 0
+    # documented way to get milliseconds:
+    millis = delta / datetime.timedelta(milliseconds=1)
+    assert millis == 0.1
 
     # add two seconds. This simply does a += on the seconds
     # field and leaves microseconds unchanged.

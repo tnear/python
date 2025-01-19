@@ -58,6 +58,10 @@ def namedCapture():
     # Access like a dictionary
     assert out['msg'] == 'abc'
 
+def compile():
+    # todo: compile
+    ...
+
 def main():
     findAll()
     sub()
@@ -66,6 +70,7 @@ def main():
     searchVsMatch()
     bracketIndexing()
     namedCapture()
+    compile()
 
 if __name__ == '__main__':
     main()

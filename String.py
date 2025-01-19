@@ -76,10 +76,16 @@ def encode():
 def decode():
     assert b'pyth\xc3\xb6n!'.decode() == 'pythön!'
 
+# Representation: turn object into string for debugging
 def Repr():
-    # Representation: turn object into string for debugging
-    # (very similar to str())
+    # repr() is similar to str(), but is intended for developers to see.
     assert repr([1, 2, 3]) == '[1, 2, 3]'
+
+    # use '!r' syntax to tell a variable to use the repr() function
+    # instead of str()
+    message = 'hello\nworld'
+    # print(message) # outputs hello world on two lines
+    print(f'{message!r}') # outputs 'hello\nworld' (one line)
 
 def replace():
     # replace substring
@@ -217,7 +223,7 @@ def fstringExpression():
 
     # multiple variables
     y = 2
-    s = f"{x + y = }"
+    s = f'{x + y = }'
     assert s == 'x + y = 3'
 
 def startsWith():
@@ -259,4 +265,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    print('Tests passed!')
+    print(f'Tests passed for {__file__}!')

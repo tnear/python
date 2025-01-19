@@ -71,6 +71,18 @@ def rename():
     # remove file
     pathlib.Path(fileNew).unlink()
 
+def resolve():
+    # use resolve() to get absolute path (canonical path) to a file
+    file = pathlib.Path('a.txt')
+    abs_path = file.resolve()
+    assert '/python/a.txt' in str(abs_path)
+
+def append():
+    abs_path = pathlib.Path('a.txt').resolve().parent
+    # append using '/' operator
+    abs_path = abs_path / 'b.txt'
+    assert str(abs_path).endswith('/python/b.txt')
+
 def main():
     cwd()
     exists()
@@ -78,6 +90,8 @@ def main():
     parent()
     unlink()
     rename()
+    resolve()
+    append()
 
 if __name__ == '__main__':
     main()

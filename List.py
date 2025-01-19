@@ -1,15 +1,15 @@
 # List: ordered, mutable, allows duplicates
 # Can contain different data types
 
-import sys
+from collections import Counter
 from copy import deepcopy
 import itertools
+import sys
 
 def empty():
     e = []
     assert len(e) == 0
-    e = list() # alt syntax
-    assert len(e) == 0
+    # e = list() # alt syntax (not recommended)
 
 def creation():
     a = ['a', 2, 'c', 'c']
@@ -40,17 +40,18 @@ def find():
     assert 0 not in a
 
 def append():
-    # +=
+    # '+=' operator
     a = [1, 2]
     a += [3]
     assert a == [1, 2, 3]
 
-    # append method
+    # alt syntax: append method
     a.append(4)
     assert a == [1, 2, 3, 4]
 
 def insert():
     a = ['a', 'b', 'd']
+    # insert 'c' at index 2
     a.insert(2, 'c')
     assert a == ['a', 'b', 'c', 'd']
 
@@ -83,12 +84,14 @@ def funcArg(a, b, c):
 
 def unpackFuncArg():
     a = [1, 2, 3]
+    # pass (1, 2, 3) as comma separated list using '*' operator
     funcArg(*a)
 
 def remove():
-    a = ['a', 'b', 'c']
+    # remove() removes the first element with that value (not all)
+    a = ['a', 'b', 'c', 'b']
     a.remove('b')
-    assert a == ['a', 'c']
+    assert a == ['a', 'c', 'b']
 
 def pop():
     # remove index
@@ -151,15 +154,19 @@ def deepCopy():
     b = deepcopy(a)
     assert a == b
 
+    # because 'a' is distinct from 'b', changing it does not impact 'b'
+    a[0] = 0
+    assert a != b
+
 def replicate():
     a = [1, 'b']
     a *= 3
     assert a == [1, 'b', 1, 'b', 1, 'b']
 
-def bytes():
+def bytes_example():
     a = [1, 2, 3, 4, 5]
-    bytes = sys.getsizeof(a)
-    assert bytes == 104 # was 96 earlier
+    b = sys.getsizeof(a)
+    assert b == 104 # was 96 earlier
 
 def index():
     # Find first element and return its index
@@ -178,14 +185,14 @@ def sort():
     # key allows custom sort order
     a = ['aa', 'b', 'ccc']
     # sort by string length (ascending)
-    a.sort(key = lambda item: len(item))
+    a.sort(key=len)
     assert a == ['b', 'aa', 'ccc']
 
 def unique():
     # get unique elements in a list using set() constructor
     a = [2, 1, 2, 4, 4]
-    unique = list(set(a))
-    assert unique == [1, 2, 4]
+    unique_values = list(set(a))
+    assert unique_values == [1, 2, 4]
 
 def flatten():
     # flatten 2D list (matrix) using chain()
@@ -195,6 +202,7 @@ def flatten():
     assert result == [2, 3, 4, 5, 1, 2]
 
 def count():
+    # count() is a linear operation. Use collections.Counter for efficiency.
     a = [3, 1, 2, 1, 1]
     assert a.count(1) == 3
     assert a.count(3) == 1
@@ -207,16 +215,20 @@ def findDuplicates():
     # create a list with duplicate elements
     items = [3, 1, 2, 4, 2, 1, 0]
 
-    # keep track of which elements have been seen
-    seen = set()
-    duplicates = set()
-    for item in items:
-        if item in seen:
-            duplicates.add(item) # seen before, add to duplicate list
-        seen.add(item)
+    # use Counter to track each element's count.
+    # (note: do not use list.count because it is a linear scan)
+    duplicates = [item for item, count in Counter(items).items() if count > 1]
+    assert duplicates == [1, 2]
 
-    duplicateList = list(duplicates)
-    assert duplicateList == [1, 2]
+def next_example():
+    nums = [1, 2, 3, 4, 5]
+    # get first even number using next()
+    first_even = next(x for x in nums if x % 2 == 0)
+    assert first_even == 2
+
+    # alt syntax (not recommended b/c it creates and throws away a temp list)
+    first_even = [x for x in nums if x % 2 == 0][0]
+    assert first_even == 2
 
 def main():
     empty()
@@ -237,13 +249,14 @@ def main():
     shallowCopy()
     deepCopy()
     replicate()
-    bytes()
+    bytes_example()
     index()
     sort()
     unique()
     flatten()
     count()
     findDuplicates()
+    next_example()
 
 if __name__ == '__main__':
     main()
