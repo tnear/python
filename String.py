@@ -85,7 +85,7 @@ def Repr():
     # instead of str()
     message = 'hello\nworld'
     # print(message) # outputs hello world on two lines
-    print(f'{message!r}') # outputs 'hello\nworld' (one line)
+    # print(f'{message!r}') # outputs 'hello\nworld' (one line)
 
 def replace():
     # replace substring
@@ -236,6 +236,29 @@ def endsWith():
     assert s.endswith('ring')
     assert not s.endswith('rin.')
 
+# string.translate() replaces one character with another using
+# a dictionary. It requires ascii values
+def translate():
+    s = 'hello world'
+    # convert 'o' to 'q'. Must use ascii codes.
+    result = s.translate({ord('o'): ord('q')})
+    assert result == 'hellq wqrld'
+
+    # convert 'o' to 'q' and 'l' to 'z'
+    result = s.translate({ord('o'): ord('q'), ord('l'): ord('z')})
+    assert result == 'hezzq wqrzd'
+
+def maketrans():
+    s = 'hello world'
+    # replace o->q and l->z
+    result = s.translate(s.maketrans('ol', 'qz'))
+    assert result == 'hezzq wqrzd'
+
+    # the 3rd parameter (optional) allows deletion of characters.
+    # this also deletes the characters 'h' and 'w'
+    result = s.translate(s.maketrans('ol', 'qz', 'hw'))
+    assert result == 'ezzq qrzd'
+
 def main():
     contains()
     slice()
@@ -262,6 +285,8 @@ def main():
     fstringExpression()
     startsWith()
     endsWith()
+    translate()
+    maketrans()
 
 if __name__ == '__main__':
     main()
