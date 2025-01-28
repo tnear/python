@@ -17,6 +17,13 @@ class Person:
     # default values must be listed last, same as with function arguments
     country: str = 'United States'
 
+    # use __post_init__ to verify initialization instead of __init__
+    def __post_init__(self):
+        assert len(self.first_name) > 0
+        assert len(self.last_name) > 0
+        assert self.age >= 0
+        assert len(self.country) > 0
+
     def full_name(self) -> str:
         return self.first_name + ' ' + self.last_name
 

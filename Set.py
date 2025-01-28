@@ -60,11 +60,14 @@ def remove():
     if 'fake_elem' in s:
         s.remove('fake_elem')
 
+    # use discard() to avoid conditionals and exceptions
+    s.discard('fake_elem')
+
 def discard():
     # similar to remove, but does not throw errors
     s = {'a', 'b', 'c'}
     s.discard('a')
-    s.discard('fake_elem') # no-op
+    s.discard('fake_elem') # no-op when element doesn't exist
     assert s == {'b', 'c'}
 
 def clear():
