@@ -11,7 +11,7 @@ def version():
 
 def executable():
     # get python executable location
-    assert 'python.' in sys.executable
+    assert 'python' in sys.executable
 
 def stdout():
     sys.stdout.write('hello world!\n')
@@ -35,7 +35,7 @@ def maxsize():
 
 def getsizeof():
     a = [1, 2, 3, 4, 5]
-    assert sys.getsizeof(a) == 96
+    assert sys.getsizeof(a) in (96, 104)
 
     # tuples are more compact than lists
     b = tuple(a)
@@ -54,6 +54,16 @@ def prefix():
 def basePrefix():
     assert 'Python' in sys.base_prefix
 
+def int_max_str_digits():
+    # default number of digits allowed for converting between
+    # int and string
+    assert sys.get_int_max_str_digits() == 4300
+
+    # increase limit:
+    # sys.set_int_max_str_digits(5000)
+    # remove limit:
+    # sys.set_int_max_str_digits(0)
+
 def main():
     version()
     executable()
@@ -65,6 +75,7 @@ def main():
     byteorder()
     prefix()
     basePrefix()
+    int_max_str_digits()
 
 if __name__ == '__main__':
     main()

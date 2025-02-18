@@ -127,6 +127,10 @@ def difference():
     diff = s.difference(s)
     assert diff == set() # set difference with self produces empty set
 
+    # set also supports the subtraction (-) operator
+    diff = s - t
+    assert diff == {1}
+
 def main():
     empty()
     create()
