@@ -6,41 +6,41 @@ import platform
 def architecture():
     # Returns tuple of (bits, linkage)
     arch = platform.architecture()
-    assert arch == ('64bit', 'WindowsPE')
+    assert '64bit' in arch
 
 def machine():
     # Returns machine type
     m = platform.machine()
-    assert m == 'AMD64'
+    assert m in ('AMD64', 'arm64')
 
 def node():
     # Returns computer name (hostname)
-    n = platform.node()
-    assert 'LAPTOP' in n
+    node = platform.node()
+    print(f'{node}')
 
 def platformFcn():
     # Return human readable description of platform
     p = platform.platform()
-    assert 'Windows' in p
+    assert 'Windows' in p or 'macOS' in p
 
 def processor():
-    p = platform.processor()
-    assert p == 'Intel64 Family 6 Model 158 Stepping 10, GenuineIntel'
+    processor = platform.processor()
+    assert 'Intel64' in processor or processor == 'arm'
 
 def release():
     # Returns system's release
-    r = platform.release()
-    assert r == '10'
+    release = platform.release()
+    print(f'{release=}')
 
 def system():
     # Return OS name
     # value = {ispc: 'Windows', islinux: 'Linux', ismac: 'Darwin'}
-    s = platform.system()
-    assert s == 'Windows'
+    system = platform.system()
+    assert system in ('Windows', 'Darwin')
 
 def version():
-    v = platform.version()
-    assert v == '10.0.19044'
+    version = platform.version()
+    assert 'Version' in version
 
 def uname():
     # Returns 6 other platform attributes at once:

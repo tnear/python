@@ -50,7 +50,8 @@ def comprehension():
 
 def getsizeof():
     a = [1, 2, 3, 4, 5]
-    assert sys.getsizeof(a) == 96
+    # size used to be 96, now is 104
+    assert sys.getsizeof(a) in (96, 104)
 
     # tuples are more compact than lists
     b = tuple(a)

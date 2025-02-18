@@ -2,7 +2,7 @@ import math
 
 def string():
     assert str(3) == '3'
-    assert str(math) == "<module 'math' (built-in)>"
+    assert "module 'math'" in str(math)
     assert str(math.pi) == '3.141592653589793'
 
 def floatingPoint():

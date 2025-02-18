@@ -77,6 +77,7 @@ def creation():
 
 if __name__ == '__main__':
     unittest.main()
+    print('Tests passed!')
 
     # Note: this line will allow for profiling with cProfile:
     # unittest.main(module='UnitTest') # 'UnitTest' is module name

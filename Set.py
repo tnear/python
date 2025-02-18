@@ -15,9 +15,9 @@ def create():
     assert s == {1, 'b'}
 
 def find():
+    assert 1 in {1}
     assert 3 in {1, 2, 3}
     assert 4 not in {1, 2, 3}
-    assert 1 in {1, 1, 1}
 
 def add():
     # add/insert element in set

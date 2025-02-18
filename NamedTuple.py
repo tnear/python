@@ -12,17 +12,17 @@ def basic():
     # access index
     assert s[0] == 'Alice'
     assert s[1] == 99
-    assert s[2] == False
+    assert not s[2]
 
     # access name
     assert s.name == 'Alice'
     assert s.age == 99
-    assert s.gender == False
+    assert not s.gender
 
     # use getattr
     assert getattr(s, 'name') == 'Alice'
     assert getattr(s, 'age') == 99
-    assert getattr(s, 'gender') == False
+    assert not getattr(s, 'gender')
 
 def main():
     basic()
