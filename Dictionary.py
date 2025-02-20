@@ -8,7 +8,7 @@ def empty():
 
 def create():
     d = {1: 2, 'c': 4}
-    # note: keys() is rarely needed:
+    # note: dict.keys() is rarely needed:
     assert list(d) == [1, 'c'] # list(d) is same as list(d.keys())
     assert list(d.values()) == [2, 4]
 
