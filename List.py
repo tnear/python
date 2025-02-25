@@ -227,8 +227,12 @@ def next_example():
     assert first_even == 2
 
     # alt syntax (not recommended b/c it creates and throws away a temp list)
-    first_even = [x for x in nums if x % 2 == 0][0]
-    assert first_even == 2
+    #first_even = [x for x in nums if x % 2 == 0][0]
+    #assert first_even == 2
+
+    # the optional second argument to next() provides a default value
+    no_data = next((x for x in nums if x > 100), None)
+    assert no_data is None
 
 def main():
     empty()
