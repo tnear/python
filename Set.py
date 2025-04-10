@@ -131,6 +131,36 @@ def difference():
     diff = s - t
     assert diff == {1}
 
+def disjoint():
+    s1 = {1, 2, 3}
+    s2 = {4, 5}
+    # s1 and s2 have no elements in common
+    assert s1.isdisjoint(s2)
+    assert not s1.isdisjoint(s1)
+
+def subset():
+    s1 = {1, 2, 3}
+    s2 = {1, 2, 3, 4, 5}
+
+    # s1 is a subset of s2 because all elements of s1 are in s2
+    assert s1.issubset(s2)
+    assert s1.issubset(s1)
+
+    # '<=' is equivalent syntax
+    assert s1 <= s2
+
+    # reverse is not true
+    assert not s2.issubset(s1)
+
+def superset():
+    s1 = {1, 2, 3}
+    s2 = {1, 2, 3, 4, 5}
+
+    assert s2.issuperset(s1)
+    assert s2 >= s1 # equivalent syntax
+
+    assert not s1.issuperset(s2)
+
 def main():
     empty()
     create()
@@ -147,6 +177,9 @@ def main():
     sequence()
     pop()
     difference()
+    disjoint()
+    subset()
+    superset()
 
 if __name__ == '__main__':
     main()
