@@ -3,7 +3,9 @@
 # https://realpython.com/python-mock-library/
 
 import unittest.mock
+from unittest.mock import patch
 import datetime
+import requests
 
 # create some dates for testing
 tuesday = datetime.datetime(year=2019, month=1, day=1)
@@ -87,12 +89,37 @@ def sideEffectFunction():
     assert mock(1) == 2
     assert mock(2) == 3
 
+def _send_data_to_api(data):
+    response = requests.post('https://api.example.com/endpoint', json=data)
+    if response.status_code == 200:
+        return response.json()
+    return ''
+
+# use @patch to replace 'requests.post' with a test version
+# which does not send any network requests
+@patch('requests.post')
+def patching(mock_post):
+    mock_response = unittest.mock.Mock()
+    # mock successful return
+    mock_response.status_code = 200
+    mock_response.json.return_value = {"status": "success", "id": 123}
+    mock_post.return_value = mock_response
+
+    # call the function with test data
+    data = {'name': 'test', 'value': 42}
+    result = _send_data_to_api(data)
+
+    # verify mock response. note: can use ANY as a wildcard (not shown)
+    assert result == {'status': 'success', 'id': 123}
+    mock_post.assert_called_once_with('https://api.example.com/endpoint', json=data)
+
 def main():
     creation()
     methods()
     returnValue()
     sideEffect()
     sideEffectFunction()
+    patching()
 
 if __name__ == '__main__':
     main()
