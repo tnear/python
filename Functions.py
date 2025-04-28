@@ -20,7 +20,9 @@ def argTypes(a: int, s: str) -> list:
 def idFcn():
     # id() returns unique constant for an object
     assert id(None) > 0
+    print(f'Example id: {id(None)}')
 
+    # empty list is stored as the same constant
     val = id([])
     val2 = id([])
     assert val == val2
