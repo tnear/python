@@ -8,6 +8,7 @@ class Demo:
     def __init__(self, name):
         self.name = name
 
+    # __del__ is Python's destructor method
     def __del__(self):
         print(f'{self.name} object is being deleted')
 

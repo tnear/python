@@ -24,17 +24,32 @@ def error_command():
 def check_output():
     # check_output is equivalent to subprocess.run(..., check=True, stdout=PIPE).
     # check_output raises an exception (instead of setting returncode) for errors.
-    # check_output returns bytes
+    # check_output returns bytes, which often need to be decoded into a string.
     byte_array = subprocess.check_output(['ls'])
     assert isinstance(byte_array, bytes)
     string = byte_array.decode()
     assert 'Subprocess.py' in string
+
+def check_output_args():
+    # multiple arguments must be in a list. Ex: 'ls -l' will not work.
+    byte_array = subprocess.check_output(['ls', '-l'])
+    # byte_array = subprocess.check_output(['ls -l']) # throws error
+    string = byte_array.decode()
+    assert 'rw-' in string
+    
+def popen():
+    # Popen will throw for an invalid command
+    process = subprocess.Popen(['ls', '-la'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    stdout, _ = process.communicate()
+    assert 'rwx' in stdout.decode()
 
 def main():
     basic()
     multipleArguments()
     error_command()
     check_output()
+    check_output_args()
+    popen()
 
 if __name__ == '__main__':
     main()
