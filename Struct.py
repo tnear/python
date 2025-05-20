@@ -33,9 +33,29 @@ def unpack():
     tup = struct.unpack('h?', s)
     assert tup == (2, True)
 
+def string():
+    # assume 32 string max length. Uses syntax '32s'
+    my_binary_str = b'my_binary_str'
+    packed_string = struct.pack('32s', my_binary_str)
+    
+    result = struct.unpack('32s', packed_string)
+    result = result[0].decode().rstrip('\0')
+    assert result == my_binary_str.decode()
+
+def calcsize():
+    # Byte order character
+    # @ = native (default)
+    # < = little-endian
+    # > = big-endian
+    format_string = '!BBBBLQ'
+    size = struct.calcsize(format_string)
+    assert size == 16
+
 def main():
     pack()
     unpack()
+    string()
+    calcsize()
 
 if __name__ == '__main__':
     main()

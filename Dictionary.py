@@ -145,7 +145,7 @@ def flatten_to_list():
     flattened = list(d.items())
 
     exp = [('a', 1), ('b', 2), ('c', 'three')]
-    assert(flattened == exp)
+    assert flattened == exp
 
 def main():
     empty()
