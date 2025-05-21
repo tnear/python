@@ -17,7 +17,7 @@ def ipAddress():
 
 def connect():
     # (default) AF_INET = IPv4
-    # (default) SOCK_STREAM =  TCP
+    # (default) SOCK_STREAM = TCP
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     hostIp = socket.gethostbyname('www.google.com')

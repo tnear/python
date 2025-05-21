@@ -259,6 +259,20 @@ def maketrans():
     result = s.translate(s.maketrans('ol', 'qz', 'hw'))
     assert result == 'ezzq qrzd'
 
+def multiline_with_newline():
+    # subsequent lines must have left indent removed.
+    # use textwrap.dedent to avoid this requirement.
+    s = '''hello
+world'''
+    assert s == 'hello\nworld'
+
+def multiline_without_newline():
+    # wrap in parens to format a long line without newlines.
+    # useful for breaking long lines of text without introducing newlines
+    s = ('hello '
+         'world')
+    assert s == 'hello world'
+
 def main():
     contains()
     slice()
@@ -287,6 +301,8 @@ def main():
     endsWith()
     translate()
     maketrans()
+    multiline_with_newline()
+    multiline_without_newline()
 
 if __name__ == '__main__':
     main()

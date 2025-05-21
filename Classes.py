@@ -2,6 +2,7 @@
 
 # Properties:
 class MyProp:
+    # static variables shared by all instances
     prop = 5
     _radius = 10
 
@@ -74,12 +75,18 @@ def methodDecorator():
     mp = MyProp()
     assert mp.radius == 10
 
+def static_variables():
+    assert MyProp.prop == 5
+    MyProp.prop = 6
+    assert MyProp.prop == 6
+
 def main():
     properties()
     constructor()
     iterator()
     staticMethod()
     methodDecorator()
+    static_variables()
 
 if __name__ == '__main__':
     main()

@@ -2,7 +2,6 @@
 # https://docs.python.org/3/library/textwrap.html
 
 import textwrap
-from textwrap import dedent
 
 def fillExample():
     s = 'long line 123 long line 456 long line 789 long line 101'
