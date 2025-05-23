@@ -273,6 +273,33 @@ def multiline_without_newline():
          'world')
     assert s == 'hello world'
 
+def left_justify():
+    s = 'hello'
+    # ensure string is at least 8 chars (pad to right)
+    s = s.ljust(8)
+    assert s == 'hello   '
+
+    # fill with '1' instead of space
+    s = 'hello'
+    s = s.ljust(8, '1')
+    assert s == 'hello111'
+
+    s = 'hello'
+    # ljust does nothing if the string is already as long
+    s = s.ljust(2)
+    assert s == 'hello'
+
+def right_justify():
+    s = 'hello'
+    # ensure string is at least 8 chars (pad to left)
+    s = s.rjust(8)
+    assert s == '   hello'
+
+    # fill with '1' instead of space
+    s = 'hello'
+    s = s.rjust(8, '1')
+    assert s == '111hello'
+
 def main():
     contains()
     slice()
@@ -303,6 +330,8 @@ def main():
     maketrans()
     multiline_with_newline()
     multiline_without_newline()
+    left_justify()
+    right_justify()
 
 if __name__ == '__main__':
     main()
