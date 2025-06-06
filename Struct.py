@@ -6,8 +6,12 @@ import struct
 def pack():
     # struct.pack(formatString, arg1, arg2, ...)
     # ?: bool (1 byte)
+    # b: char (1 byte)
+    # B: uchar (1 byte)
     # h: short (2 bytes)
+    # H: ushort (2 bytes)
     # i: int (4 bytes)
+    # I: uint (4 bytes)
     # f: float (4 bytes)
     # d: double (8 bytes)
     # Q: unsigned long long (8 bytes)

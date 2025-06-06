@@ -6,6 +6,8 @@
 
 import re
 import socket
+import time
+import threading
 
 def ipAddress():
     # get ip address for domain (format: w.x.y.z)
@@ -40,10 +42,42 @@ def bind():
     #conn.send('Successfully connected!'.encode())
     #conn.close()
 
+def start_server():
+    s = socket.socket()
+    s.bind(('localhost', 0))
+    port = s.getsockname()[1]
+    s.listen(1)
+
+    def handle():
+        conn, addr = s.accept()
+        data = conn.recv(1024)
+        print(f'Received: {data.decode()}')
+        print(f'{len(data)=} bytes')
+        conn.send(b'OK')
+        conn.close()
+        s.close()
+
+    threading.Thread(target=handle, daemon=True).start()
+    return port
+
+def test_connection():
+    port = start_server()
+    time.sleep(0.1)  # Let server start
+
+    client = socket.socket()
+    client.connect(('localhost', port))
+    client.send(b'Hello')
+    response = client.recv(1024)
+    client.close()
+
+    print(f'Response: {response.decode()}')
+    assert response == b'OK'
+
 def main():
     ipAddress()
     connect()
     bind()
+    test_connection()
 
 if __name__ == '__main__':
     main()

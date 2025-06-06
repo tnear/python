@@ -39,9 +39,20 @@ def monotonic():
     old = time.monotonic()
 
     time.sleep(.1)
-    print(old)
-    print(time.monotonic())
+    print(f'{old=}')
+    print(f'{time.monotonic()=}')
     assert time.monotonic() - old >= .05
+
+def perf_counter():
+    # perf_counter is used for high-resolution time measurements.
+    # It returns a float.
+    # It is not guaranteed to be monotonic
+    start_time = time.perf_counter()
+
+    time.sleep(0.001)
+    end_time = time.perf_counter()
+    perf_counter_time = end_time - start_time
+    print(f'{perf_counter_time=}')
 
 def main():
     epoch()
@@ -49,6 +60,7 @@ def main():
     intToString()
     duration()
     monotonic()
+    perf_counter()
 
 if __name__ == '__main__':
     main()
