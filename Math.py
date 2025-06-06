@@ -72,6 +72,16 @@ def permutations():
     assert math.perm(4, 4) == 24 # 0! = 1
     assert math.perm(52, 3) == 132600
 
+# floats in python are 64-bits
+def float_overflow():
+    try:
+        # create a number larger than realmax
+        result = 2.0 ** 1024
+        assert False  # unreachable
+    except OverflowError:
+        # expected overflow
+        ...
+
 def main():
     minMax()
     power()
@@ -84,6 +94,7 @@ def main():
     custom_nchoosek()
     factorial()
     permutations()
+    float_overflow()
 
 if __name__ == '__main__':
     main()
