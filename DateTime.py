@@ -52,9 +52,16 @@ def timeDeltaNegative():
     delta = datetime.timedelta(seconds=(86400*2) - 2)
     assert delta.seconds == 86_400 - 2
 
+def now():
+    current_timestamp = datetime.datetime.now()
+    # example now() output:
+    # current_timestamp=datetime.datetime(2025, 6, 9, 15, 35, 45, 219770)
+    print(f'{current_timestamp=}')
+
 def main():
     timeDelta()
     timeDeltaNegative()
+    now()
 
 if __name__ == '__main__':
     main()

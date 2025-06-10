@@ -18,7 +18,8 @@ def Queue():
 
     assert not q.empty()
 
-    # Remove 1 to 5
+    # get() returns and removes the oldest element in the queue.
+    # Remove 1 to 5:
     assert q.get() == 1
     assert q.get() == 2
     assert q.get() == 3

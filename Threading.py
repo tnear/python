@@ -20,7 +20,7 @@ import logging
 import requests
 import time
 
-def _threadFunction(arg1, arg2):
+def _threadFunction(arg1, arg2=None):
     print(f'Running in a thread with args: {arg1} {arg2}')
 
     # get thread's identity (a non-negative integer)
@@ -31,6 +31,11 @@ def threadCreation():
     thread = threading.Thread(target=_threadFunction, args=('hello', 'world'))
 
     # start thread
+    thread.start()
+    thread.join()
+
+    # be sure to use a trailing comma when constructing a tuple with one element:
+    thread = threading.Thread(target=_threadFunction, args=('one_elem_tuple',))
     thread.start()
     thread.join()
 
@@ -147,17 +152,34 @@ def downloadSite(url):
         print(f'Read {len(response.content)} bytes from {url}')
 
 def downloadAllSites(sites):
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
         executor.map(downloadSite, sites)
 
 def local():
     # this example uses threading.Local to create one requests session per thread
     # by downloading sites is parallel (which is IO-bound), this should improve performance
-    sites = ['https://www.jython.org', 'http://olympus.realpython.org/dice'] * 20
+    sites = ['http://olympus.realpython.org/dice'] * 3
     startTime = time.monotonic()
     downloadAllSites(sites)
     duration = time.monotonic() - startTime
     print(f'Downloaded {len(sites)} sites in {duration} seconds!')
+
+def _slow_function():
+    # simulate work
+    time.sleep(0.25)
+
+def is_alive():
+    # use is_alive to determine if a thread is joinable
+    thread = threading.Thread(target=_slow_function)
+    assert not thread.is_alive()
+    thread.start()
+
+    # thread is still running because it executes a slow function
+    assert thread.is_alive()
+
+    # calling join waits for thread to complete (is_alive=False)
+    thread.join()
+    assert not thread.is_alive()
 
 def main():
     threadCreation()
@@ -168,6 +190,7 @@ def main():
     timer()
     semaphore()
     local()
+    is_alive()
 
 if __name__ == '__main__':
     main()
