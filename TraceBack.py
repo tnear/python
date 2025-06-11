@@ -1,4 +1,4 @@
-# traceback — Print or retrieve a stack traceback
+# traceback — Print or retrieve a stack traceback (backtrace)
 # https://docs.python.org/3/library/traceback.html
 
 import traceback
