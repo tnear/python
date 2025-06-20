@@ -82,6 +82,21 @@ def typeFcn():
     t = type(1.0) # <class 'float'>
     assert isinstance(1.0, float)
 
+class MyClass:
+    def setter(self, value):
+        self.value = value
+
+# hasattr(obj, attr) checks if an object has a given attribute
+def has_attr():
+    # list has an 'append' method
+    assert hasattr([], 'append')
+    assert not hasattr([], 'nonexistent')
+
+    c = MyClass()
+    assert not hasattr(c, 'value')  # 'value' is not set yet
+    c.setter(10)
+    assert hasattr(c, 'value')  # 'value' is set now
+
 def main():
     arbitrary('a', 'b', 'c')
     namedArgs(a='1', b='2', c='3')
@@ -96,6 +111,7 @@ def main():
     varsFcn()
     dirFcn()
     typeFcn()
+    has_attr()
 
 if __name__ == '__main__':
     main()

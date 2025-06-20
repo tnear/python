@@ -64,6 +64,14 @@ def int_max_str_digits():
     # remove limit:
     # sys.set_int_max_str_digits(0)
 
+def modules():
+    # modules is a dictionary indicating which modules are loaded
+    assert 'sys' in sys.modules
+
+    # check if debug session is active
+    debug_session = 'debugpy' in sys.modules
+    print(f'{debug_session=}')
+
 def main():
     version()
     executable()
@@ -76,6 +84,7 @@ def main():
     prefix()
     basePrefix()
     int_max_str_digits()
+    modules()
 
 if __name__ == '__main__':
     main()
