@@ -27,10 +27,15 @@ def Is():
     assert x is not z
     assert x == z
 
-def Nonlocal():
-    # Used for variables in nested functions
-    # ex: https://www.w3schools.com/python/ref_keyword_nonlocal.asp
-    pass
+# Used to make variables accessible in nested functions
+def NonLocal():
+    x = 10
+
+    def nested():
+        nonlocal x  # tells Python to use outer scope's x
+        assert x == 10
+
+    nested()
 
 def Raise():
     x = 5
@@ -54,7 +59,7 @@ def main():
     none()
     Not()
     Is()
-    Nonlocal()
+    NonLocal()
     Raise()
     Assert()
     With()
