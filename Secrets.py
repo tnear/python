@@ -19,10 +19,19 @@ def randbits():
     randBits = secrets.randbits(256)
     print(randBits)
 
+def token_hex():
+    # create 8 random hex characters.
+    # divide by 2 because each byte of input creates 2 hex chars
+    out = secrets.token_hex(nbytes = 8//2)
+
+    print(f'{out=}')  # ex: out='76cee20c'
+    assert len(out) == 8
+
 def main():
     randint()
     choices()
     randbits()
+    token_hex()
 
 if __name__ == '__main__':
     main()

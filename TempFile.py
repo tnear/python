@@ -28,7 +28,7 @@ def temp_dir_context_manager():
         print(f'{temp_dir=}')
 
 # NamedTemporaryFile creates a uniquely named temporary file with parameters
-# for prefix and suffix. The file is deleted when it scope ends.
+# for prefix and suffix. The file is deleted when it scope ends (fixture).
 def named_temporary_file():
     with tempfile.NamedTemporaryFile(mode='w', suffix='.dat', prefix='my_file_') as f:
         # get file name, ex: '/tmp/my_file_<rand>.dat'
