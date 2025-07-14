@@ -7,9 +7,11 @@ def fileWith():
     # Use 'with' keyword to close file automatically
     file = 'a.txt'
 
-    # write file
+    # write file. write() returns number of bytes written
     with open(file, 'w', encoding='utf-8') as f:
-        f.write('hello world!')
+        num_bytes = f.write('hello world!')
+
+    assert num_bytes == 12
 
     # read entire file
     with open(file, 'r', encoding='utf-8') as f:
