@@ -41,7 +41,7 @@ def string():
     # assume 32 string max length. Uses syntax '32s'
     my_binary_str = b'my_binary_str'
     packed_string = struct.pack('32s', my_binary_str)
-    
+
     result = struct.unpack('32s', packed_string)
     result = result[0].decode().rstrip('\0')
     assert result == my_binary_str.decode()

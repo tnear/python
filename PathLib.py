@@ -14,6 +14,8 @@ def cwd():
 
     if platform.system() == 'Windows':
         assert isinstance(pwd, pathlib.WindowsPath)
+    else:
+        assert isinstance(pwd, pathlib.PosixPath)
 
 def exists():
     file = 'Pathlib.py'
@@ -83,6 +85,11 @@ def append():
     abs_path = abs_path / 'b.txt'
     assert str(abs_path).endswith('/python/b.txt')
 
+def to_string():
+    p = pathlib.Path('abc.txt')
+    # use the str() function to convert a Path to string
+    assert str(p) == 'abc.txt'
+
 def main():
     cwd()
     exists()
@@ -92,6 +99,7 @@ def main():
     rename()
     resolve()
     append()
+    to_string()
 
 if __name__ == '__main__':
     main()

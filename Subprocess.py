@@ -36,7 +36,7 @@ def check_output_args():
     # byte_array = subprocess.check_output(['ls -l']) # throws error
     string = byte_array.decode()
     assert 'rw-' in string
-    
+
 def popen():
     # Popen will throw for an invalid command
     process = subprocess.Popen(['ls', '-la'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)

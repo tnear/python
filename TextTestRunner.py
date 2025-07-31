@@ -7,13 +7,13 @@ class VerboseTestResult(TextTestResult):
     def __init__(self, stream, descriptions, verbosity):
         super().__init__(stream, descriptions, verbosity)
         self.start_time = 0
-    
+
     def startTest(self, test):
         super().startTest(test)
         test_name = self.getDescription(test)
         print(f'\n[SETUP] {test_name}', file=sys.stderr)
         self.start_time = time.time()
-    
+
     def stopTest(self, test):
         test_name = self.getDescription(test)
         elapsed = time.time() - self.start_time
@@ -36,7 +36,7 @@ def run_tests(test_case_class):
     '''
     A utility function that can be imported and used to run tests
     with our custom runner.
-    
+
     Usage:
         if __name__ == '__main__':
             from test_utils import run_tests
@@ -61,7 +61,7 @@ class SampleTest(unittest.TestCase):
         for expected, actual in test_cases:
             with self.subTest(expected=expected, actual=actual):
                 self.assertEqual(expected, actual)
-    
+
     def test_another_example(self):
         time.sleep(0.005)
         self.assertTrue(True)
