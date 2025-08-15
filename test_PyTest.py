@@ -13,6 +13,7 @@ Common command line flags:
 -v, --verbose    = show each test name
 -s, --capture=no = display stdout
 -q, --quiet      = decrease verbosity
+--collect-only   = lists tests in order they will be run
 '''
 
 def add_one(x):
