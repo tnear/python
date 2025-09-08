@@ -2,6 +2,7 @@
 # https://docs.python.org/3/library/json.html
 
 import json
+import os
 
 def dumps():
     # convert dictionary to JSON string
@@ -34,10 +35,37 @@ def dumpLoad():
     y = json.loads(x)
     assert var == y
 
+# load json file
+def load():
+    file = 'a.txt'
+    with open(file, 'w', encoding='utf=8') as f:
+        f.write('{"hello": 123}')
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    assert data == {'hello': 123}
+
+    # write invalid json
+    with open(file, 'w', encoding='utf-8') as f:
+        f.write('hello world')
+    
+    caught_error = False
+    try:
+        # reading invalid json files throw exception
+        with open(file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except json.JSONDecodeError:
+        caught_error = True
+
+    assert caught_error
+    os.remove(file)
+
 def main():
     dumps()
     loads()
     dumpLoad()
+    load()
 
 if __name__ == '__main__':
     main()
