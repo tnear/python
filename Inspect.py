@@ -12,7 +12,7 @@ def current_frame():
     # get its class name via 'self' parameter
     caller_class = caller_frame.f_locals['self'].__class__.__name__
     assert caller_class == 'MyClass'
-    
+
     # get calling method name
     caller_method = caller_frame.f_code.co_name
     assert caller_method == 'my_method'

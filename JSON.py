@@ -49,7 +49,7 @@ def load():
     # write invalid json
     with open(file, 'w', encoding='utf-8') as f:
         f.write('hello world')
-    
+
     caught_error = False
     try:
         # reading invalid json files throw exception

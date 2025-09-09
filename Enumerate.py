@@ -23,9 +23,17 @@ def enumerateTwoArgs():
     assert idxs == [0, 1, 2, 3]
     assert elems == ['a', 'b', 'c', 'd']
 
+def start():
+    elems = ['a', 'b', 'c']
+    # use 'start' to specify a start index
+    for idx, elem in enumerate(elems, start=3):
+        assert idx >= 3
+        assert elem in elems
+
 def main():
     enumerateOneArg()
     enumerateTwoArgs()
+    start()
 
 if __name__ == '__main__':
     main()
