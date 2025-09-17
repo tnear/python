@@ -17,7 +17,7 @@
 import threading
 import concurrent.futures
 import logging
-import requests
+# import requests
 import time
 
 def _threadFunction(arg1, arg2=None):

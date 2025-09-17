@@ -4,11 +4,14 @@
 import ctypes
 import ctypes.util
 
-# Load libc and call one if its functions.
+# Load libc and call one of its functions.
 # This can be useful when calling functions not available in python
 # (but to keep it simple and portable, this example uses strlen)
 def cdll():
+    # load libc dll
     libc = ctypes.CDLL(ctypes.util.find_library('c'))
+
+    # byte string to test
     test_string = b'hello, world!'
 
     # Always be explicit about data types. Without this, ctypes

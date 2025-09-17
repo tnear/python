@@ -3,6 +3,7 @@
 
 # Note: prefer pathlib over os.path
 
+import contextlib
 import os
 import platform
 
@@ -128,8 +129,23 @@ def stat():
 def euid():
     # gets effective user id
     effective_uid = os.geteuid()
-    print(f'{effective_uid=}')
     assert effective_uid > 0
+
+# fixture to change pwd then change back
+@contextlib.contextmanager
+def change_dir_fixture(path):
+    original = os.getcwd()
+    try:
+        os.chdir(path)
+        yield
+    finally:
+        os.chdir(original)
+
+# change directory ('cd')
+def chdir():
+    # change into parent directory
+    with change_dir_fixture('..'):
+        ...
 
 def main():
     pwd()
@@ -149,6 +165,7 @@ def main():
     getuid()
     stat()
     euid()
+    chdir()
 
 if __name__ == '__main__':
     main()
