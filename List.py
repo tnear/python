@@ -49,11 +49,21 @@ def append():
     a.append(4)
     assert a == [1, 2, 3, 4]
 
+# insert() has to shift all elements after, O(n) worst-case
 def insert():
     a = ['a', 'b', 'd']
     # insert 'c' at index 2
     a.insert(2, 'c')
     assert a == ['a', 'b', 'c', 'd']
+
+    # insert at beginning of list using insert()
+    a.insert(0, '0')
+    assert a == ['0', 'a', 'b', 'c', 'd']
+
+    # insert at beginning using list concatenation (creates new list, also O(n))
+    a = [2, 3, 4]
+    a = [1] + a
+    assert a == [1, 2, 3, 4]
 
 def concatenate():
     a = [1, 2]

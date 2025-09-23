@@ -1,12 +1,15 @@
-# Memory-mapped file support
-# https://docs.python.org/3/library/mmap.html
-# https://realpython.com/python-mmap/
+'''
+Memory-mapped file support
+https://docs.python.org/3/library/mmap.html
+https://realpython.com/python-mmap/
+'''
 
 import mmap
+import ctypes
 import pathlib
 import timeit
 
-def fcn():
+def basic_usage():
     # write file (no mmap)
     file = 'a.txt'
     with open(file, 'w', encoding='utf-8') as f:
@@ -47,9 +50,17 @@ def benchmark():
     # cleanup
     pathlib.Path(file).unlink()
 
+def anonymous_memory():
+    # use -1 fileno to indicate anonymous memory
+    with mmap.mmap(-1, 8) as mm:
+        # get memory address
+        mem_addr = ctypes.addressof(ctypes.c_char.from_buffer(mm))
+        assert mem_addr > 0
+
 def main():
-    fcn()
+    basic_usage()
     benchmark()
+    anonymous_memory()
 
 if __name__ == '__main__':
     main()
