@@ -13,6 +13,7 @@ def logLevels():
 
     logging.debug('debug message here')
     logging.info('info message here')
+    logging.error('error message here')
 
 def getLogger():
     logger = logging.getLogger()
