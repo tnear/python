@@ -101,6 +101,13 @@ def environ():
         shell = os.environ['SHELL']
         assert '/bin' in shell
 
+    # set environment variable
+    os.environ['MY_VAR'] = 'hello_world'
+    assert os.environ['MY_VAR'] == 'hello_world'
+
+    # clear/delete/remove when done
+    del os.environ['MY_VAR']
+
 def ctime():
     # get last change time for a file, ex: 1726845576.2636948
     file = 'os_ctime.txt'

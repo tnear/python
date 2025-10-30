@@ -14,6 +14,7 @@ Common command line flags:
 -s, --capture=no = display stdout
 -q, --quiet      = decrease verbosity
 --collect-only   = lists tests in order they will be run
+-m mark_name     = run test by mark name
 '''
 
 def add_one(x):
