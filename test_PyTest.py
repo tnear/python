@@ -6,7 +6,7 @@ pytest discovers tests by looking for functions prefixed with 'test_'
 import pytest
 
 # to run entire file:
-# pytest <file>
+# pytest -sv <file>
 
 '''
 Common command line flags:
@@ -72,3 +72,13 @@ class TestParameter:
 def test_combinations(x, y, z):
     # print(f'Testing with: x={x}, y={y}, z={z}')
     pass
+
+# tmp_path fixture creates a working directory managed by pytest
+def test_tmp_path(tmp_path):
+    # creates PosixPath object:
+    file_path = tmp_path / 'file.txt'
+    print(f'{file_path=}')
+
+    # create path string
+    file_path_str = str(tmp_path / 'file2.txt')
+    print(f'{file_path_str=}')

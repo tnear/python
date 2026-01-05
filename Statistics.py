@@ -5,7 +5,7 @@ import statistics
 
 # quantiles is python 3.8+
 def quantiles():
-    # data does not ned to be sorted for quantiles()
+    # data does not need to be sorted for quantiles()
     data = [3.2, 1.1, 2.7, 1.9, 4.8]
 
     # n = number of quantiles. Choose 100 to compute percentile.
