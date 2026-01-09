@@ -43,6 +43,14 @@ def popen():
     stdout, _ = process.communicate()
     assert 'rwx' in stdout.decode()
 
+def check_call():
+    # check_call is similar to check_output, but it discards output.
+    # check_call is equivalent to subprocess.run(..., check=True)
+
+    # This command prints output, but only an exit code is returned
+    return_code = subprocess.check_call(['echo', 'check_call test'])
+    assert return_code == 0
+
 def main():
     basic()
     multipleArguments()
@@ -50,6 +58,7 @@ def main():
     check_output()
     check_output_args()
     popen()
+    check_call()
 
 if __name__ == '__main__':
     main()
