@@ -66,7 +66,6 @@ class SampleTest(unittest.TestCase):
         time.sleep(0.005)
         self.assertTrue(True)
 
-
 # Example usage
 if __name__ == '__main__':
     run_tests(SampleTest)

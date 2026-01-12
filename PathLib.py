@@ -90,6 +90,13 @@ def to_string():
     # use the str() function to convert a Path to string
     assert str(p) == 'abc.txt'
 
+# use resolve() to follow symlinks (symbolic links)
+def resolve():
+    p = pathlib.Path('abc.txt')
+    p2 = p.resolve()
+    # not a real symlink, so absolute paths should match
+    assert p.absolute() == p2
+
 def main():
     cwd()
     exists()
@@ -100,6 +107,7 @@ def main():
     resolve()
     append()
     to_string()
+    resolve()
 
 if __name__ == '__main__':
     main()
