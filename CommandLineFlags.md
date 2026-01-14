@@ -1,8 +1,8 @@
 # Command Line Flags
 
-Common command line flags for Python.
+Common command line (CLI) flags for Python.
 
-## `-c <command`
+## `-c <command>`
 Use `-c` to run a single python command or statement.
 ```bash
 python -c 'print(1.23)'
@@ -34,4 +34,11 @@ python -m unittest discover test
 ```bash
 $ python --version
 Python 3.12.4
+```
+
+## Trace
+Use `-m trace --trace <script.py>` to see line-by-line execution of a python program. Analogous to bash `-x`.
+
+```bash
+$ python -m trace --trace script.py
 ```
