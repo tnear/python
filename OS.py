@@ -6,6 +6,7 @@
 import contextlib
 import os
 import platform
+import tempfile
 
 def pwd():
     cwd = os.getcwd()
@@ -154,6 +155,11 @@ def chdir():
     with change_dir_fixture('..'):
         ...
 
+def chmod():
+    with tempfile.NamedTemporaryFile() as tmp:
+        # set rw-r--r-- permissions
+        os.chmod(tmp.name, 0o644)
+
 def main():
     pwd()
     dirname()
@@ -173,6 +179,7 @@ def main():
     stat()
     euid()
     chdir()
+    chmod()
 
 if __name__ == '__main__':
     main()
