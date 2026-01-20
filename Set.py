@@ -45,10 +45,20 @@ def union():
     # like update but returns new set
     a = {1, 2, 3}
     b = {2, 3, 4}
+
+    # method
     u = a.union(b)
     assert a == {1, 2, 3}
     assert b == {2, 3, 4}
     assert u == {1, 2, 3, 4}
+
+    # '|' operator
+    u = a | b
+    assert u == {1, 2, 3, 4}
+
+    # in-place union (|=)
+    a |= b
+    assert a == {1, 2, 3, 4}
 
 def remove():
     s = {'a', 'b', 'c'}
@@ -161,6 +171,37 @@ def superset():
 
     assert not s1.issuperset(s2)
 
+def intersection():
+    # create 2 sets containing '1' and '3'
+    a = {1, 2, 3}
+    b = {1, 3, 4}
+
+    # method
+    i = a.intersection(b)
+    assert i == {1, 3}
+
+    # '&' operator
+    i = a & b
+    assert i == {1, 3}
+
+    # in-place intersection (&=)
+    a &= b
+    assert a == {1, 3}
+
+def symmetric_difference():
+    a = {1, 2, 3}
+    b = {3, 2, 5}
+
+    # method
+    x = a.symmetric_difference(b)
+    # 1 is in a but not b
+    # 5 is in b but not a
+    assert x == {1, 5}
+
+    # '^' operator for symmetric difference (xor)
+    x = a ^ b
+    assert x == {1, 5}
+
 def main():
     empty()
     create()
@@ -180,6 +221,8 @@ def main():
     disjoint()
     subset()
     superset()
+    intersection()
+    symmetric_difference()
 
 if __name__ == '__main__':
     main()
