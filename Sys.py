@@ -72,6 +72,23 @@ def modules():
     debug_session = 'debugpy' in sys.modules
     print(f'{debug_session=}')
 
+def sys_exit():
+    # sys.exit() raises a SystemExit exception.
+    # try/finally will still be called after sys.exit
+
+    caught = False
+    try:
+        # Arg can be string or integer error code, ex:
+        # sys.exit('my error message')
+        # sys.exit(1)
+        sys.exit(1)
+    except SystemExit:
+        caught = True
+    finally:
+        assert caught
+
+    assert caught
+
 def main():
     version()
     executable()
@@ -85,6 +102,7 @@ def main():
     basePrefix()
     int_max_str_digits()
     modules()
+    sys_exit()
 
 if __name__ == '__main__':
     main()
