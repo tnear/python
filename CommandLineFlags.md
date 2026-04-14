@@ -42,3 +42,6 @@ Use `-m trace --trace <script.py>` to see line-by-line execution of a python pro
 ```bash
 $ python -m trace --trace script.py
 ```
+
+## Verbose mode
+Use `python -v` to put interpreter in verbose mode. This is useful for debugging Python's loading of modules.

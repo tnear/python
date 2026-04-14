@@ -1,5 +1,5 @@
 # Set
-# Unordered, immutable, unindexed
+# Unordered, mutable, unindexed
 # No duplicates
 
 def empty():
@@ -92,16 +92,23 @@ def deepCopy():
     assert a == {2, 4, 6}
     assert b == {2, 4, 5, 6}
 
+# frozenset is an immutable set. Unlike regular set, it is
+# hashable, which allows it to be used as dictionary keys.
 def frozenSet():
+    # basic syntax
     f = frozenset((2, 1, 2, 3))
     assert f == frozenset({1, 2, 3})
 
-    # converts dictionary keys to frozenset
-    person = {'name': 'John',
-              'age': 99,
-              'zip': 60202}
-    f = frozenset(person)
-    assert f == {'name', 'age', 'zip'}
+    # frozenset is immutable, so cannot add:
+    # f.add(4)
+
+    # Advantage: frozenset is hashable, so it can be a dictionary key
+    roles = {frozenset({1, 2}): "value"}
+    assert roles[frozenset({1, 2})] == "value"
+
+    # Regular set cannot be a dictionary key.
+    # This throws TypeError: unhashable type: 'set':
+    # roles = {set({1, 2}): "value"}
 
 def sequence():
     # Generate sequence of 1 to 100
@@ -110,17 +117,13 @@ def sequence():
     assert sum(setSeq) == (100 * 101) / 2 # 5050
 
 def pop():
-    # pop() removes a 'random' element from the set
+    # pop() removes an arbitrary element from the set
     s = {4, 3, 2, 1}
-    elem = s.pop()
-    assert elem == 1
-    elem = s.pop()
-    assert elem == 2
-    elem = s.pop()
-    assert elem == 3
-    elem = s.pop()
-    assert elem == 4
+    popped = set()
+    while s:
+        popped.add(s.pop())
 
+    assert popped == {1, 2, 3, 4}
     assert len(s) == 0
 
 # set difference (setdiff)

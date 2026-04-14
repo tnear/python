@@ -30,7 +30,7 @@ def breakpointCommand():
 
 # Displays stack trace
 def where():
-    '''
+    r'''
     (Pdb) where
       d:\programming\python\pdb.py(17)<module>()
     -> main()

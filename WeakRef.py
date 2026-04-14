@@ -16,12 +16,13 @@ def weakRef():
     del c # calls __del__
 
     c = C()
-    assert sys.getrefcount(c) == 2
+    refcount = sys.getrefcount(c)
+    assert refcount >= 1
 
     # create weak reference to c
     # weak references do not increment ref count
     d = weakref.ref(c)
-    assert sys.getrefcount(c) == 2
+    assert sys.getrefcount(c) == refcount
 
     # 'call' the weakref using ()
     assert d() == c

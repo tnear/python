@@ -23,8 +23,13 @@ def path():
 # python is a reference-counted language
 def getrefcount():
     a = [1, 2, 3]
-    # 1 for 'a', and 1 for ref count increment of using 'a' as a parameter
-    assert sys.getrefcount(a) == 2
+    # exact values are implementation details, but another reference
+    # should increase the count by one
+    refcount = sys.getrefcount(a)
+    b = a
+    assert sys.getrefcount(a) == refcount + 1
+    del b
+    assert sys.getrefcount(a) == refcount
 
     # '1' is used in many places
     assert sys.getrefcount(1) > 100
@@ -35,11 +40,12 @@ def maxsize():
 
 def getsizeof():
     a = [1, 2, 3, 4, 5]
-    assert sys.getsizeof(a) in (96, 104)
+    list_size = sys.getsizeof(a)
+    assert list_size > 0
 
     # tuples are more compact than lists
     b = tuple(a)
-    assert sys.getsizeof(b) == 80
+    assert sys.getsizeof(b) < list_size
 
 def byteorder():
     assert sys.byteorder == 'little'
