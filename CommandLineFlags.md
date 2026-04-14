@@ -43,5 +43,8 @@ Use `-m trace --trace <script.py>` to see line-by-line execution of a python pro
 $ python -m trace --trace script.py
 ```
 
+## Unbuffered input/output
+Use `python -u` to force input and output to be unbuffered. This forces streams to be flushed immediately. Normally, I/O is buffered for performance.
+
 ## Verbose mode
 Use `python -v` to put interpreter in verbose mode. This is useful for debugging Python's loading of modules.

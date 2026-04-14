@@ -24,3 +24,13 @@ mypackage-1.0.0-cp310-cp310-manylinux_x86_64.whl
 - `1.0.0`: version
 - `cp310`: Python version (CPython 3.10)
 - `manylinux_x86_64`: platform
+
+#### Pure-Python wheel
+```
+Jinja2-3.0.0a1-py3-none-any.whl
+```
+
+- `py3-none-any`: installs on any platform (called pure-Python wheel)
+
+## Resources
+- https://realpython.com/python-wheels/#wheels-make-things-go-fast
