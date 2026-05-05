@@ -151,7 +151,7 @@ def strip():
     # characters parameter
     txt = '!@#$ a...bc! !'
 
-    # strips ALL of these characters from beginning/end
+    # specify characters to remove from beginning and end of string
     txt = txt.strip(' $#@!')
     assert txt == 'a...bc'
 

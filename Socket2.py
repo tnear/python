@@ -73,11 +73,30 @@ def test_connection():
     print(f'Response: {response.decode()}')
     assert response == b'OK'
 
+def socket_pair():
+    # socketpair() creates two already-connected sockets.
+    # It is useful for local IPC and wake-up signals because
+    # you can write to one socket and read from the other
+    # without needing connect()/accept().
+    # Uses AF_UNIX by default.
+    left, right = socket.socketpair()
+
+    left.sendall(b"hello from left")
+    data = right.recv(1024)
+    print(f"right received: {data!r}")
+    right.sendall(b"hello back from right")
+    data = left.recv(1024)
+    print(f"left received: {data!r}")
+
+    left.close()
+    right.close()
+
 def main():
     ipAddress()
     connect()
     bind()
     test_connection()
+    socket_pair()
 
 if __name__ == '__main__':
     main()

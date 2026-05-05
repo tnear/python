@@ -1,5 +1,7 @@
 # Notes on Python classes.
 
+import typing
+
 # Properties:
 class MyProp:
     # static variables shared by all instances
@@ -80,6 +82,20 @@ def static_variables():
     MyProp.prop = 6
     assert MyProp.prop == 6
 
+# Forward references are type annotations that refer to a type
+# that has not been fully defined yet. It is most common for
+# self-referential classes, such as linked list because Python
+# is still in the middle of creating the class.
+class Node:
+    # forward references put type in quotes: "Node" instead of Node
+    def __init__(self, next: "Node"):
+        self.next = next
+
+def forward_reference():
+    # this test will fail if "Node" (above) is not in quotes
+    hints = typing.get_type_hints(Node.__init__)
+    assert 'next' in hints
+
 def main():
     properties()
     constructor()
@@ -87,6 +103,7 @@ def main():
     staticMethod()
     methodDecorator()
     static_variables()
+    forward_reference()
 
 if __name__ == '__main__':
     main()
