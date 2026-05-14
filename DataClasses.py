@@ -35,8 +35,31 @@ def test_person():
     assert p.country == 'United States'
     assert p.full_name() == 'First Last'
 
+# Use frozen=true to make instances immutable after creation
+@dataclasses.dataclass(frozen=True)
+class User:
+    name: str
+    age: int
+
+def test_user():
+    u = User('hello', 50)
+    assert u.name == 'hello'
+    assert u.age == 50
+
+    # Modifying a field throws:
+    # dataclasses.FrozenInstanceError: cannot assign to field 'name'
+    # u.name = 'new name'
+
+def to_dictionary():
+    u = User('me', 25)
+    # asdict() converts dataclass to dictionary
+    d = dataclasses.asdict(u)
+    assert d == {'name': 'me', 'age': 25}
+
 def main():
     test_person()
+    test_user()
+    to_dictionary()
 
 if __name__ == '__main__':
     main()
