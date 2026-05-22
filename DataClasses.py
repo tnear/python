@@ -56,10 +56,36 @@ def to_dictionary():
     d = dataclasses.asdict(u)
     assert d == {'name': 'me', 'age': 25}
 
+# Python class bodies run once when the class is defined.
+# Because mutable defaults would be shared, python disallows
+# the example below
+# @dataclasses.dataclass
+# class MutableDefault:
+#     items: list[str] = []  # not allowed: lists are mutable
+#     count: int = 3         # allowed: '3' is immutable
+#     value: bool = True     # allowed: True is immutable
+
+# Python's solution to problem above is 'default_factory'. It says
+# when creating a new class instance, always create a new <type>.
+@dataclasses.dataclass
+class MutableDeafult:
+    items: list[str] = dataclasses.field(default_factory=list)
+
+def default_factory():
+    m = MutableDeafult()
+    m2 = MutableDeafult()
+
+    # Updating m's items does not impact m2. They are separate lists
+    # due to their creation with default_factory.
+    m.items.append("hello")
+    assert m.items == ["hello"]
+    assert m2.items == []
+
 def main():
     test_person()
     test_user()
     to_dictionary()
+    default_factory()
 
 if __name__ == '__main__':
     main()
