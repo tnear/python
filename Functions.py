@@ -97,6 +97,17 @@ def has_attr():
     c.setter(10)
     assert hasattr(c, 'value')  # 'value' is set now
 
+# '*' is a keyword-only separator. All arguments after must be named.
+def f(a, *, b, c):
+    return a + b + c
+
+# Python 3.0
+def keyword_only_args():
+    f(1, b=2, c=3)   # valid
+    f(a=3, b=2, c=1) # valid
+    # f(1, 2, 3)     # invalid because b/c are not named
+    # f(1, 2, c=3)   # invalid because b is not named
+
 def main():
     arbitrary('a', 'b', 'c')
     namedArgs(a='1', b='2', c='3')
@@ -112,6 +123,7 @@ def main():
     dirFcn()
     typeFcn()
     has_attr()
+    keyword_only_args()
 
 if __name__ == '__main__':
     main()
