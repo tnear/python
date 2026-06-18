@@ -1,4 +1,4 @@
-# platform — Access to underlying platform’s identifying data
+# platform — Access to underlying platform's identifying data
 # https://docs.python.org/3/library/platform.html
 
 import platform

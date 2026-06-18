@@ -6,11 +6,11 @@ https://docs.python.org/3/library/selectors.html
 import selectors
 import socket
 
-# selectors.DefaultSelector is Python’s recommended high-level
+# selectors.DefaultSelector is Python's recommended high-level
 # I/O multiplexer. It wraps the lower-level select primitives
 # and automatically picks the most efficient implementation
 # for your platform
-sel = selectors.DefaultSelector()
+g_selector = selectors.DefaultSelector()
 
 def my_accept(sock, _mask):
     conn, addr = sock.accept()
@@ -19,7 +19,7 @@ def my_accept(sock, _mask):
 
     # Watch this socket for read readiness. When it is ready,
     # associate with my_read() callback.
-    sel.register(conn, selectors.EVENT_READ, my_read)
+    g_selector.register(conn, selectors.EVENT_READ, my_read)
 
     # selectors only has 2 constants:
     # EVENT_READ: notify when this object (file) is ready for reading
@@ -32,7 +32,7 @@ def my_read(conn, _mask):
         conn.sendall(b"echo: " + data)
     else:
         print("closing connection")
-        sel.unregister(conn)
+        g_selector.unregister(conn)
         conn.close()
 
 def basic_usage():
@@ -46,7 +46,7 @@ def basic_usage():
 
     # Watch the listening socket server, and when it becomes
     # readable, use my_accept as the handler.
-    sel.register(server, selectors.EVENT_READ, my_accept)
+    g_selector.register(server, selectors.EVENT_READ, my_accept)
 
     print(f"Listening on {HOST}:{PORT}")
     print(f"In another terminal, run: nc {HOST} {PORT}")
@@ -56,7 +56,7 @@ def basic_usage():
         # block until at least one registered object is ready
         # key = information about the registered object
         # mask = which event happened (such as read-only)
-        for key, mask in sel.select():
+        for key, mask in g_selector.select():
             # get function callback (either my_accept or my_read in this example)
             callback = key.data
 
