@@ -147,6 +147,20 @@ def flatten_to_list():
     exp = [('a', 1), ('b', 2), ('c', 'three')]
     assert flattened == exp
 
+# dict.fromkeys creates a new dictionary from list/tuple/set
+def from_keys():
+    s = {1, 2, 3}
+    d = dict.fromkeys(s)
+    assert d == {1: None, 2: None, 3: None}
+
+    # 2nd arg is default value (defaults to None)
+    d = dict.fromkeys(['b', 'a'], 1234)
+    assert d == {'b': 1234, 'a': 1234}
+
+    # from string (dict removes duplicate 'l')
+    d = dict.fromkeys('hello')
+    assert d == {'h': None, 'e': None, 'l': None, 'o': None}
+
 def main():
     empty()
     create()
@@ -165,6 +179,7 @@ def main():
     hashListUsingTuple()
     sort()
     flatten_to_list()
+    from_keys()
 
 if __name__ == '__main__':
     main()
