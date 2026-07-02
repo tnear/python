@@ -81,11 +81,26 @@ def default_factory():
     assert m.items == ["hello"]
     assert m2.items == []
 
+@dataclasses.dataclass
+class UserInitFalse:
+    name: str
+    # use init=False when a field is part of the dataclass, but not
+    # accepted as a parameter to generated __init__ method
+    normalized_name: str = dataclasses.field(init=False)
+
+    def __post_init__(self):
+        self.normalized_name = self.name.lower()
+
+def init_false():
+    u = UserInitFalse('Alice')
+    print(u)
+
 def main():
     test_person()
     test_user()
     to_dictionary()
     default_factory()
+    init_false()
 
 if __name__ == '__main__':
     main()
