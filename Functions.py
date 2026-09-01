@@ -101,12 +101,22 @@ def has_attr():
 def f(a, *, b, c):
     return a + b + c
 
+# '/' marks end of positional-only parameters (Python 3.8+)
+def position(a, b, /, c):
+    return a + b + c
+
 # Python 3.0
 def keyword_only_args():
     f(1, b=2, c=3)   # valid
     f(a=3, b=2, c=1) # valid
     # f(1, 2, 3)     # invalid because b/c are not named
     # f(1, 2, c=3)   # invalid because b is not named
+
+def positional_only_args():
+    assert position(1, 2, 3) == 6
+    assert position(1, 2, c=3) == 6
+    # position(a=1, b=2, c=3)  # invalid b/c 'a' and 'b' must not be keyword args
+    # position(1, b=2, c=3)
 
 def main():
     arbitrary('a', 'b', 'c')
@@ -124,6 +134,7 @@ def main():
     typeFcn()
     has_attr()
     keyword_only_args()
+    positional_only_args()
 
 if __name__ == '__main__':
     main()
