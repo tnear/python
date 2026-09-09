@@ -58,16 +58,23 @@ def mutate():
     d[1] = 3
     assert d[1] == 3
 
-def remove():
+# pop/remove/delete element and return its value
+def pop():
     d = {1: 2, 'c': 4, 5: 6}
 
     # remove key 'c'
-    d.pop('c')
+    val = d.pop('c')
+    assert val == 4
     assert list(d) == [1, 5]
 
     # remove last key (5)
     d.popitem()
     assert list(d) == [1]
+
+    # specify default argument to return if not present
+    # (will throw KeyError without 2nd argument)
+    val = d.pop('fake', None)
+    assert val is None
 
 def deepCopy():
     d = {1: 2, 'c': 4, 5: 6}
@@ -171,7 +178,7 @@ def main():
     comprehension()
     iterate()
     mutate()
-    remove()
+    pop()
     deepCopy()
     size()
     merge()

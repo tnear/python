@@ -25,10 +25,10 @@ def http_code(status):
     return out
 
 def basic():
-    print(http_code(400))
-    print(http_code(401))
-    print(http_code(404))
-    print(http_code(499))
+    assert http_code(400) == 'Bad request'
+    assert http_code(401) == 'Not allowed'
+    assert http_code(404) == 'Not found'
+    assert http_code(499) == 'Other error'
 
 # https://www.geeksforgeeks.org/python-match-case-statement/
 class Shape:
