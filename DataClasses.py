@@ -95,12 +95,26 @@ def init_false():
     u = UserInitFalse('Alice')
     print(u)
 
+# dataclasses.replace creates new dataclass instance by copying
+# an existing one and overriding selected fields.
+def replace():
+    p = Person('hello', 'last', 50)
+
+    # create new person by replacing first name
+    p_replaced = dataclasses.replace(p, first_name='goodbye')
+    assert p_replaced.first_name == 'goodbye'
+    assert p.last_name == 'last'
+
+    # original person is unchanged
+    assert p.first_name == 'hello'
+
 def main():
     test_person()
     test_user()
     to_dictionary()
     default_factory()
     init_false()
+    replace()
 
 if __name__ == '__main__':
     main()
