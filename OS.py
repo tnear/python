@@ -160,6 +160,11 @@ def chmod():
         # set rw-r--r-- permissions
         os.chmod(tmp.name, 0o644)
 
+def sync():
+    # flush pending file data and metadata to disk
+    # note: os.sync can be slow with unpredictable latency
+    os.sync()
+
 def main():
     pwd()
     dirname()
@@ -180,6 +185,7 @@ def main():
     euid()
     chdir()
     chmod()
+    sync()
 
 if __name__ == '__main__':
     main()
