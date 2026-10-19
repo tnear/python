@@ -108,6 +108,19 @@ def replace():
     # original person is unchanged
     assert p.first_name == 'hello'
 
+# python3.10
+# set kw_only=True to force users to use name=value.
+# Functions like '*' separator.
+@dataclasses.dataclass(kw_only=True)
+class Connection:
+    host: str
+    port: int = 4420
+
+def kw_only():
+    c = Connection(host='my_host', port=80)
+    assert c.host == 'my_host'
+    assert c.port == 80
+
 def main():
     test_person()
     test_user()
@@ -115,6 +128,7 @@ def main():
     default_factory()
     init_false()
     replace()
+    kw_only()
 
 if __name__ == '__main__':
     main()
