@@ -1,6 +1,8 @@
 '''
 glob — Unix style pathname pattern expansion
 https://docs.python.org/3/library/glob.html
+
+See also: FnMatch.py
 '''
 
 import glob
